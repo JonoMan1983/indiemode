@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Indiemode SA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=DM+Serif+Display:ital@0;1&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0F172A;
+  --surface: #1E293B;
+  --primary: #FF006E;
+  --secondary: #00F5D4;
+  --text: #F8FAFC;
+  --surface-hi: #253248;
+  --border: rgba(248,250,252,0.08);
+  --border-hi: rgba(248,250,252,0.16);
+  --muted: rgba(248,250,252,0.45);
+  --dim: rgba(248,250,252,0.2);
+  --primary-glow: rgba(255,0,110,0.25);
+  --teal-glow: rgba(0,245,212,0.18);
+  --condensed: 'Barlow Condensed', sans-serif;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --body: 'Barlow', sans-serif;
+  --rule: 1px solid rgba(248,250,252,0.1);
+  --nav-h: 64px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;background-image:linear-gradient(rgba(248,250,252,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(248,250,252,0.018) 1px,transparent 1px);background-size:60px 60px}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font-family:var(--body)}
+img{display:block;max-width:100%}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+.pharma-label{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--secondary);display:inline-flex;align-items:center;gap:10px}
+.pharma-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--secondary)}
+.s-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.96);z-index:300;display:flex;align-items:flex-start;padding-top:120px;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;backdrop-filter:blur(8px)}
+.s-overlay.open{opacity:1;pointer-events:all}
+.s-wrap{width:100%;max-width:680px;padding:0 40px}
+.s-label{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--secondary);margin-bottom:20px}
+.s-input{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(248,250,252,0.2);font-family:var(--serif);font-size:40px;font-style:italic;color:var(--text);padding:12px 0;outline:none;transition:border-color .2s}
+.s-input::placeholder{color:var(--dim)}
+.s-input:focus{border-bottom-color:var(--secondary)}
+.s-close{position:absolute;top:32px;right:40px;font-family:var(--condensed);font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:color .2s}
+.s-close:hover{color:var(--text)}
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(15,23,42,0.96);border-bottom-color:var(--border);backdrop-filter:blur(12px)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 40px;height:100%;display:flex;align-items:center;gap:0}
+.nav-logo{font-family:var(--condensed);font-size:20px;font-weight:900;letter-spacing:0.18em;text-transform:uppercase;color:var(--text);margin-right:48px;flex-shrink:0;position:relative}
+.nav-logo .logo-accent{color:var(--primary);font-style:italic;font-family:var(--serif);font-size:22px;letter-spacing:0;font-weight:400}
+.nav-logo::after{content:'EST. ZA — 2012';position:absolute;bottom:-9px;left:0;font-size:7px;letter-spacing:0.22em;color:var(--dim);white-space:nowrap;font-family:var(--condensed);font-weight:700;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;flex:1}
+.nav-links a{font-family:var(--condensed);font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);transition:color .2s;position:relative}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.nav-sale{color:var(--primary)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--secondary);transform:scaleX(0);transform-origin:left;transition:transform .2s}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-right{display:flex;align-items:center;gap:16px;margin-left:auto}
+.nav-search-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:4px;color:var(--muted);border:1px solid transparent;transition:color .2s,border-color .2s}
+.nav-search-btn:hover{color:var(--text);border-color:var(--border-hi)}
+.nav-cart{display:flex;align-items:center;gap:8px;padding:8px 18px;border:1px solid var(--primary);color:var(--primary);font-family:var(--condensed);font-size:12px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;border-radius:2px;transition:background .2s,color .2s,box-shadow .2s;position:relative}
+.nav-cart:hover{background:var(--primary);color:var(--bg);box-shadow:0 0 20px var(--primary-glow)}
+.cart-count{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:var(--primary);color:var(--bg);font-size:9px;font-weight:900;border-radius:50%;transition:transform .2s}
+.nav-cart:hover .cart-count{background:var(--bg);color:var(--primary)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:36px;padding-bottom:20px;border-bottom:var(--rule)}
+.sec-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:0.32em;text-transform:uppercase;color:var(--secondary);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.sec-label::before{content:'';width:20px;height:1px;background:var(--secondary)}
+.sec-title{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:400;line-height:1.05;letter-spacing:-0.01em;color:var(--text)}
+.sec-title em{font-style:italic;color:var(--primary)}
+.see-all{font-family:var(--condensed);font-size:10px;font-weight:900;letter-spacing:0.22em;text-transform:uppercase;color:var(--secondary);white-space:nowrap;display:flex;align-items:center;gap:6px;border-bottom:1px solid transparent;padding-bottom:1px;transition:border-color .2s}
+.see-all:hover{border-bottom-color:var(--secondary)}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--primary);color:var(--bg);font-family:var(--condensed);font-size:12px;font-weight:900;letter-spacing:0.2em;text-transform:uppercase;border:1px solid var(--primary);border-radius:2px;transition:background .2s,box-shadow .2s,transform .15s;cursor:pointer}
+.btn-primary:hover{box-shadow:0 0 32px var(--primary-glow);transform:translateY(-1px)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:transparent;color:var(--secondary);font-family:var(--condensed);font-size:12px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;border:1px solid rgba(0,245,212,0.35);border-radius:2px;transition:border-color .2s,color .2s,background .2s,box-shadow .2s;cursor:pointer}
+.btn-secondary:hover{border-color:var(--secondary);background:rgba(0,245,212,0.06);box-shadow:0 0 20px var(--teal-glow)}
+.btn-teal{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border:1px solid var(--secondary);color:var(--secondary);font-family:var(--condensed);font-size:11px;font-weight:900;letter-spacing:0.22em;text-transform:uppercase;border-radius:2px;transition:background .2s,color .2s,box-shadow .2s;cursor:pointer}
+.btn-teal:hover{background:var(--secondary);color:var(--bg);box-shadow:0 0 24px var(--teal-glow)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
+.footer{background:var(--surface);border-top:2px solid var(--border);padding:60px 0 36px}
+.footer-inner{max-width:1280px;margin:0 auto;padding:0 40px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;padding-bottom:48px;border-bottom:var(--rule)}
+.footer-logo{font-family:var(--condensed);font-size:22px;font-weight:900;letter-spacing:0.14em;text-transform:uppercase;color:var(--text);margin-bottom:6px}
+.footer-logo .lo-accent{font-family:var(--serif);font-style:italic;font-weight:400;font-size:24px;letter-spacing:0;color:var(--primary)}
+.footer-spec{font-family:var(--condensed);font-size:8px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--dim);margin-bottom:20px}
+.footer-tagline{font-size:14px;font-weight:300;line-height:1.7;color:var(--muted);max-width:260px;margin-bottom:28px}
+.footer-socials{display:flex;gap:8px}
+.soc-btn{width:32px;height:32px;border-radius:1px;border:1px solid var(--border-hi);display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:13px;transition:border-color .2s,color .2s,background .2s}
+.soc-btn:hover{border-color:var(--primary);color:var(--primary);background:rgba(255,0,110,0.08)}
+.footer-col-title{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:0.3em;text-transform:uppercase;color:var(--secondary);margin-bottom:18px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-family:var(--condensed);font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:28px;flex-wrap:wrap}
+.footer-copy{font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--dim)}
+
+.contact-hero{padding:120px 40px 60px;max-width:1280px;margin:0 auto}
+.contact-hero-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:0.32em;text-transform:uppercase;color:var(--secondary);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.contact-hero-label::before{content:'';width:20px;height:1px;background:var(--secondary)}
+.contact-hero h1{font-family:var(--serif);font-size:clamp(40px,6vw,72px);font-weight:400;line-height:0.95;color:var(--text);margin-bottom:16px}
+.contact-hero h1 em{font-style:italic;color:var(--primary)}
+.contact-hero p{font-size:16px;font-weight:300;color:var(--muted);max-width:500px}
+.contact-sec{padding:20px 0 96px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-form-wrap{background:var(--surface);border:1px solid var(--border);border-radius:2px;padding:48px;border-top:2px solid var(--secondary)}
+.form-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:0.28em;text-transform:uppercase;color:var(--secondary);margin-bottom:8px;display:block}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--bg);border:1px solid var(--border-hi);color:var(--text);font-family:var(--body);font-size:15px;padding:13px 16px;border-radius:2px;margin-bottom:20px;outline:none;transition:border-color .2s,box-shadow .2s}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--secondary);box-shadow:0 0 16px var(--teal-glow)}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--dim)}
+.form-textarea{height:120px;resize:vertical;font-family:var(--body)}
+.form-select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(248,250,252,0.3)' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.form-select option{background:var(--surface)}
+.form-submit{width:100%;padding:16px;background:var(--primary);color:var(--bg);font-family:var(--condensed);font-size:13px;font-weight:900;letter-spacing:0.2em;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;transition:box-shadow .2s,transform .15s}
+.form-submit:hover{box-shadow:0 0 32px var(--primary-glow);transform:translateY(-1px)}
+.form-success{display:none;text-align:center;padding:32px}
+.form-success-icon{font-size:40px;margin-bottom:16px}
+.form-success h3{font-family:var(--serif);font-size:28px;color:var(--text);margin-bottom:12px}
+.form-success p{font-size:14px;color:var(--muted)}
+.contact-info{padding-top:8px}
+.contact-block{padding:28px 0;border-bottom:var(--rule)}
+.contact-block:first-child{padding-top:0}
+.contact-block-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:0.28em;text-transform:uppercase;color:var(--secondary);margin-bottom:10px}
+.contact-block-val{font-family:var(--serif);font-size:20px;color:var(--text);margin-bottom:6px}
+.contact-block-sub{font-size:14px;font-weight:300;color:var(--muted)}
+.faq-sec{padding:80px 0;border-top:var(--rule)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-top:40px}
+.faq-item{padding:28px;background:var(--bg);cursor:pointer;transition:background .2s}
+.faq-item:hover{background:var(--surface)}
+.faq-q{font-family:var(--condensed);font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text);margin-bottom:10px;display:flex;justify-content:space-between;align-items:start;gap:12px}
+.faq-icon{color:var(--secondary);flex-shrink:0;transition:transform .2s}
+.faq-a{font-size:14px;font-weight:300;line-height:1.7;color:var(--muted)}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}.contact-hero{padding:90px 24px 40px}.faq-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">INDIE<span class="logo-accent">mode</span></a>
+    <ul class="nav-links">
+      <li><a href="shop.html">New In</a></li>
+      <li><a href="brands.html">Brands</a></li>
+      <li><a href="shop.html">Clothing</a></li>
+      <li><a href="shop.html">Jewellery</a></li>
+      <li><a href="shop.html">Accessories</a></li>
+      <li><a href="shop.html" class="nav-sale">Sale</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="nav-search-btn" onclick="openSearch()" aria-label="Search">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="none">
+          <circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M13 13L16 16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <a href="shop.html" class="nav-cart">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <path d="M1 1H3L4.5 9.5H12.5L14 4H4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="6" cy="12.5" r="1" fill="currentColor"/>
+          <circle cx="11" cy="12.5" r="1" fill="currentColor"/>
+        </svg>
+        Bag <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="s-overlay" id="sOverlay">
+  <button class="s-close" onclick="closeSearch()">ESC — CLOSE</button>
+  <div class="s-wrap">
+    <div class="s-label">Search specimen catalogue</div>
+    <input class="s-input" type="text" placeholder="designer, garment, collection…" id="sInput" autocomplete="off">
+  </div>
+</div>
+<div class="contact-hero reveal">
+  <div class="contact-hero-label">Get In Touch</div>
+  <h1>Let's <em>talk.</em></h1>
+  <p>Questions about an order, want to list your brand, or just want to say hello — we're here.</p>
+</div>
+<section class="contact-sec">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-form-wrap reveal">
+        <div id="contactForm">
+          <div class="sec-label" style="margin-bottom:24px">Send us a message</div>
+          <label class="form-label">Your name</label>
+          <input class="form-input" type="text" placeholder="Full name">
+          <label class="form-label">Email address</label>
+          <input class="form-input" type="email" placeholder="your@email.com">
+          <label class="form-label">Subject</label>
+          <select class="form-select">
+            <option value="">Select a topic</option>
+            <option>Order enquiry</option>
+            <option>Returns & exchanges</option>
+            <option>List my brand</option>
+            <option>Press & media</option>
+            <option>General enquiry</option>
+          </select>
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="How can we help?"></textarea>
+          <button class="form-submit" onclick="submitForm()">Send message →</button>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">✓</div>
+          <h3>Message received.</h3>
+          <p>We'll get back to you within 1–2 working days.</p>
+        </div>
+      </div>
+      <div class="contact-info reveal rd2">
+        <div class="contact-block">
+          <div class="contact-block-label">Email</div>
+          <div class="contact-block-val">hello@indiemode.co.za</div>
+          <div class="contact-block-sub">We reply within 1–2 working days</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">Based in</div>
+          <div class="contact-block-val">Cape Town, South Africa</div>
+          <div class="contact-block-sub">Operating across all 9 provinces</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">List your brand</div>
+          <div class="contact-block-val">Open applications</div>
+          <div class="contact-block-sub">We review all applications within 5 working days. No upfront fees to apply.</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">Follow us</div>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <a href="#" class="soc-btn" aria-label="Instagram">&#9649;</a>
+            <a href="#" class="soc-btn" aria-label="TikTok">&#9650;</a>
+            <a href="#" class="soc-btn" aria-label="Pinterest">&#9670;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="faq-sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-label">Quick Answers</div>
+        <h2 class="sec-title">Frequently asked <em>questions</em></h2>
+      </div>
+    </div>
+    <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-q">How long does delivery take? <span class="faq-icon">+</span></div>
+      <div class="faq-a">We deliver via Pargo to your nearest pickup point. Standard delivery takes 3–5 working days from order confirmation.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is your returns policy? <span class="faq-icon">+</span></div>
+      <div class="faq-a">14 days, no questions asked. Items must be unworn with original tags. Jewellery is excluded from returns for hygiene reasons.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I order internationally? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Not yet — Indiemode currently ships within South Africa only. International shipping is coming in Q3 2026.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I list my brand? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Fill in the contact form on this page with "List my brand" as the subject. We review all applications within 5 working days.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Are all products really SA made? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes, strictly. We visit every designer studio before approving their listing. No imported or dropshipped product is allowed on the platform.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I track my order? <span class="faq-icon">+</span></div>
+      <div class="faq-a">You'll receive a Pargo tracking link via email as soon as your order is dispatched. You can also track via the Pargo app.</div>
+    </div></div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">INDIE<span class="lo-accent">mode</span></div>
+        <div class="footer-spec">SA Fashion Registry · Est. 2012 · ZA</div>
+        <p class="footer-tagline">South Africa's home for independent fashion designers. Every piece, every story, right here.</p>
+        <div class="footer-socials">
+          <a href="#" class="soc-btn" aria-label="Instagram">&#9649;</a>
+          <a href="#" class="soc-btn" aria-label="TikTok">&#9650;</a>
+          <a href="#" class="soc-btn" aria-label="Pinterest">&#9670;</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Shop</div>
+        <ul class="footer-links">
+          <li><a href="shop.html">New Arrivals</a></li>
+          <li><a href="shop.html">Clothing</a></li>
+          <li><a href="shop.html">Jewellery</a></li>
+          <li><a href="shop.html">Accessories</a></li>
+          <li><a href="shop.html">Sale</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Help</div>
+        <ul class="footer-links">
+          <li><a href="contact.html">FAQ</a></li>
+          <li><a href="contact.html">Delivery & Returns</a></li>
+          <li><a href="contact.html">Size Guide</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">About</div>
+        <ul class="footer-links">
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="brands.html">All Brands</a></li>
+          <li><a href="about.html">List Your Brand</a></li>
+          <li><a href="contact.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Indiemode · SA Fashion Registry · All rights reserved · Proudly South African</div>
+    </div>
+  </div>
+</footer>
+<script>
+
+const nav=document.getElementById('mainNav');
+if(nav)window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>80),{passive:true});
+function openSearch(){document.getElementById('sOverlay').classList.add('open');setTimeout(()=>document.getElementById('sInput').focus(),60)}
+function closeSearch(){document.getElementById('sOverlay').classList.remove('open')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSearch()});
+let n=0;
+function addToCart(){n++;const c=document.getElementById('cartCount');if(c){c.textContent=n;c.style.transform='scale(1.5)';setTimeout(()=>c.style.transform='',200)}}
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -32px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+function submitForm(){
+  document.getElementById('contactForm').style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+}
+</script>
+</body>
+</html>
