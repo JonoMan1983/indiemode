@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — Indiemode SA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=DM+Serif+Display:ital@0;1&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=DM+Serif+Display:ital@0;1&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0F172A;--surface:#1E293B;--primary:#FF006E;--secondary:#00F5D4;--text:#F8FAFC;--surface-hi:#253248;--border:rgba(248,250,252,0.08);--border-hi:rgba(248,250,252,0.16);--muted:rgba(248,250,252,0.45);--dim:rgba(248,250,252,0.2);--primary-glow:rgba(255,0,110,0.25);--teal-glow:rgba(0,245,212,0.18);--condensed:'Barlow Condensed',sans-serif;--serif:'DM Serif Display',Georgia,serif;--body:'Barlow',sans-serif;--rule:1px solid rgba(248,250,252,0.1);--nav-h:64px}
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
+html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;background-image:linear-gradient(rgba(248,250,252,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(248,250,252,0.018) 1px,transparent 1px);background-size:60px 60px}
 a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;background:none;font-family:var(--body)}img{display:block;max-width:100%}
 .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
-.pharma-label{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--secondary);display:inline-flex;align-items:center;gap:10px}
-.pharma-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--secondary)}
-.s-overlay{position:fixed;inset:0;background:rgba(15,23,42,.96);z-index:300;display:flex;align-items:flex-start;padding-top:120px;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;backdrop-filter:blur(8px)}
-.s-overlay.open{opacity:1;pointer-events:all}
-.s-wrap{width:100%;max-width:680px;padding:0 40px}
-.s-label{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--secondary);margin-bottom:20px}
-.s-input{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(248,250,252,.2);font-family:var(--serif);font-size:40px;font-style:italic;color:var(--text);padding:12px 0;outline:none;transition:border-color .2s}
-.s-input::placeholder{color:var(--dim)}.s-input:focus{border-bottom-color:var(--secondary)}
+/* NAV */
+.s-overlay{position:fixed;inset:0;background:rgba(15,23,42,.96);z-index:300;display:flex;align-items:flex-start;padding-top:120px;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;backdrop-filter:blur(8px)}.s-overlay.open{opacity:1;pointer-events:all}
+.s-wrap{width:100%;max-width:680px;padding:0 40px}.s-label{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--secondary);margin-bottom:20px}
+.s-input{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(248,250,252,.2);font-family:var(--serif);font-size:40px;font-style:italic;color:var(--text);padding:12px 0;outline:none;transition:border-color .2s}.s-input::placeholder{color:var(--dim)}.s-input:focus{border-bottom-color:var(--secondary)}
 .s-close{position:absolute;top:32px;right:40px;font-family:var(--condensed);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:color .2s}.s-close:hover{color:var(--text)}
 .nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
 .nav.scrolled{background:rgba(15,23,42,.96);border-bottom-color:var(--border);backdrop-filter:blur(12px)}
@@ -36,396 +33,280 @@ a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;backgroun
 .nav-search-btn:hover{color:var(--text);border-color:var(--border-hi)}
 .nav-cart{display:flex;align-items:center;gap:8px;padding:8px 18px;border:1px solid var(--primary);color:var(--primary);font-family:var(--condensed);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;border-radius:2px;transition:background .2s,color .2s,box-shadow .2s}
 .nav-cart:hover{background:var(--primary);color:var(--bg);box-shadow:0 0 20px var(--primary-glow)}
-.cart-count{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:var(--primary);color:var(--bg);font-size:9px;font-weight:900;border-radius:50%;transition:transform .2s}
-.nav-cart:hover .cart-count{background:var(--bg);color:var(--primary)}
-.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:36px;padding-bottom:20px;border-bottom:var(--rule)}
+.cart-count{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:var(--primary);color:var(--bg);font-size:9px;font-weight:900;border-radius:50%}
+/* HERO */
+.contact-hero{padding:calc(var(--nav-h) + 80px) 0 72px}
+.contact-hero-label{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);display:inline-flex;align-items:center;gap:10px;margin-bottom:20px}
+.contact-hero-label::before{content:'';width:28px;height:1px;background:var(--secondary)}
+.contact-hero-title{font-family:var(--serif);font-size:clamp(44px,6vw,80px);line-height:.95;letter-spacing:-.02em;color:var(--text);margin-bottom:20px}
+.contact-hero-title em{font-style:italic;color:var(--primary)}
+.contact-hero-sub{font-size:16px;font-weight:300;color:var(--muted);max-width:480px;line-height:1.7}
+/* MAIN CONTACT GRID */
+.contact-main{padding:0 0 100px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+/* FORM */
+.form-section-label{font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--secondary);display:flex;align-items:center;gap:10px;margin-bottom:32px}
+.form-section-label::before{content:'';width:20px;height:1px;background:var(--secondary)}
+.field{margin-bottom:24px}
+.field-label{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:block}
+.field-input,.field-select,.field-textarea{width:100%;background:transparent;border:none;border-bottom:1px solid var(--border-hi);color:var(--text);font-family:var(--body);font-size:15px;font-weight:300;padding:12px 0;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.field-input:focus,.field-select:focus,.field-textarea:focus{border-bottom-color:var(--secondary)}
+.field-input::placeholder,.field-textarea::placeholder{color:var(--dim)}
+.field-select{cursor:pointer;background:transparent;color:var(--text)}
+.field-select option{background:var(--surface);color:var(--text)}
+.field-textarea{resize:none;height:120px;line-height:1.6}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.form-submit{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:var(--primary);color:var(--bg);font-family:var(--condensed);font-size:12px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--primary);border-radius:2px;transition:box-shadow .2s,transform .15s;cursor:pointer;margin-top:8px;width:100%;justify-content:center}
+.form-submit:hover{box-shadow:0 0 32px var(--primary-glow);transform:translateY(-1px)}
+.form-note{font-size:12px;font-weight:300;color:var(--dim);margin-top:12px;line-height:1.6}
+/* CONTACT INFO SIDEBAR */
+.info-block{margin-bottom:48px;padding-bottom:48px;border-bottom:var(--rule)}
+.info-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.info-label{font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--secondary);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.info-label::before{content:'';width:16px;height:1px;background:var(--secondary)}
+.info-title{font-family:var(--serif);font-size:22px;color:var(--text);margin-bottom:10px}
+.info-body{font-size:14px;font-weight:300;line-height:1.75;color:var(--muted)}
+.info-link{color:var(--secondary);text-decoration:none;transition:opacity .2s}
+.info-link:hover{opacity:.7}
+/* APPLY SECTION */
+.apply-section{background:var(--surface);border:1px solid var(--border-hi);border-radius:2px;padding:40px;margin-top:0}
+.apply-label{font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--secondary);display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.apply-label::before{content:'';width:16px;height:1px;background:var(--secondary)}
+.apply-title{font-family:var(--serif);font-size:26px;color:var(--text);margin-bottom:12px}
+.apply-title em{font-style:italic;color:var(--primary)}
+.apply-body{font-size:14px;font-weight:300;line-height:1.75;color:var(--muted);margin-bottom:24px}
+.apply-checklist{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.apply-checklist li{font-size:13px;font-weight:300;color:var(--muted);display:flex;align-items:flex-start;gap:12px;line-height:1.5}
+.apply-checklist li::before{content:'—';color:var(--secondary);flex-shrink:0;font-family:var(--condensed);font-weight:700}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:transparent;color:var(--secondary);font-family:var(--condensed);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(0,245,212,.35);border-radius:2px;transition:border-color .2s,background .2s;cursor:pointer;width:100%;justify-content:center}
+.btn-secondary:hover{border-color:var(--secondary);background:rgba(0,245,212,.06)}
+/* FAQ */
+.faq-section{padding:80px 0;border-top:var(--rule)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:48px;padding-bottom:20px;border-bottom:var(--rule)}
 .sec-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);margin-bottom:8px;display:flex;align-items:center;gap:10px}
 .sec-label::before{content:'';width:20px;height:1px;background:var(--secondary)}
-.sec-title{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:400;line-height:1.05;letter-spacing:-.01em;color:var(--text)}
+.sec-title{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:400;line-height:1.05}
 .sec-title em{font-style:italic;color:var(--primary)}
-.see-all{font-family:var(--condensed);font-size:10px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:var(--secondary);white-space:nowrap;display:flex;align-items:center;gap:6px;border-bottom:1px solid transparent;padding-bottom:1px;transition:border-color .2s}
-.see-all:hover{border-bottom-color:var(--secondary)}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--primary);color:var(--bg);font-family:var(--condensed);font-size:12px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--primary);border-radius:2px;transition:background .2s,box-shadow .2s,transform .15s;cursor:pointer}
-.btn-primary:hover{box-shadow:0 0 32px var(--primary-glow);transform:translateY(-1px)}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:transparent;color:var(--secondary);font-family:var(--condensed);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(0,245,212,.35);border-radius:2px;transition:border-color .2s,color .2s,background .2s,box-shadow .2s;cursor:pointer}
-.btn-secondary:hover{border-color:var(--secondary);background:rgba(0,245,212,.06);box-shadow:0 0 20px var(--teal-glow)}
-.btn-teal{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border:1px solid var(--secondary);color:var(--secondary);font-family:var(--condensed);font-size:11px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;border-radius:2px;transition:background .2s,color .2s,box-shadow .2s;cursor:pointer}
-.btn-teal:hover{background:var(--secondary);color:var(--bg);box-shadow:0 0 24px var(--teal-glow)}
-.prod-card{background:var(--bg);position:relative;transition:background .2s;display:block}
-.prod-card:hover{background:var(--surface)}
-.prod-card:hover img{transform:scale(1.04)}
-.prod-img{aspect-ratio:3/4;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
-.prod-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-.prod-quick{position:absolute;bottom:0;left:0;right:0;padding:12px;background:var(--primary);font-family:var(--condensed);font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);text-align:center;transform:translateY(100%);transition:transform .2s;z-index:2}
-.prod-card:hover .prod-quick{transform:translateY(0)}
-.prod-badge{position:absolute;top:12px;left:12px;font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;padding:3px 8px;border-radius:1px;z-index:2}
-.bdg-new{background:var(--surface);color:var(--secondary);border:1px solid var(--secondary)}
-.bdg-sale{background:var(--primary);color:var(--bg)}
-.bdg-ltd{background:transparent;color:var(--primary);border:1px solid var(--primary)}
-.prod-info{padding:14px 16px;border-bottom:1px solid var(--border)}
-.prod-brand{font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:var(--secondary);margin-bottom:5px}
-.prod-name{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--text);line-height:1.2;margin-bottom:10px}
-.prod-foot{display:flex;align-items:center;justify-content:space-between}
-.prod-price{font-family:var(--condensed);font-size:16px;font-weight:900;color:var(--text)}
-.prod-orig{font-size:12px;color:var(--dim);text-decoration:line-through;margin-right:6px;font-weight:400}
-.prod-stars{font-family:var(--condensed);font-size:11px;color:var(--secondary);display:flex;align-items:center;gap:4px}
-.prod-rev{font-size:9px;color:var(--dim);letter-spacing:.08em}
-.brand-card{background:var(--bg);display:block;transition:background .2s}
-.brand-card:hover{background:var(--surface)}
-.brand-img{aspect-ratio:3/4;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
-.brand-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.brand-card:hover .brand-img img{transform:scale(1.05)}
-.brand-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.7) 0%,transparent 50%)}
-.brand-loc{position:absolute;bottom:12px;left:12px;font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(248,250,252,.7)}
-.brand-info{padding:16px}
-.brand-cat{font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.24em;text-transform:uppercase;color:var(--secondary);margin-bottom:6px}
-.brand-name{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--text);line-height:1.2;margin-bottom:12px}
-.brand-foot{display:flex;align-items:center;justify-content:space-between}
-.brand-count{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
-.brand-arrow{font-family:var(--condensed);font-size:14px;color:var(--primary);opacity:0;transform:translateX(-8px);transition:opacity .2s,transform .2s}
-.brand-card:hover .brand-arrow{opacity:1;transform:translateX(0)}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
-.reveal.in{opacity:1;transform:translateY(0)}
-.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
-.footer{background:var(--surface);border-top:2px solid var(--border);padding:60px 0 36px}
-.footer-inner{max-width:1280px;margin:0 auto;padding:0 40px}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;padding-bottom:48px;border-bottom:var(--rule)}
-.footer-logo{font-family:var(--condensed);font-size:22px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--text);margin-bottom:6px}
-.footer-logo .lo-accent{font-family:var(--serif);font-style:italic;font-weight:400;font-size:24px;letter-spacing:0;color:var(--primary)}
-.footer-spec{font-family:var(--condensed);font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);margin-bottom:20px}
-.footer-tagline{font-size:14px;font-weight:300;line-height:1.7;color:var(--muted);max-width:260px;margin-bottom:28px}
-.footer-socials{display:flex;gap:8px}
-.soc-btn{width:32px;height:32px;border-radius:1px;border:1px solid var(--border-hi);display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:13px;transition:border-color .2s,color .2s,background .2s}
-.soc-btn:hover{border-color:var(--primary);color:var(--primary);background:rgba(255,0,110,.08)}
-.footer-col-title{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:var(--secondary);margin-bottom:18px}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
-.footer-links a{font-family:var(--condensed);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);transition:color .2s}
-.footer-links a:hover{color:var(--text)}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:28px;flex-wrap:wrap}
-.footer-copy{font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
-@media(max-width:1024px){.prods-grid,.brand-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:768px){:root{--nav-h:58px}.wrap{padding:0 24px}.footer-top{grid-template-columns:1fr 1fr;gap:32px}.nav-links{display:none}}
-
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;border-bottom:var(--rule)}
-.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(rgba(248,250,252,.04) 1px,transparent 1px);background-size:100% 80px;background-position:0 var(--nav-h);pointer-events:none;z-index:0}
-.hero-l{padding:120px 48px 80px;padding-left:max(40px,calc((100vw - 1280px)/2 + 40px));position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center}
-.hero-specimen{font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);margin-bottom:48px;display:flex;gap:20px;align-items:center;border-left:2px solid var(--secondary);padding-left:12px}
-.hero-specimen span{color:var(--secondary)}
-.hero-h{margin-bottom:32px;position:relative}
-.hero-h-label{font-family:var(--condensed);font-size:clamp(13px,1.2vw,16px);font-weight:800;letter-spacing:.35em;text-transform:uppercase;color:var(--secondary);display:block;margin-bottom:8px}
-.hero-h-main{font-family:var(--serif);font-size:clamp(60px,7.5vw,96px);font-weight:400;line-height:.92;letter-spacing:-.02em;color:var(--text);display:block}
-.hero-h-main em{font-style:italic;color:var(--primary);display:block;margin-left:16px}
-.hero-rule{width:100%;height:1px;background:linear-gradient(to right,var(--border-hi) 0%,transparent 70%);margin:28px 0;position:relative}
-.hero-rule::after{content:'ORIGIN: SOUTH AFRICA';position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:var(--condensed);font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--dim)}
-.hero-body{font-size:15px;font-weight:300;line-height:1.75;color:var(--muted);max-width:400px;margin-bottom:40px}
-.hero-ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.hero-stats{display:flex;gap:0;margin-top:52px;border:1px solid var(--border);border-radius:2px;overflow:hidden;max-width:380px}
-.stat{flex:1;padding:16px 18px;border-right:1px solid var(--border);position:relative}
-.stat:last-child{border-right:none}
-.stat-num{font-family:var(--condensed);font-size:28px;font-weight:900;color:var(--text);line-height:1;margin-bottom:3px}
-.stat-num em{font-style:normal;color:var(--secondary)}
-.stat-label{font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
-.hero-r{position:relative;height:100vh;overflow:hidden;border-left:var(--rule)}
-.hero-r img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.hero-r::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--bg) 0%,transparent 20%),linear-gradient(to top,rgba(15,23,42,.7) 0%,transparent 40%);z-index:1}
-.hero-r::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 50%,rgba(255,0,110,.06) 100%);z-index:1;pointer-events:none}
-.specimen-card{position:absolute;bottom:48px;right:32px;z-index:2;background:rgba(15,23,42,.9);border:1px solid var(--border-hi);border-top:2px solid var(--secondary);border-radius:2px;min-width:200px;backdrop-filter:blur(12px)}
-.specimen-card-header{padding:8px 14px;background:rgba(0,245,212,.06);border-bottom:1px solid var(--border)}
-.specimen-card-label{font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:var(--secondary)}
-.specimen-card-body{padding:14px}
-.specimen-brand{font-family:var(--condensed);font-size:17px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text);margin-bottom:6px}
-.specimen-row{display:flex;gap:8px;align-items:center;margin-bottom:4px}
-.specimen-key{font-family:var(--condensed);font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);min-width:56px}
-.specimen-val{font-family:var(--condensed);font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.04em}
-.specimen-card-footer{padding:10px 14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.specimen-shop{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:var(--primary)}
-.specimen-dot{width:6px;height:6px;border-radius:50%;background:var(--secondary);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-.trust-bar{background:var(--surface);border-bottom:var(--rule)}
-.trust-inner{max-width:1280px;margin:0 auto;padding:0 40px;display:flex}
-.trust-item{flex:1;display:flex;align-items:center;gap:12px;padding:16px 24px;border-right:var(--rule);position:relative}
-.trust-item:first-child{padding-left:0}.trust-item:last-child{border-right:none}
-.trust-item::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--secondary);transition:width .3s}
-.trust-item:hover::before{width:100%}
-.trust-icon{font-family:var(--condensed);font-size:18px;font-weight:900;color:var(--secondary);flex-shrink:0;line-height:1;width:28px;text-align:center}
-.trust-main{font-family:var(--condensed);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text);margin-bottom:2px}
-.trust-sub{font-family:var(--condensed);font-size:10px;font-weight:500;letter-spacing:.1em;color:var(--dim)}
-.brands-sec{padding:64px 0 0}
-.brands-scroll{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
-.brands-scroll::-webkit-scrollbar{display:none}
-.brands-track{display:flex;gap:8px;padding:0 40px;min-width:max-content;padding-bottom:8px}
-.brand-pill{display:flex;align-items:center;gap:8px;padding:8px 16px;background:transparent;border:1px solid var(--border-hi);color:var(--muted);font-family:var(--condensed);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:2px;white-space:nowrap;transition:border-color .2s,color .2s,background .2s,box-shadow .2s;cursor:pointer}
-.brand-pill:hover{border-color:var(--secondary);color:var(--secondary);background:rgba(0,245,212,.04);box-shadow:0 0 12px rgba(0,245,212,.1)}
-.brand-pill.active{border-color:var(--primary);background:rgba(255,0,110,.08);color:var(--primary);box-shadow:0 0 12px var(--primary-glow)}
-.pill-dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.6}
-.prods-sec{padding:52px 0 80px}
-.prods-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden}
-.editorial{background:var(--surface);border-top:var(--rule);border-bottom:var(--rule);padding:96px 0;position:relative;overflow:hidden}
-.editorial::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(248,250,252,.025) 1px,transparent 1px);background-size:100% 56px;pointer-events:none}
-.editorial::after{content:'';position:absolute;right:-200px;top:50%;transform:translateY(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(0,245,212,.07) 0%,transparent 65%);pointer-events:none}
-.ed-inner{max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
-.ed-frame{aspect-ratio:3/4;background:var(--bg);border:1px solid var(--border-hi);position:relative;overflow:hidden}
-.ed-frame img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.ed-frame::before{content:'';position:absolute;top:12px;left:12px;width:20px;height:20px;border-top:1.5px solid var(--secondary);border-left:1.5px solid var(--secondary);z-index:2}
-.ed-frame::after{content:'';position:absolute;bottom:12px;right:12px;width:20px;height:20px;border-bottom:1.5px solid var(--secondary);border-right:1.5px solid var(--secondary);z-index:2}
-.ed-stat{position:absolute;bottom:-16px;right:-16px;background:var(--primary);padding:16px 20px;border-radius:1px;min-width:140px}
-.ed-stat-n{font-family:var(--condensed);font-size:34px;font-weight:900;color:var(--bg);line-height:1;margin-bottom:3px}
-.ed-stat-l{font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:rgba(15,23,42,.6)}
-.ed-text{padding-left:8px}
-.ed-h{font-family:var(--serif);font-size:clamp(34px,4vw,54px);font-weight:400;line-height:1.06;color:var(--text);margin-bottom:24px}
-.ed-h em{font-style:italic;color:var(--secondary)}
-.ed-body{font-size:15px;font-weight:300;line-height:1.8;color:var(--muted);margin-bottom:36px}
-.cats-sec{padding:80px 0;border-top:var(--rule)}
-.bento{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:240px 240px;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden}
-.bento-cell{position:relative;cursor:pointer;background:var(--bg);overflow:hidden}
-.bento-cell:nth-child(1){grid-column:span 3;grid-row:span 2}
-.bento-cell:nth-child(2){grid-column:span 2}
-.bento-cell:nth-child(3){grid-column:span 1}
-.bento-cell:nth-child(4){grid-column:span 1}
-.bento-cell:nth-child(5){grid-column:span 2}
-.bento-cell:nth-child(6){grid-column:span 1}
-.bento-cell:hover img{transform:scale(1.06)}
-.bento-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.8) 0%,transparent 55%);transition:opacity .2s}
-.bento-cell:hover .bento-ov{opacity:.9}
-.bento-mark{position:absolute;top:14px;left:14px;width:16px;height:16px;border-top:1.5px solid var(--secondary);border-left:1.5px solid var(--secondary);opacity:0;transition:opacity .2s}
-.bento-cell:hover .bento-mark{opacity:1}
-.bento-lbl{position:absolute;bottom:0;left:0;right:0;padding:14px 16px}
-.bento-cat{font-family:var(--condensed);font-size:18px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text);margin-bottom:3px}
-.bento-cell:nth-child(1) .bento-cat{font-size:26px}
-.bento-cnt{font-family:var(--condensed);font-size:8px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
-.bento-arr{position:absolute;bottom:16px;right:16px;width:28px;height:28px;border:1px solid var(--primary);border-radius:1px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:12px;opacity:0;transform:translateX(-8px);transition:opacity .2s,transform .2s}
-.bento-cell:hover .bento-arr{opacity:1;transform:translateX(0)}
-.email-sec{background:var(--surface);border-top:var(--rule);border-bottom:var(--rule);padding:80px 0;position:relative;overflow:hidden}
-.email-sec::before{content:'';position:absolute;left:-100px;top:50%;transform:translateY(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(255,0,110,.08) 0%,transparent 65%);pointer-events:none}
-.email-inner{max-width:1280px;margin:0 auto;padding:0 40px;display:flex;align-items:center;gap:80px;position:relative;z-index:1}
-.email-txt{flex:1}
-.email-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,0,110,.35);padding:5px 14px;border-radius:2px;margin-bottom:20px;font-family:var(--condensed);font-size:10px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--primary)}
-.email-pill-dot{width:5px;height:5px;border-radius:50%;background:var(--primary)}
-.email-h{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:400;line-height:1.1;color:var(--text);margin-bottom:12px}
-.email-h em{font-style:italic;color:var(--primary)}
-.email-sub{font-size:15px;font-weight:300;color:var(--muted);line-height:1.7}
-.email-form-wrap{flex-shrink:0;width:400px}
-.email-form{display:flex;gap:0;border:1px solid var(--border-hi);border-radius:2px;overflow:hidden;transition:border-color .2s,box-shadow .2s}
-.email-form:focus-within{border-color:var(--secondary);box-shadow:0 0 20px var(--teal-glow)}
-.email-inp{flex:1;background:transparent;border:none;outline:none;padding:13px 16px;font-size:14px;font-family:var(--body);color:var(--text)}
-.email-inp::placeholder{color:var(--dim)}
-.email-btn{padding:13px 20px;background:var(--primary);color:var(--bg);font-family:var(--condensed);font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;border:none;transition:background .2s;white-space:nowrap}
-.email-btn:hover{background:var(--text)}
-.email-note{font-family:var(--condensed);font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:10px}
-@media(max-width:768px){.hero{grid-template-columns:1fr}.hero-l{padding:90px 24px 56px}.hero-r{height:55vh;border-left:none;border-top:var(--rule)}.trust-inner{flex-wrap:wrap}.trust-item{flex:0 0 50%;border-right:none;border-bottom:var(--rule)}.trust-item:nth-child(odd){border-right:var(--rule)}.brands-track{padding:0 24px}.ed-inner{grid-template-columns:1fr;gap:48px}.bento{grid-template-columns:repeat(4,1fr);grid-template-rows:200px 200px}.bento-cell:nth-child(1){grid-column:span 2;grid-row:span 2}.bento-cell:nth-child(2){grid-column:span 2}.bento-cell:nth-child(6){display:none}.email-inner{flex-direction:column;gap:40px}.email-form-wrap{width:100%}}
-
-.ct-hero{padding:120px 40px 72px;max-width:1280px;margin:0 auto}
-.ct-hero-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);margin-bottom:16px;display:flex;align-items:center;gap:10px}
-.ct-hero-label::before{content:'';width:20px;height:1px;background:var(--secondary)}
-.ct-hero h1{font-family:var(--serif);font-size:clamp(44px,6.5vw,80px);font-weight:400;line-height:.95;color:var(--text);margin-bottom:20px}
-.ct-hero h1 em{font-style:italic;color:var(--primary)}
-.ct-hero p{font-size:16px;font-weight:300;color:var(--muted);max-width:480px}
-.ct-main{padding:0 40px 80px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:64px}
-.ct-channels{}
-.ct-channels-title{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.28em;text-transform:uppercase;color:var(--secondary);margin-bottom:24px;display:flex;align-items:center;gap:10px}
-.ct-channels-title::before{content:'';width:20px;height:1px;background:var(--secondary)}
-.ct-channel{display:flex;align-items:flex-start;gap:20px;padding:24px;border:1px solid var(--border);border-radius:2px;margin-bottom:12px;transition:border-color .2s,background .2s;cursor:pointer;background:var(--bg)}
-.ct-channel:hover{border-color:var(--secondary);background:rgba(0,245,212,.03)}
-.ct-ch-icon{width:40px;height:40px;border:1px solid var(--border-hi);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;color:var(--secondary)}
-.ct-ch-body{}
-.ct-ch-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
-.ct-ch-title{font-family:var(--condensed);font-size:15px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text);margin-bottom:4px}
-.ct-ch-val{font-size:13px;font-weight:300;color:var(--muted)}
-.ct-info{margin-top:32px;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:2px}
-.ct-info-label{font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:var(--dim);margin-bottom:14px}
-.ct-info-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)}
-.ct-info-row:last-child{border-bottom:none}
-.ct-info-k{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
-.ct-info-v{font-family:var(--condensed);font-size:11px;font-weight:700;color:var(--muted)}
-.ct-form-wrap{background:var(--surface);border:1px solid var(--border);border-radius:2px;overflow:hidden}
-.ct-form-header{padding:24px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.ct-form-title{font-family:var(--condensed);font-size:13px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--text)}
-.ct-form-status{display:flex;align-items:center;gap:6px;font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--secondary)}
-.ct-form-dot{width:6px;height:6px;border-radius:50%;background:var(--secondary);animation:pulse 2s ease-in-out infinite}
-.ct-form{padding:28px}
-.ct-form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-.ct-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
-.ct-field:last-of-type{margin-bottom:0}
-.ct-field-label{font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:var(--dim)}
-.ct-input,.ct-select,.ct-textarea{background:var(--bg);border:1px solid var(--border-hi);color:var(--text);font-family:var(--body);font-size:14px;padding:12px 14px;border-radius:2px;outline:none;transition:border-color .2s,box-shadow .2s;width:100%}
-.ct-input::placeholder,.ct-textarea::placeholder{color:var(--dim)}
-.ct-input:focus,.ct-select:focus,.ct-textarea:focus{border-color:var(--secondary);box-shadow:0 0 14px var(--teal-glow)}
-.ct-select{-webkit-appearance:none;cursor:pointer}
-.ct-select option{background:var(--surface)}
-.ct-textarea{resize:vertical;min-height:120px;font-size:14px;line-height:1.6}
-.ct-submit{width:100%;margin-top:20px;padding:15px 28px;background:var(--primary);color:var(--bg);font-family:var(--condensed);font-size:12px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;transition:box-shadow .2s,transform .15s;display:flex;align-items:center;justify-content:center;gap:10px}
-.ct-submit:hover{box-shadow:0 0 28px var(--primary-glow);transform:translateY(-1px)}
-.ct-note{font-family:var(--condensed);font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:10px;text-align:center}
-.faq-sec{padding:0 40px 80px;max-width:1280px;margin:0 auto}
-.faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden}
-.faq-item{padding:32px;background:var(--bg);transition:background .2s;position:relative;overflow:hidden}
-.faq-item::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--secondary);transition:height .3s}
-.faq-item:hover{background:var(--surface)}
-.faq-item:hover::before{height:100%}
-.faq-q{font-family:var(--condensed);font-size:15px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--text);margin-bottom:12px}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border)}
+.faq-item{background:var(--bg);padding:36px 32px}
+.faq-q{font-family:var(--condensed);font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text);margin-bottom:14px;line-height:1.3}
 .faq-a{font-size:14px;font-weight:300;line-height:1.75;color:var(--muted)}
-.designer-cta{padding:80px 40px;border-top:var(--rule)}
-.des-cta-inner{max-width:1280px;margin:0 auto;padding:56px;background:var(--surface);border:1px solid var(--border);border-radius:2px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;overflow:hidden}
-.des-cta-inner::after{content:'';position:absolute;right:-80px;bottom:-80px;width:320px;height:320px;background:radial-gradient(circle,rgba(0,245,212,.07) 0%,transparent 65%);pointer-events:none}
-.des-cta-l h2{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:400;color:var(--text);line-height:1.1;margin-bottom:16px}
-.des-cta-l h2 em{font-style:italic;color:var(--secondary)}
-.des-cta-l p{font-size:15px;font-weight:300;color:var(--muted);line-height:1.7}
-.des-cta-r{}
-.des-cta-list{list-style:none;margin-bottom:28px}
-.des-cta-list li{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
-.des-cta-list li:last-child{border-bottom:none}
-.des-cta-tick{font-family:var(--condensed);font-size:11px;font-weight:900;color:var(--secondary);flex-shrink:0;margin-top:2px}
-.des-cta-txt{font-size:14px;font-weight:300;color:var(--muted)}
-@media(max-width:1024px){.ct-main{grid-template-columns:1fr;gap:40px}.des-cta-inner{grid-template-columns:1fr;gap:40px}}
-@media(max-width:768px){.ct-hero,.faq-sec,.designer-cta{padding-left:24px;padding-right:24px}.ct-main{padding-left:24px;padding-right:24px}.ct-form-row{grid-template-columns:1fr}.faq-grid{grid-template-columns:1fr}}
+/* FOOTER */
+footer{border-top:var(--rule);padding:60px 0 40px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand{font-family:var(--condensed);font-size:18px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px}
+.footer-brand .logo-accent{color:var(--primary);font-style:italic;font-family:var(--serif);font-size:20px;letter-spacing:0;font-weight:400}
+.footer-tagline{font-size:13px;font-weight:300;color:var(--muted);line-height:1.6;max-width:240px;margin-bottom:20px}
+.footer-socials{display:flex;gap:12px}
+.footer-social{width:32px;height:32px;border:1px solid var(--border-hi);border-radius:2px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px;font-family:var(--condensed);font-weight:700;transition:border-color .2s,color .2s}
+.footer-social:hover{border-color:var(--secondary);color:var(--secondary)}
+.footer-col-title{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--text);margin-bottom:20px;padding-bottom:12px;border-bottom:var(--rule)}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13px;font-weight:300;color:var(--muted);transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:24px;border-top:var(--rule)}
+.footer-copy{font-family:var(--condensed);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
+@media(max-width:900px){
+  .wrap{padding:0 24px}
+  .contact-grid{grid-template-columns:1fr}
+  .field-row{grid-template-columns:1fr}
+  .faq-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
 </style>
-</head><body>
-<nav class="nav" id="mainNav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">INDIE<span class="logo-accent">mode</span></a>
-    <ul class="nav-links"></ul>
-    <div class="nav-right">
-      <button class="nav-search-btn" onclick="openSearch()" aria-label="Search">
-        <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M13 13L16 16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-      </button>
-      <a href="shop.html" class="nav-cart"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 1H3L4.5 9.5H12.5L14 4H4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="12.5" r="1" fill="currentColor"/><circle cx="11" cy="12.5" r="1" fill="currentColor"/></svg>Bag <span class="cart-count" id="cartCount">0</span></a>
-    </div>
+</head>
+<body>
+
+<!-- SEARCH OVERLAY -->
+<div class="s-overlay" id="searchOverlay">
+  <div class="s-wrap">
+    <div class="s-label">Search Indiemode</div>
+    <input class="s-input" placeholder="Find a designer, piece, or style…" id="searchInput">
   </div>
-</nav>
-<div class="s-overlay" id="sOverlay">
-  <button class="s-close" onclick="closeSearch()">ESC — CLOSE</button>
-  <div class="s-wrap"><div class="s-label">Search specimen catalogue</div><input class="s-input" type="text" placeholder="designer, garment, collection…" id="sInput" autocomplete="off"></div>
+  <span class="s-close" id="searchClose">Close ✕</span>
 </div>
 
-<section>
-  <div class="ct-hero reveal">
-    <div class="ct-hero-label">Get in Touch</div>
-    <h1>We're<br><em>actual</em><br>people.</h1>
-    <p>Questions about an order, a return, or listing your brand — reach us any of these ways. We reply within one business day.</p>
+<!-- NAV (rendered by app.js) -->
+<nav class="nav" id="siteNav"></nav>
+
+<!-- HERO -->
+<div class="wrap">
+  <div class="contact-hero reveal">
+    <div class="contact-hero-label">Get in Touch</div>
+    <h1 class="contact-hero-title">Let's talk<br><em>about fashion</em></h1>
+    <p class="contact-hero-sub">Whether you're a customer with a question or a designer who wants to list — we want to hear from you.</p>
   </div>
-</section>
-<section class="ct-main">
-  <div>
-    <div class="ct-channels-title">Contact channels</div>
-    <a href="mailto:hello@indiemode.co.za" class="ct-channel reveal">
-      <div class="ct-ch-icon">✉</div>
-      <div class="ct-ch-body">
-        <div class="ct-ch-label">Email — Fastest response</div>
-        <div class="ct-ch-title">hello@indiemode.co.za</div>
-        <div class="ct-ch-val">Reply within 4 hours on weekdays</div>
+</div>
+
+<div class="contact-main">
+  <div class="wrap">
+    <div class="contact-grid">
+
+      <!-- FORM COLUMN -->
+      <div class="reveal">
+        <div class="form-section-label">Send a Message</div>
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label">First Name</label>
+            <input class="field-input" type="text" placeholder="Your name">
+          </div>
+          <div class="field">
+            <label class="field-label">Last Name</label>
+            <input class="field-input" type="text" placeholder="Your surname">
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Email Address</label>
+          <input class="field-input" type="email" placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label class="field-label">Enquiry Type</label>
+          <select class="field-select">
+            <option value="" disabled selected>Select a topic…</option>
+            <option value="order">Order or Delivery</option>
+            <option value="returns">Returns or Exchange</option>
+            <option value="designer">Designer / Trade Enquiry</option>
+            <option value="press">Press or Media</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label">Your Message</label>
+          <textarea class="field-textarea" placeholder="Tell us what you need…"></textarea>
+        </div>
+        <button class="form-submit">Send Message →</button>
+        <p class="form-note">We respond to all enquiries within 1–2 business days. For urgent order issues, include your order number.</p>
       </div>
-    </a>
-    <a href="#" class="ct-channel reveal rd1">
-      <div class="ct-ch-icon">📸</div>
-      <div class="ct-ch-body">
-        <div class="ct-ch-label">Instagram</div>
-        <div class="ct-ch-title">@indiemode_za</div>
-        <div class="ct-ch-val">DMs open · We respond to everything</div>
+
+      <!-- SIDEBAR COLUMN -->
+      <div class="reveal rd1">
+
+        <!-- CONTACT INFO -->
+        <div class="info-block">
+          <div class="info-label">Direct Contact</div>
+          <h3 class="info-title">Email us directly</h3>
+          <p class="info-body">General enquiries: <a href="mailto:hello@indiemode.co.za" class="info-link" id="contactEmail">hello@indiemode.co.za</a></p>
+          <p class="info-body" style="margin-top:8px">Designer applications: <a href="mailto:designers@indiemode.co.za" class="info-link">designers@indiemode.co.za</a></p>
+        </div>
+
+        <div class="info-block">
+          <div class="info-label">Location</div>
+          <h3 class="info-title">Cape Town, South Africa</h3>
+          <p class="info-body">Our team is based in Cape Town. We operate Monday to Friday, 9am–5pm SAST.</p>
+        </div>
+
+        <!-- APPLY BLOCK -->
+        <div class="apply-section">
+          <div class="apply-label">For Designers</div>
+          <h3 class="apply-title">List your label on <em>Indiemode</em></h3>
+          <p class="apply-body">We're always looking for exceptional South African independent designers. Here's what we look for:</p>
+          <ul class="apply-checklist">
+            <li>Based and producing in South Africa</li>
+            <li>Minimum of 8 styles per season</li>
+            <li>Local or responsibly sourced materials</li>
+            <li>Ability to fulfil orders within 5 business days</li>
+            <li>No offshore white-label manufacturing</li>
+          </ul>
+          <button class="btn-secondary">Download Application Pack →</button>
+        </div>
+
       </div>
-    </a>
-    <a href="https://wa.me/27000000000" class="ct-channel reveal rd2">
-      <div class="ct-ch-icon">💬</div>
-      <div class="ct-ch-body">
-        <div class="ct-ch-label">WhatsApp</div>
-        <div class="ct-ch-title">+27 (0)00 000 0000</div>
-        <div class="ct-ch-val">Mon–Fri · 09:00–17:00 SAST</div>
-      </div>
-    </a>
-    <div class="ct-info reveal rd3">
-      <div class="ct-info-label">Business details</div>
-      <div class="ct-info-row"><span class="ct-info-k">Location</span><span class="ct-info-v">Cape Town, South Africa</span></div>
-      <div class="ct-info-row"><span class="ct-info-k">Hours</span><span class="ct-info-v">Mon–Fri · 09:00–17:00 SAST</span></div>
-      <div class="ct-info-row"><span class="ct-info-k">Reg. No.</span><span class="ct-info-v">2012/012345/07</span></div>
-      <div class="ct-info-row"><span class="ct-info-k">VAT No.</span><span class="ct-info-v">4012345678</span></div>
-    </div>
-  </div>
-  <div class="ct-form-wrap reveal rd1">
-    <div class="ct-form-header">
-      <div class="ct-form-title">Send a message</div>
-      <div class="ct-form-status"><span class="ct-form-dot"></span>Accepting enquiries</div>
-    </div>
-    <div class="ct-form">
-      <div class="ct-form-row">
-        <div class="ct-field"><label class="ct-field-label">First name</label><input class="ct-input" type="text" placeholder="Naledi"></div>
-        <div class="ct-field"><label class="ct-field-label">Last name</label><input class="ct-input" type="text" placeholder="Dlamini"></div>
-      </div>
-      <div class="ct-field"><label class="ct-field-label">Email address</label><input class="ct-input" type="email" placeholder="naledi@email.com"></div>
-      <div class="ct-field">
-        <label class="ct-field-label">Subject</label>
-        <select class="ct-select">
-          <option value="">Select topic…</option>
-          <option>Order enquiry</option>
-          <option>Return or exchange</option>
-          <option>List my brand</option>
-          <option>Press or media</option>
-          <option>Wholesale</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="ct-field"><label class="ct-field-label">Message</label><textarea class="ct-textarea" placeholder="Tell us what you need…"></textarea></div>
-      <button class="ct-submit" onclick="this.textContent='Sending…';setTimeout(()=>this.textContent='Message sent ✓',1200)">Send message →</button>
-      <div class="ct-note">No spam · Your data stays in South Africa</div>
-    </div>
-  </div>
-</section>
-<section class="faq-sec">
-  <div class="sec-head reveal"><div><div class="sec-label">Common questions</div><h2 class="sec-title">FAQ</h2></div></div>
-  <div class="faq-grid">
-    <div class="faq-item reveal">
-      <div class="faq-q">How long does delivery take?</div>
-      <div class="faq-a">Most orders ship within 2–3 business days. Delivery to major centres takes 2–5 days via courier. Remote areas allow 5–8 days. You'll receive tracking when your order ships.</div>
-    </div>
-    <div class="faq-item reveal rd1">
-      <div class="faq-q">What is your return policy?</div>
-      <div class="faq-a">We accept returns within 14 days of delivery. Items must be unworn, with tags attached. Sale items and made-to-order pieces are final sale. Email us to start a return.</div>
-    </div>
-    <div class="faq-item reveal rd2">
-      <div class="faq-q">Do you ship internationally?</div>
-      <div class="faq-a">Not yet. We're South Africa only for now. If you're abroad and want SA fashion, follow us — we're planning international shipping for 2027.</div>
-    </div>
-    <div class="faq-item reveal rd3">
-      <div class="faq-q">How do I know what size to order?</div>
-      <div class="faq-a">Each product page has a size guide specific to that designer. SA sizing can vary — if you're between sizes, we always recommend sizing up. Still unsure? Email us — we can ask the designer directly.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">Do all pieces ship from Cape Town?</div>
-      <div class="faq-a">No — each designer ships from their own studio. Orders from Cape Town, Joburg, Durban, PE, and Pretoria. You'll see the origin city on each product page.</div>
-    </div>
-    <div class="faq-item reveal rd1">
-      <div class="faq-q">What payment methods do you accept?</div>
-      <div class="faq-a">We accept all major credit and debit cards via Peach Payments, instant EFT via Ozow, and Mobicred for buy-now-pay-later. All transactions are SSL secured.</div>
     </div>
   </div>
-</section>
-<section class="designer-cta">
-  <div class="des-cta-inner reveal">
-    <div class="des-cta-l">
-      <h2>Sell your work on<br><em>Indiemode.</em></h2>
-      <p>We're always looking for South African designers who make exceptional things. Apply to list your brand.</p>
+</div>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-label">Common Questions</div>
+        <h2 class="sec-title">Frequently <em>asked</em></h2>
+      </div>
     </div>
-    <div class="des-cta-r">
-      <ul class="des-cta-list">
-        <li><span class="des-cta-tick">✓</span><span class="des-cta-txt">Zero monthly fees — we only earn when you do</span></li>
-        <li><span class="des-cta-tick">✓</span><span class="des-cta-txt">Full control over your pricing, copy, and imagery</span></li>
-        <li><span class="des-cta-tick">✓</span><span class="des-cta-txt">Access to our customer base and marketing channels</span></li>
-        <li><span class="des-cta-tick">✓</span><span class="des-cta-txt">Real support from people who understand SA fashion</span></li>
-      </ul>
-      <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <a href="mailto:designers@indiemode.co.za" class="btn-primary">Apply to list →</a>
-        <a href="about.html" class="btn-secondary">Our story</a>
+    <div class="faq-grid">
+      <div class="faq-item reveal">
+        <div class="faq-q">How long does delivery take?</div>
+        <p class="faq-a">Most orders are despatched within 2–3 business days. Made-to-order pieces may take up to 10 business days. Estimated delivery times are shown on each product page.</p>
+      </div>
+      <div class="faq-item reveal rd1">
+        <div class="faq-q">What is your returns policy?</div>
+        <p class="faq-a">Unworn, unaltered items can be returned within 14 days of delivery. Made-to-order and sale items are final sale. Contact us to initiate a return.</p>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Do you ship internationally?</div>
+        <p class="faq-a">Currently we ship to South Africa only. International shipping is on our roadmap for Q2 2025. Join our mailing list and we'll let you know when it launches.</p>
+      </div>
+      <div class="faq-item reveal rd1">
+        <div class="faq-q">How do I know my size?</div>
+        <p class="faq-a">Each product page includes the designer's specific size guide. Sizing varies between labels — we recommend checking the guide for each piece rather than assuming consistency.</p>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Can I contact the designer directly?</div>
+        <p class="faq-a">For custom orders or commissions, we can facilitate introductions. Send us a message with the designer and what you have in mind and we'll connect you.</p>
+      </div>
+      <div class="faq-item reveal rd1">
+        <div class="faq-q">How do I apply to list my brand?</div>
+        <p class="faq-a">Email designers@indiemode.co.za with your label name, Instagram, a brief description of your production process, and three to five product images. We review all applications within 10 business days.</p>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="footer"><div class="footer-inner">
-  <div class="footer-top">
-    <div><div class="footer-logo">INDIE<span class="lo-accent">mode</span></div><div class="footer-spec">SA Fashion Registry · Est. 2012 · ZA</div><p class="footer-tagline">South Africa's home for independent fashion designers.</p><div class="footer-socials"><a href="#" class="soc-btn">&#9649;</a><a href="#" class="soc-btn">&#9650;</a><a href="#" class="soc-btn">&#9670;</a></div></div>
-    <div><div class="footer-col-title">Shop</div><ul class="footer-links"><li><a href="shop.html">New Arrivals</a></li><li><a href="shop.html?cat=clothing">Clothing</a></li><li><a href="shop.html?cat=jewellery">Jewellery</a></li><li><a href="shop.html?cat=accessories">Accessories</a></li><li><a href="shop.html?cat=sale">Sale</a></li></ul></div>
-    <div><div class="footer-col-title">Help</div><ul class="footer-links"><li><a href="contact.html">FAQ</a></li><li><a href="contact.html">Delivery &amp; Returns</a></li><li><a href="contact.html">Size Guide</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-    <div><div class="footer-col-title">About</div><ul class="footer-links"><li><a href="about.html">Our Story</a></li><li><a href="brands.html">All Brands</a></li><li><a href="contact.html">List Your Brand</a></li><li><a href="contact.html">Privacy</a></li></ul></div>
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">INDIE<span class="logo-accent">mode</span></div>
+        <p class="footer-tagline" id="footerTagline">Independent SA Designer Fashion</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social">IG</a>
+          <a href="#" class="footer-social">TK</a>
+          <a href="#" class="footer-social">PT</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Shop</div>
+        <ul class="footer-links">
+          <li><a href="shop.html">New In</a></li>
+          <li><a href="shop.html?cat=dresses">Dresses</a></li>
+          <li><a href="shop.html?cat=tops">Tops</a></li>
+          <li><a href="shop.html?cat=jewellery">Jewellery</a></li>
+          <li><a href="shop.html?cat=accessories">Accessories</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Designers</div>
+        <ul class="footer-links">
+          <li><a href="brands.html">All Designers</a></li>
+          <li><a href="brands.html">Cape Town</a></li>
+          <li><a href="brands.html">Johannesburg</a></li>
+          <li><a href="contact.html">Apply to List</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Info</div>
+        <ul class="footer-links">
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2024 Indiemode SA — All Rights Reserved</span>
+      <span class="footer-copy">Made with care in Cape Town</span>
+    </div>
   </div>
-  <div class="footer-bottom"><div class="footer-copy">© 2026 Indiemode · SA Fashion Registry · Proudly South African</div></div>
-</div></footer>
-<script src="data.js"></script><script src="app.js"></script>
-</body></html>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

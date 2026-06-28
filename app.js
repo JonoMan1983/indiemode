@@ -320,6 +320,55 @@ function initDesigner() {
   if (viewAll) viewAll.href = `shop.html?brand=${b.id}`;
 }
 
+
+// ── INIT ABOUT ──────────────────────────────────────────────
+function initAbout() {
+  // Stats from data
+  const ds = IM.stats;
+  const desEl = document.getElementById('aboutStatDesigners');
+  const pcEl  = document.getElementById('aboutStatPieces');
+  const yrEl  = document.getElementById('aboutStatYear');
+  if (desEl) desEl.innerHTML = ds.designers.replace('+','<span>+</span>');
+  if (pcEl)  pcEl.innerHTML  = ds.pieces.replace('+','<span>+</span>');
+  if (yrEl)  yrEl.textContent = ds.established;
+
+  // Editorial image for hero + story
+  const heroImg  = document.getElementById('aboutHeroImg');
+  const storyImg = document.getElementById('aboutStoryImg');
+  if (heroImg)  heroImg.src = IM.images.editorial;
+  if (storyImg) storyImg.src = IM.images.editorial;
+
+  // Footer tagline
+  const ft = document.getElementById('footerTagline');
+  if (ft) ft.textContent = IM.site.tagline;
+}
+
+// ── INIT CONTACT ─────────────────────────────────────────────
+function initContact() {
+  // Email from data
+  const emailEl = document.getElementById('contactEmail');
+  if (emailEl) {
+    emailEl.href = 'mailto:' + IM.site.email;
+    emailEl.textContent = IM.site.email;
+  }
+
+  // Footer tagline
+  const ft = document.getElementById('footerTagline');
+  if (ft) ft.textContent = IM.site.tagline;
+
+  // Form submit (demo — no real backend)
+  const submitBtn = document.querySelector('.form-submit');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', () => {
+      submitBtn.textContent = 'Message Sent ✓';
+      submitBtn.style.background = 'var(--secondary)';
+      submitBtn.style.borderColor = 'var(--secondary)';
+      submitBtn.style.color = 'var(--bg)';
+      submitBtn.disabled = true;
+    });
+  }
+}
+
 // ── INIT ────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   renderNav();
@@ -332,6 +381,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'product':  initProduct,
     'brands':   initBrands,
     'designer': initDesigner,
+    'about':    initAbout,
+    'contact':  initContact,
   };
 
   if (pageMap[page]) pageMap[page]();

@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Story — Indiemode SA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=DM+Serif+Display:ital@0;1&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=DM+Serif+Display:ital@0;1&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0F172A;--surface:#1E293B;--primary:#FF006E;--secondary:#00F5D4;--text:#F8FAFC;--surface-hi:#253248;--border:rgba(248,250,252,0.08);--border-hi:rgba(248,250,252,0.16);--muted:rgba(248,250,252,0.45);--dim:rgba(248,250,252,0.2);--primary-glow:rgba(255,0,110,0.25);--teal-glow:rgba(0,245,212,0.18);--condensed:'Barlow Condensed',sans-serif;--serif:'DM Serif Display',Georgia,serif;--body:'Barlow',sans-serif;--rule:1px solid rgba(248,250,252,0.1);--nav-h:64px}
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
+html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;background-image:linear-gradient(rgba(248,250,252,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(248,250,252,0.018) 1px,transparent 1px);background-size:60px 60px}
 a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;background:none;font-family:var(--body)}img{display:block;max-width:100%}
 .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
-.pharma-label{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--secondary);display:inline-flex;align-items:center;gap:10px}
-.pharma-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--secondary)}
-.s-overlay{position:fixed;inset:0;background:rgba(15,23,42,.96);z-index:300;display:flex;align-items:flex-start;padding-top:120px;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;backdrop-filter:blur(8px)}
-.s-overlay.open{opacity:1;pointer-events:all}
-.s-wrap{width:100%;max-width:680px;padding:0 40px}
-.s-label{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--secondary);margin-bottom:20px}
-.s-input{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(248,250,252,.2);font-family:var(--serif);font-size:40px;font-style:italic;color:var(--text);padding:12px 0;outline:none;transition:border-color .2s}
-.s-input::placeholder{color:var(--dim)}.s-input:focus{border-bottom-color:var(--secondary)}
+/* NAV */
+.s-overlay{position:fixed;inset:0;background:rgba(15,23,42,.96);z-index:300;display:flex;align-items:flex-start;padding-top:120px;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;backdrop-filter:blur(8px)}.s-overlay.open{opacity:1;pointer-events:all}
+.s-wrap{width:100%;max-width:680px;padding:0 40px}.s-label{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--secondary);margin-bottom:20px}
+.s-input{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(248,250,252,.2);font-family:var(--serif);font-size:40px;font-style:italic;color:var(--text);padding:12px 0;outline:none;transition:border-color .2s}.s-input::placeholder{color:var(--dim)}.s-input:focus{border-bottom-color:var(--secondary)}
 .s-close{position:absolute;top:32px;right:40px;font-family:var(--condensed);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:color .2s}.s-close:hover{color:var(--text)}
 .nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
 .nav.scrolled{background:rgba(15,23,42,.96);border-bottom-color:var(--border);backdrop-filter:blur(12px)}
@@ -36,374 +33,327 @@ a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;backgroun
 .nav-search-btn:hover{color:var(--text);border-color:var(--border-hi)}
 .nav-cart{display:flex;align-items:center;gap:8px;padding:8px 18px;border:1px solid var(--primary);color:var(--primary);font-family:var(--condensed);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;border-radius:2px;transition:background .2s,color .2s,box-shadow .2s}
 .nav-cart:hover{background:var(--primary);color:var(--bg);box-shadow:0 0 20px var(--primary-glow)}
-.cart-count{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:var(--primary);color:var(--bg);font-size:9px;font-weight:900;border-radius:50%;transition:transform .2s}
-.nav-cart:hover .cart-count{background:var(--bg);color:var(--primary)}
-.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:36px;padding-bottom:20px;border-bottom:var(--rule)}
+.cart-count{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:var(--primary);color:var(--bg);font-size:9px;font-weight:900;border-radius:50%}
+/* HERO */
+.about-hero{min-height:70vh;display:flex;align-items:flex-end;padding-bottom:80px;position:relative;overflow:hidden}
+.about-hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0F172A 0%,#1a0a1e 50%,#0a1628 100%)}
+.about-hero-img{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;opacity:.18;mix-blend-mode:luminosity}
+.about-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,transparent 60%)}
+.about-hero-content{position:relative;z-index:2;width:100%}
+.about-hero-label{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);display:inline-flex;align-items:center;gap:10px;margin-bottom:24px}
+.about-hero-label::before{content:'';width:28px;height:1px;background:var(--secondary)}
+.about-hero-title{font-family:var(--serif);font-size:clamp(44px,6vw,88px);line-height:.95;letter-spacing:-.02em;color:var(--text);margin-bottom:28px;max-width:700px}
+.about-hero-title em{font-style:italic;color:var(--primary)}
+.about-hero-sub{font-family:var(--body);font-size:17px;font-weight:300;line-height:1.7;color:var(--muted);max-width:560px}
+/* STAT STRIP */
+.stat-strip{border-top:var(--rule);border-bottom:var(--rule);padding:40px 0}
+.stat-strip-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat-item{padding:0 40px;border-right:var(--rule);text-align:center}
+.stat-item:last-child{border-right:none}
+.stat-item:first-child{padding-left:0;text-align:left}
+.stat-num{font-family:var(--condensed);font-size:clamp(36px,4vw,56px);font-weight:900;letter-spacing:-.02em;color:var(--text);line-height:1}
+.stat-num span{color:var(--primary)}
+.stat-desc{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+/* STORY */
+.story-section{padding:100px 0}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-img-wrap{position:relative}
+.story-img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px}
+.story-img-label{position:absolute;bottom:24px;left:24px;font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--secondary);background:rgba(15,23,42,.85);padding:8px 14px;backdrop-filter:blur(8px)}
+.story-label{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);display:inline-flex;align-items:center;gap:10px;margin-bottom:20px}
+.story-label::before{content:'';width:20px;height:1px;background:var(--secondary)}
+.story-title{font-family:var(--serif);font-size:clamp(32px,3.5vw,48px);line-height:1.05;color:var(--text);margin-bottom:28px}
+.story-title em{font-style:italic;color:var(--primary)}
+.story-body{font-size:16px;font-weight:300;line-height:1.8;color:var(--muted);margin-bottom:20px}
+.story-body + .story-body{margin-top:0}
+/* VALUES */
+.values-section{padding:80px 0;border-top:var(--rule)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:56px;padding-bottom:20px;border-bottom:var(--rule)}
 .sec-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);margin-bottom:8px;display:flex;align-items:center;gap:10px}
 .sec-label::before{content:'';width:20px;height:1px;background:var(--secondary)}
-.sec-title{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:400;line-height:1.05;letter-spacing:-.01em;color:var(--text)}
+.sec-title{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:400;line-height:1.05;letter-spacing:-.01em}
 .sec-title em{font-style:italic;color:var(--primary)}
-.see-all{font-family:var(--condensed);font-size:10px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:var(--secondary);white-space:nowrap;display:flex;align-items:center;gap:6px;border-bottom:1px solid transparent;padding-bottom:1px;transition:border-color .2s}
-.see-all:hover{border-bottom-color:var(--secondary)}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--primary);color:var(--bg);font-family:var(--condensed);font-size:12px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--primary);border-radius:2px;transition:background .2s,box-shadow .2s,transform .15s;cursor:pointer}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.value-card{background:var(--bg);padding:40px 36px}
+.value-num{font-family:var(--condensed);font-size:11px;font-weight:900;letter-spacing:.24em;color:var(--secondary);margin-bottom:20px}
+.value-title{font-family:var(--serif);font-size:26px;line-height:1.1;color:var(--text);margin-bottom:16px}
+.value-title em{font-style:italic;color:var(--primary)}
+.value-body{font-size:14px;font-weight:300;line-height:1.75;color:var(--muted)}
+.value-rule{width:32px;height:2px;background:var(--secondary);margin-bottom:24px}
+/* TEAM / COMMITMENT */
+.commitment-section{padding:80px 0;border-top:var(--rule)}
+.commitment-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border)}
+.commit-item{background:var(--bg);padding:48px 40px;display:flex;flex-direction:column;gap:20px}
+.commit-icon{width:40px;height:40px;border:1px solid rgba(0,245,212,.3);border-radius:2px;display:flex;align-items:center;justify-content:center;color:var(--secondary)}
+.commit-title{font-family:var(--condensed);font-size:16px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
+.commit-body{font-size:14px;font-weight:300;line-height:1.75;color:var(--muted)}
+/* CTA */
+.cta-section{padding:100px 0;text-align:center;border-top:var(--rule)}
+.cta-label{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);display:inline-flex;align-items:center;gap:10px;margin-bottom:24px;justify-content:center}
+.cta-label::before,.cta-label::after{content:'';width:20px;height:1px;background:var(--secondary)}
+.cta-title{font-family:var(--serif);font-size:clamp(36px,4.5vw,64px);line-height:1;color:var(--text);margin-bottom:24px}
+.cta-title em{font-style:italic;color:var(--primary)}
+.cta-sub{font-size:16px;font-weight:300;color:var(--muted);margin-bottom:48px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+.cta-btns{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:var(--primary);color:var(--bg);font-family:var(--condensed);font-size:12px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--primary);border-radius:2px;transition:box-shadow .2s,transform .15s}
 .btn-primary:hover{box-shadow:0 0 32px var(--primary-glow);transform:translateY(-1px)}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:transparent;color:var(--secondary);font-family:var(--condensed);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(0,245,212,.35);border-radius:2px;transition:border-color .2s,color .2s,background .2s,box-shadow .2s;cursor:pointer}
-.btn-secondary:hover{border-color:var(--secondary);background:rgba(0,245,212,.06);box-shadow:0 0 20px var(--teal-glow)}
-.btn-teal{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border:1px solid var(--secondary);color:var(--secondary);font-family:var(--condensed);font-size:11px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;border-radius:2px;transition:background .2s,color .2s,box-shadow .2s;cursor:pointer}
-.btn-teal:hover{background:var(--secondary);color:var(--bg);box-shadow:0 0 24px var(--teal-glow)}
-.prod-card{background:var(--bg);position:relative;transition:background .2s;display:block}
-.prod-card:hover{background:var(--surface)}
-.prod-card:hover img{transform:scale(1.04)}
-.prod-img{aspect-ratio:3/4;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
-.prod-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-.prod-quick{position:absolute;bottom:0;left:0;right:0;padding:12px;background:var(--primary);font-family:var(--condensed);font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);text-align:center;transform:translateY(100%);transition:transform .2s;z-index:2}
-.prod-card:hover .prod-quick{transform:translateY(0)}
-.prod-badge{position:absolute;top:12px;left:12px;font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;padding:3px 8px;border-radius:1px;z-index:2}
-.bdg-new{background:var(--surface);color:var(--secondary);border:1px solid var(--secondary)}
-.bdg-sale{background:var(--primary);color:var(--bg)}
-.bdg-ltd{background:transparent;color:var(--primary);border:1px solid var(--primary)}
-.prod-info{padding:14px 16px;border-bottom:1px solid var(--border)}
-.prod-brand{font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:var(--secondary);margin-bottom:5px}
-.prod-name{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--text);line-height:1.2;margin-bottom:10px}
-.prod-foot{display:flex;align-items:center;justify-content:space-between}
-.prod-price{font-family:var(--condensed);font-size:16px;font-weight:900;color:var(--text)}
-.prod-orig{font-size:12px;color:var(--dim);text-decoration:line-through;margin-right:6px;font-weight:400}
-.prod-stars{font-family:var(--condensed);font-size:11px;color:var(--secondary);display:flex;align-items:center;gap:4px}
-.prod-rev{font-size:9px;color:var(--dim);letter-spacing:.08em}
-.brand-card{background:var(--bg);display:block;transition:background .2s}
-.brand-card:hover{background:var(--surface)}
-.brand-img{aspect-ratio:3/4;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
-.brand-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.brand-card:hover .brand-img img{transform:scale(1.05)}
-.brand-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.7) 0%,transparent 50%)}
-.brand-loc{position:absolute;bottom:12px;left:12px;font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(248,250,252,.7)}
-.brand-info{padding:16px}
-.brand-cat{font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.24em;text-transform:uppercase;color:var(--secondary);margin-bottom:6px}
-.brand-name{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--text);line-height:1.2;margin-bottom:12px}
-.brand-foot{display:flex;align-items:center;justify-content:space-between}
-.brand-count{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
-.brand-arrow{font-family:var(--condensed);font-size:14px;color:var(--primary);opacity:0;transform:translateX(-8px);transition:opacity .2s,transform .2s}
-.brand-card:hover .brand-arrow{opacity:1;transform:translateX(0)}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
-.reveal.in{opacity:1;transform:translateY(0)}
-.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
-.footer{background:var(--surface);border-top:2px solid var(--border);padding:60px 0 36px}
-.footer-inner{max-width:1280px;margin:0 auto;padding:0 40px}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;padding-bottom:48px;border-bottom:var(--rule)}
-.footer-logo{font-family:var(--condensed);font-size:22px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--text);margin-bottom:6px}
-.footer-logo .lo-accent{font-family:var(--serif);font-style:italic;font-weight:400;font-size:24px;letter-spacing:0;color:var(--primary)}
-.footer-spec{font-family:var(--condensed);font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);margin-bottom:20px}
-.footer-tagline{font-size:14px;font-weight:300;line-height:1.7;color:var(--muted);max-width:260px;margin-bottom:28px}
-.footer-socials{display:flex;gap:8px}
-.soc-btn{width:32px;height:32px;border-radius:1px;border:1px solid var(--border-hi);display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:13px;transition:border-color .2s,color .2s,background .2s}
-.soc-btn:hover{border-color:var(--primary);color:var(--primary);background:rgba(255,0,110,.08)}
-.footer-col-title{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:var(--secondary);margin-bottom:18px}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:transparent;color:var(--secondary);font-family:var(--condensed);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(0,245,212,.35);border-radius:2px;transition:border-color .2s,background .2s}
+.btn-secondary:hover{border-color:var(--secondary);background:rgba(0,245,212,.06)}
+/* FOOTER */
+footer{border-top:var(--rule);padding:60px 0 40px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand{font-family:var(--condensed);font-size:18px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px}
+.footer-brand .logo-accent{color:var(--primary);font-style:italic;font-family:var(--serif);font-size:20px;letter-spacing:0;font-weight:400}
+.footer-tagline{font-size:13px;font-weight:300;color:var(--muted);line-height:1.6;max-width:240px;margin-bottom:20px}
+.footer-socials{display:flex;gap:12px}
+.footer-social{width:32px;height:32px;border:1px solid var(--border-hi);border-radius:2px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px;font-family:var(--condensed);font-weight:700;transition:border-color .2s,color .2s}
+.footer-social:hover{border-color:var(--secondary);color:var(--secondary)}
+.footer-col-title{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--text);margin-bottom:20px;padding-bottom:12px;border-bottom:var(--rule)}
 .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
-.footer-links a{font-family:var(--condensed);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);transition:color .2s}
+.footer-links a{font-size:13px;font-weight:300;color:var(--muted);transition:color .2s}
 .footer-links a:hover{color:var(--text)}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:28px;flex-wrap:wrap}
-.footer-copy{font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
-@media(max-width:1024px){.prods-grid,.brand-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:768px){:root{--nav-h:58px}.wrap{padding:0 24px}.footer-top{grid-template-columns:1fr 1fr;gap:32px}.nav-links{display:none}}
-
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;border-bottom:var(--rule)}
-.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(rgba(248,250,252,.04) 1px,transparent 1px);background-size:100% 80px;background-position:0 var(--nav-h);pointer-events:none;z-index:0}
-.hero-l{padding:120px 48px 80px;padding-left:max(40px,calc((100vw - 1280px)/2 + 40px));position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center}
-.hero-specimen{font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);margin-bottom:48px;display:flex;gap:20px;align-items:center;border-left:2px solid var(--secondary);padding-left:12px}
-.hero-specimen span{color:var(--secondary)}
-.hero-h{margin-bottom:32px;position:relative}
-.hero-h-label{font-family:var(--condensed);font-size:clamp(13px,1.2vw,16px);font-weight:800;letter-spacing:.35em;text-transform:uppercase;color:var(--secondary);display:block;margin-bottom:8px}
-.hero-h-main{font-family:var(--serif);font-size:clamp(60px,7.5vw,96px);font-weight:400;line-height:.92;letter-spacing:-.02em;color:var(--text);display:block}
-.hero-h-main em{font-style:italic;color:var(--primary);display:block;margin-left:16px}
-.hero-rule{width:100%;height:1px;background:linear-gradient(to right,var(--border-hi) 0%,transparent 70%);margin:28px 0;position:relative}
-.hero-rule::after{content:'ORIGIN: SOUTH AFRICA';position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:var(--condensed);font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--dim)}
-.hero-body{font-size:15px;font-weight:300;line-height:1.75;color:var(--muted);max-width:400px;margin-bottom:40px}
-.hero-ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.hero-stats{display:flex;gap:0;margin-top:52px;border:1px solid var(--border);border-radius:2px;overflow:hidden;max-width:380px}
-.stat{flex:1;padding:16px 18px;border-right:1px solid var(--border);position:relative}
-.stat:last-child{border-right:none}
-.stat-num{font-family:var(--condensed);font-size:28px;font-weight:900;color:var(--text);line-height:1;margin-bottom:3px}
-.stat-num em{font-style:normal;color:var(--secondary)}
-.stat-label{font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
-.hero-r{position:relative;height:100vh;overflow:hidden;border-left:var(--rule)}
-.hero-r img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.hero-r::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--bg) 0%,transparent 20%),linear-gradient(to top,rgba(15,23,42,.7) 0%,transparent 40%);z-index:1}
-.hero-r::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 50%,rgba(255,0,110,.06) 100%);z-index:1;pointer-events:none}
-.specimen-card{position:absolute;bottom:48px;right:32px;z-index:2;background:rgba(15,23,42,.9);border:1px solid var(--border-hi);border-top:2px solid var(--secondary);border-radius:2px;min-width:200px;backdrop-filter:blur(12px)}
-.specimen-card-header{padding:8px 14px;background:rgba(0,245,212,.06);border-bottom:1px solid var(--border)}
-.specimen-card-label{font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:var(--secondary)}
-.specimen-card-body{padding:14px}
-.specimen-brand{font-family:var(--condensed);font-size:17px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text);margin-bottom:6px}
-.specimen-row{display:flex;gap:8px;align-items:center;margin-bottom:4px}
-.specimen-key{font-family:var(--condensed);font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);min-width:56px}
-.specimen-val{font-family:var(--condensed);font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.04em}
-.specimen-card-footer{padding:10px 14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.specimen-shop{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:var(--primary)}
-.specimen-dot{width:6px;height:6px;border-radius:50%;background:var(--secondary);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-.trust-bar{background:var(--surface);border-bottom:var(--rule)}
-.trust-inner{max-width:1280px;margin:0 auto;padding:0 40px;display:flex}
-.trust-item{flex:1;display:flex;align-items:center;gap:12px;padding:16px 24px;border-right:var(--rule);position:relative}
-.trust-item:first-child{padding-left:0}.trust-item:last-child{border-right:none}
-.trust-item::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--secondary);transition:width .3s}
-.trust-item:hover::before{width:100%}
-.trust-icon{font-family:var(--condensed);font-size:18px;font-weight:900;color:var(--secondary);flex-shrink:0;line-height:1;width:28px;text-align:center}
-.trust-main{font-family:var(--condensed);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text);margin-bottom:2px}
-.trust-sub{font-family:var(--condensed);font-size:10px;font-weight:500;letter-spacing:.1em;color:var(--dim)}
-.brands-sec{padding:64px 0 0}
-.brands-scroll{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
-.brands-scroll::-webkit-scrollbar{display:none}
-.brands-track{display:flex;gap:8px;padding:0 40px;min-width:max-content;padding-bottom:8px}
-.brand-pill{display:flex;align-items:center;gap:8px;padding:8px 16px;background:transparent;border:1px solid var(--border-hi);color:var(--muted);font-family:var(--condensed);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:2px;white-space:nowrap;transition:border-color .2s,color .2s,background .2s,box-shadow .2s;cursor:pointer}
-.brand-pill:hover{border-color:var(--secondary);color:var(--secondary);background:rgba(0,245,212,.04);box-shadow:0 0 12px rgba(0,245,212,.1)}
-.brand-pill.active{border-color:var(--primary);background:rgba(255,0,110,.08);color:var(--primary);box-shadow:0 0 12px var(--primary-glow)}
-.pill-dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.6}
-.prods-sec{padding:52px 0 80px}
-.prods-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden}
-.editorial{background:var(--surface);border-top:var(--rule);border-bottom:var(--rule);padding:96px 0;position:relative;overflow:hidden}
-.editorial::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(248,250,252,.025) 1px,transparent 1px);background-size:100% 56px;pointer-events:none}
-.editorial::after{content:'';position:absolute;right:-200px;top:50%;transform:translateY(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(0,245,212,.07) 0%,transparent 65%);pointer-events:none}
-.ed-inner{max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
-.ed-frame{aspect-ratio:3/4;background:var(--bg);border:1px solid var(--border-hi);position:relative;overflow:hidden}
-.ed-frame img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.ed-frame::before{content:'';position:absolute;top:12px;left:12px;width:20px;height:20px;border-top:1.5px solid var(--secondary);border-left:1.5px solid var(--secondary);z-index:2}
-.ed-frame::after{content:'';position:absolute;bottom:12px;right:12px;width:20px;height:20px;border-bottom:1.5px solid var(--secondary);border-right:1.5px solid var(--secondary);z-index:2}
-.ed-stat{position:absolute;bottom:-16px;right:-16px;background:var(--primary);padding:16px 20px;border-radius:1px;min-width:140px}
-.ed-stat-n{font-family:var(--condensed);font-size:34px;font-weight:900;color:var(--bg);line-height:1;margin-bottom:3px}
-.ed-stat-l{font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:rgba(15,23,42,.6)}
-.ed-text{padding-left:8px}
-.ed-h{font-family:var(--serif);font-size:clamp(34px,4vw,54px);font-weight:400;line-height:1.06;color:var(--text);margin-bottom:24px}
-.ed-h em{font-style:italic;color:var(--secondary)}
-.ed-body{font-size:15px;font-weight:300;line-height:1.8;color:var(--muted);margin-bottom:36px}
-.cats-sec{padding:80px 0;border-top:var(--rule)}
-.bento{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:240px 240px;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden}
-.bento-cell{position:relative;cursor:pointer;background:var(--bg);overflow:hidden}
-.bento-cell:nth-child(1){grid-column:span 3;grid-row:span 2}
-.bento-cell:nth-child(2){grid-column:span 2}
-.bento-cell:nth-child(3){grid-column:span 1}
-.bento-cell:nth-child(4){grid-column:span 1}
-.bento-cell:nth-child(5){grid-column:span 2}
-.bento-cell:nth-child(6){grid-column:span 1}
-.bento-cell:hover img{transform:scale(1.06)}
-.bento-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.8) 0%,transparent 55%);transition:opacity .2s}
-.bento-cell:hover .bento-ov{opacity:.9}
-.bento-mark{position:absolute;top:14px;left:14px;width:16px;height:16px;border-top:1.5px solid var(--secondary);border-left:1.5px solid var(--secondary);opacity:0;transition:opacity .2s}
-.bento-cell:hover .bento-mark{opacity:1}
-.bento-lbl{position:absolute;bottom:0;left:0;right:0;padding:14px 16px}
-.bento-cat{font-family:var(--condensed);font-size:18px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text);margin-bottom:3px}
-.bento-cell:nth-child(1) .bento-cat{font-size:26px}
-.bento-cnt{font-family:var(--condensed);font-size:8px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
-.bento-arr{position:absolute;bottom:16px;right:16px;width:28px;height:28px;border:1px solid var(--primary);border-radius:1px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:12px;opacity:0;transform:translateX(-8px);transition:opacity .2s,transform .2s}
-.bento-cell:hover .bento-arr{opacity:1;transform:translateX(0)}
-.email-sec{background:var(--surface);border-top:var(--rule);border-bottom:var(--rule);padding:80px 0;position:relative;overflow:hidden}
-.email-sec::before{content:'';position:absolute;left:-100px;top:50%;transform:translateY(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(255,0,110,.08) 0%,transparent 65%);pointer-events:none}
-.email-inner{max-width:1280px;margin:0 auto;padding:0 40px;display:flex;align-items:center;gap:80px;position:relative;z-index:1}
-.email-txt{flex:1}
-.email-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,0,110,.35);padding:5px 14px;border-radius:2px;margin-bottom:20px;font-family:var(--condensed);font-size:10px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--primary)}
-.email-pill-dot{width:5px;height:5px;border-radius:50%;background:var(--primary)}
-.email-h{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:400;line-height:1.1;color:var(--text);margin-bottom:12px}
-.email-h em{font-style:italic;color:var(--primary)}
-.email-sub{font-size:15px;font-weight:300;color:var(--muted);line-height:1.7}
-.email-form-wrap{flex-shrink:0;width:400px}
-.email-form{display:flex;gap:0;border:1px solid var(--border-hi);border-radius:2px;overflow:hidden;transition:border-color .2s,box-shadow .2s}
-.email-form:focus-within{border-color:var(--secondary);box-shadow:0 0 20px var(--teal-glow)}
-.email-inp{flex:1;background:transparent;border:none;outline:none;padding:13px 16px;font-size:14px;font-family:var(--body);color:var(--text)}
-.email-inp::placeholder{color:var(--dim)}
-.email-btn{padding:13px 20px;background:var(--primary);color:var(--bg);font-family:var(--condensed);font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;border:none;transition:background .2s;white-space:nowrap}
-.email-btn:hover{background:var(--text)}
-.email-note{font-family:var(--condensed);font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:10px}
-@media(max-width:768px){.hero{grid-template-columns:1fr}.hero-l{padding:90px 24px 56px}.hero-r{height:55vh;border-left:none;border-top:var(--rule)}.trust-inner{flex-wrap:wrap}.trust-item{flex:0 0 50%;border-right:none;border-bottom:var(--rule)}.trust-item:nth-child(odd){border-right:var(--rule)}.brands-track{padding:0 24px}.ed-inner{grid-template-columns:1fr;gap:48px}.bento{grid-template-columns:repeat(4,1fr);grid-template-rows:200px 200px}.bento-cell:nth-child(1){grid-column:span 2;grid-row:span 2}.bento-cell:nth-child(2){grid-column:span 2}.bento-cell:nth-child(6){display:none}.email-inner{flex-direction:column;gap:40px}.email-form-wrap{width:100%}}
-
-.ab-hero{padding:120px 40px 80px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;min-height:88vh}
-.ab-hero-l{}
-.ab-hero-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.ab-hero-label::before{content:'';width:20px;height:1px;background:var(--secondary)}
-.ab-hero h1{font-family:var(--serif);font-size:clamp(48px,7vw,88px);font-weight:400;line-height:.92;color:var(--text);margin-bottom:32px}
-.ab-hero h1 em{font-style:italic;color:var(--primary)}
-.ab-hero p{font-size:16px;font-weight:300;line-height:1.8;color:var(--muted);max-width:440px;margin-bottom:36px}
-.ab-hero-r{position:relative}
-.ab-img-wrap{position:relative;aspect-ratio:3/4;overflow:hidden;border:1px solid var(--border-hi)}
-.ab-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.ab-img-wrap::before{content:'';position:absolute;top:12px;left:12px;width:24px;height:24px;border-top:1.5px solid var(--secondary);border-left:1.5px solid var(--secondary);z-index:2}
-.ab-img-wrap::after{content:'';position:absolute;bottom:12px;right:12px;width:24px;height:24px;border-bottom:1.5px solid var(--secondary);border-right:1.5px solid var(--secondary);z-index:2}
-.ab-stat-card{position:absolute;bottom:-24px;left:-24px;background:var(--primary);padding:20px 24px;min-width:160px;z-index:3}
-.ab-stat-n{font-family:var(--condensed);font-size:42px;font-weight:900;color:var(--bg);line-height:1;margin-bottom:4px}
-.ab-stat-l{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:rgba(15,23,42,.6)}
-.ab-divider{border:none;border-top:var(--rule);margin:0}
-.ab-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden}
-.ab-stat-item{padding:36px 24px;text-align:center;position:relative}
-.ab-stat-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--secondary);transform:scaleX(0);transition:transform .4s}
-.ab-stat-item:hover::before{transform:scaleX(1)}
-.ab-stat-num{font-family:var(--condensed);font-size:48px;font-weight:900;color:var(--text);line-height:1;margin-bottom:6px}
-.ab-stat-num em{color:var(--secondary);font-style:normal}
-.ab-stat-lbl{font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
-.ab-mission{padding:80px 40px;max-width:1280px;margin:0 auto}
-.ab-mission-inner{display:grid;grid-template-columns:1fr 2fr;gap:80px;padding:56px;background:var(--surface);border:1px solid var(--border);border-radius:2px;position:relative;overflow:hidden}
-.ab-mission-inner::before{content:'';position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:320px;height:320px;background:radial-gradient(circle,rgba(0,245,212,.06) 0%,transparent 65%);pointer-events:none}
-.ab-miss-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:var(--secondary);margin-bottom:16px}
-.ab-miss-title{font-family:var(--serif);font-size:32px;font-weight:400;color:var(--text);line-height:1.15}
-.ab-miss-body{font-size:15px;font-weight:300;line-height:1.85;color:var(--muted);position:relative;z-index:1}
-.ab-miss-body p{margin-bottom:20px}
-.ab-miss-body p:last-child{margin-bottom:0}
-.ab-values{padding:0 40px 80px;max-width:1280px;margin:0 auto}
-.ab-val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden}
-.ab-val-item{padding:40px 32px;background:var(--bg);transition:background .2s;position:relative;overflow:hidden}
-.ab-val-item::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--primary),var(--secondary));transform:scaleX(0);transform-origin:left;transition:transform .35s}
-.ab-val-item:hover{background:var(--surface)}
-.ab-val-item:hover::after{transform:scaleX(1)}
-.ab-val-num{font-family:var(--condensed);font-size:11px;font-weight:900;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);margin-bottom:20px}
-.ab-val-title{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--text);margin-bottom:14px;line-height:1.2}
-.ab-val-body{font-size:14px;font-weight:300;line-height:1.75;color:var(--muted)}
-.ab-team{padding:0 40px 80px;max-width:1280px;margin:0 auto}
-.ab-team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.ab-member{text-align:center}
-.ab-member-img{width:100%;aspect-ratio:1;border-radius:2px;overflow:hidden;margin-bottom:16px;background:var(--surface);border:1px solid var(--border)}
-.ab-member-img img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:saturate(0.7) brightness(0.85);transition:filter .3s}
-.ab-member:hover .ab-member-img img{filter:saturate(0.9) brightness(1)}
-.ab-member-name{font-family:var(--condensed);font-size:15px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text);margin-bottom:4px}
-.ab-member-role{font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--secondary)}
-.ab-cta{padding:80px 40px;border-top:var(--rule)}
-.ab-cta-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:48px;padding:56px;background:var(--surface);border:1px solid var(--border);border-radius:2px;position:relative;overflow:hidden}
-.ab-cta-inner::before{content:'';position:absolute;left:-100px;top:50%;transform:translateY(-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(255,0,110,.07) 0%,transparent 65%)}
-.ab-cta-txt h2{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:400;line-height:1.1;color:var(--text);margin-bottom:12px}
-.ab-cta-txt h2 em{font-style:italic;color:var(--primary)}
-.ab-cta-txt p{font-size:15px;font-weight:300;color:var(--muted)}
-.ab-cta-btns{display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap}
-@media(max-width:1024px){.ab-hero{grid-template-columns:1fr;gap:48px}.ab-hero-r{max-width:480px}.ab-val-grid{grid-template-columns:1fr 1fr}.ab-team-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:768px){.ab-hero{padding:90px 24px 56px}.ab-stats{grid-template-columns:repeat(2,1fr)}.ab-mission-inner{grid-template-columns:1fr;gap:32px}.ab-val-grid{grid-template-columns:1fr}.ab-values,.ab-mission,.ab-team,.ab-cta{padding-left:24px;padding-right:24px}.ab-cta-inner{flex-direction:column}.ab-team-grid{grid-template-columns:repeat(2,1fr)}}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:24px;border-top:var(--rule)}
+.footer-copy{font-family:var(--condensed);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}.rd5{transition-delay:.5s}
+@media(max-width:900px){
+  .wrap{padding:0 24px}
+  .story-grid{grid-template-columns:1fr}
+  .story-img{aspect-ratio:16/9}
+  .values-grid{grid-template-columns:1fr}
+  .commitment-grid{grid-template-columns:1fr}
+  .stat-strip-inner{grid-template-columns:repeat(2,1fr);gap:24px}
+  .stat-item{border-right:none;padding:0;text-align:left}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
 </style>
-</head><body>
-<nav class="nav" id="mainNav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">INDIE<span class="logo-accent">mode</span></a>
-    <ul class="nav-links"></ul>
-    <div class="nav-right">
-      <button class="nav-search-btn" onclick="openSearch()" aria-label="Search">
-        <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M13 13L16 16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-      </button>
-      <a href="shop.html" class="nav-cart"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 1H3L4.5 9.5H12.5L14 4H4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="12.5" r="1" fill="currentColor"/><circle cx="11" cy="12.5" r="1" fill="currentColor"/></svg>Bag <span class="cart-count" id="cartCount">0</span></a>
-    </div>
+</head>
+<body>
+
+<!-- SEARCH OVERLAY -->
+<div class="s-overlay" id="searchOverlay">
+  <div class="s-wrap">
+    <div class="s-label">Search Indiemode</div>
+    <input class="s-input" placeholder="Find a designer, piece, or style…" id="searchInput">
   </div>
-</nav>
-<div class="s-overlay" id="sOverlay">
-  <button class="s-close" onclick="closeSearch()">ESC — CLOSE</button>
-  <div class="s-wrap"><div class="s-label">Search specimen catalogue</div><input class="s-input" type="text" placeholder="designer, garment, collection…" id="sInput" autocomplete="off"></div>
+  <span class="s-close" id="searchClose">Close ✕</span>
 </div>
 
-<section>
-  <div class="ab-hero">
-    <div class="ab-hero-l reveal">
-      <div class="ab-hero-label">Our Story — Est. 2012</div>
-      <h1>Built for the<br><em>makers,</em><br>not the<br>middlemen.</h1>
-      <p>Indiemode started in a Cape Town kitchen in 2012. One simple question: why are the best SA designers invisible online?</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <a href="shop.html" class="btn-primary">Shop the catalogue</a>
-        <a href="brands.html" class="btn-secondary">Meet the brands</a>
-      </div>
-    </div>
-    <div class="ab-hero-r reveal rd2">
-      <div class="ab-img-wrap">
-        <img src="img/editorial.jpg" alt="Indiemode story">
-        <div class="ab-stat-card"><div class="ab-stat-n">14</div><div class="ab-stat-l">SA Designers active</div></div>
-      </div>
-    </div>
+<!-- NAV (rendered by app.js) -->
+<nav class="nav" id="siteNav"></nav>
+
+<!-- HERO -->
+<section class="about-hero">
+  <div class="about-hero-bg"></div>
+  <img id="aboutHeroImg" class="about-hero-img" src="img/editorial.jpg" alt="Indiemode editorial" loading="eager">
+  <div class="about-hero-overlay"></div>
+  <div class="wrap about-hero-content">
+    <div class="about-hero-label">Our Story</div>
+    <h1 class="about-hero-title">Born from a love of<br><em>what gets made here</em></h1>
+    <p class="about-hero-sub">Indiemode exists to make South African independent fashion the first choice — not the alternative. We platform the designers who are already making remarkable things.</p>
   </div>
 </section>
-<hr class="ab-divider">
-<section style="padding:64px 40px;max-width:1280px;margin:0 auto">
-  <div class="sec-head reveal" style="margin-bottom:0">
-    <div><div class="sec-label">By the numbers</div><h2 class="sec-title">Indiemode <em>at a glance</em></h2></div>
-  </div>
-</section>
-<div style="max-width:1280px;margin:0 auto;padding:0 40px 80px">
-  <div class="ab-stats">
-    <div class="ab-stat-item reveal"><div class="ab-stat-num">14<em>+</em></div><div class="ab-stat-lbl">Active designers</div></div>
-    <div class="ab-stat-item reveal rd1"><div class="ab-stat-num">500<em>+</em></div><div class="ab-stat-lbl">Unique pieces</div></div>
-    <div class="ab-stat-item reveal rd2"><div class="ab-stat-num">100<em>%</em></div><div class="ab-stat-lbl">Made in South Africa</div></div>
-    <div class="ab-stat-item reveal rd3"><div class="ab-stat-num">12<em>yr</em></div><div class="ab-stat-lbl">Established</div></div>
+
+<!-- STATS -->
+<div class="wrap">
+  <div class="stat-strip reveal">
+    <div class="stat-strip-inner">
+      <div class="stat-item">
+        <div class="stat-num" id="aboutStatDesigners">14<span>+</span></div>
+        <div class="stat-desc">SA Designers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="aboutStatPieces">500<span>+</span></div>
+        <div class="stat-desc">Pieces Available</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100<span>%</span></div>
+        <div class="stat-desc">Made in South Africa</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="aboutStatYear">2012</div>
+        <div class="stat-desc">Established</div>
+      </div>
+    </div>
   </div>
 </div>
-<section class="ab-mission">
-  <div class="ab-mission-inner reveal">
-    <div>
-      <div class="ab-miss-label">Our Mission</div>
-      <h2 class="ab-miss-title">Why Indie&shy;mode exists</h2>
-    </div>
-    <div class="ab-miss-body">
-      <p>South Africa has extraordinary fashion talent. Designers cutting garments by hand in Woodstock studios, jewellers casting silver in Cape Town backyards, textile artists weaving in KwaZulu-Natal. Most of them have no way to reach a national audience.</p>
-      <p>Indiemode was built to fix that. A single, curated marketplace where South Africans can discover and buy directly from independent designers — without the retail markup, without the middleman, without the BS.</p>
-      <p>Every rand you spend here goes directly to a South African maker. That's the deal. That's always been the deal.</p>
-    </div>
-  </div>
-</section>
-<section class="ab-values">
-  <div class="wrap" style="padding:0">
-    <div class="sec-head reveal"><div><div class="sec-label">What we stand for</div><h2 class="sec-title">Three <em>principles.</em></h2></div></div>
-  </div>
-  <div class="ab-val-grid">
-    <div class="ab-val-item reveal">
-      <div class="ab-val-num">01 — Transparency</div>
-      <h3 class="ab-val-title">No hidden margins</h3>
-      <p class="ab-val-body">Designers set their own prices. We take a flat platform fee. You see exactly what the maker earns from every transaction.</p>
-    </div>
-    <div class="ab-val-item reveal rd1">
-      <div class="ab-val-num">02 — Curation</div>
-      <h3 class="ab-val-title">Every brand is handpicked</h3>
-      <p class="ab-val-body">We don't accept everyone who applies. Our team reviews every designer for craft quality, sustainability practice, and South African origin.</p>
-    </div>
-    <div class="ab-val-item reveal rd2">
-      <div class="ab-val-num">03 — Community</div>
-      <h3 class="ab-val-title">Designers first, always</h3>
-      <p class="ab-val-body">We run workshops, masterclasses, and pop-up events across SA. Building the ecosystem matters as much as building the marketplace.</p>
-    </div>
-  </div>
-</section>
-<section class="ab-team">
-  <div class="sec-head reveal"><div><div class="sec-label">The Team</div><h2 class="sec-title">The people <em>behind it</em></h2></div></div>
-  <div class="ab-team-grid">
-    <div class="ab-member reveal">
-      <div class="ab-member-img"><img src="img/prod-01.jpg" alt="Founder" loading="lazy"></div>
-      <div class="ab-member-name">Naledi Dlamini</div>
-      <div class="ab-member-role">Founder &amp; CEO</div>
-    </div>
-    <div class="ab-member reveal rd1">
-      <div class="ab-member-img"><img src="img/prod-02.jpg" alt="Head of Curation" loading="lazy"></div>
-      <div class="ab-member-name">James Mostert</div>
-      <div class="ab-member-role">Head of Curation</div>
-    </div>
-    <div class="ab-member reveal rd2">
-      <div class="ab-member-img"><img src="img/prod-03.jpg" alt="Operations" loading="lazy"></div>
-      <div class="ab-member-name">Fatima Osman</div>
-      <div class="ab-member-role">Operations</div>
-    </div>
-    <div class="ab-member reveal rd3">
-      <div class="ab-member-img"><img src="img/prod-04.jpg" alt="Creative" loading="lazy"></div>
-      <div class="ab-member-name">Ruan van Wyk</div>
-      <div class="ab-member-role">Creative Director</div>
-    </div>
-  </div>
-</section>
-<section class="ab-cta">
-  <div class="ab-cta-inner reveal">
-    <div class="ab-cta-txt">
-      <h2>You design it.<br>We'll <em>sell it.</em></h2>
-      <p>Applications for new designers open quarterly. Next intake: March 2027.</p>
-    </div>
-    <div class="ab-cta-btns">
-      <a href="contact.html" class="btn-primary">Apply to list your brand</a>
-      <a href="brands.html" class="btn-secondary">Browse existing brands</a>
+
+<!-- STORY -->
+<section class="story-section">
+  <div class="wrap">
+    <div class="story-grid">
+      <div class="story-img-wrap reveal">
+        <img class="story-img" src="img/editorial.jpg" alt="Indiemode story" id="aboutStoryImg">
+        <div class="story-img-label">Cape Town Studio Visit — 2024</div>
+      </div>
+      <div class="reveal rd1">
+        <div class="story-label">The Beginning</div>
+        <h2 class="story-title">We started in a<br><em>Woodstock warehouse</em></h2>
+        <p class="story-body">In 2012, a group of Cape Town designers found themselves making beautiful things with nowhere to sell them. International platforms weren't interested. Local retail was slow to take independent labels seriously.</p>
+        <p class="story-body" style="margin-top:16px">So we built the platform we wished existed. A place where the work spoke first — no gatekeeping, no minimum order quantities, no pressure to dilute what makes SA fashion worth wearing.</p>
+        <p class="story-body" style="margin-top:16px">More than a decade later, we still believe the same thing: the best independent fashion in the world is being made in South Africa. Indiemode exists to make sure people can find it.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<footer class="footer"><div class="footer-inner">
-  <div class="footer-top">
-    <div><div class="footer-logo">INDIE<span class="lo-accent">mode</span></div><div class="footer-spec">SA Fashion Registry · Est. 2012 · ZA</div><p class="footer-tagline">South Africa's home for independent fashion designers.</p><div class="footer-socials"><a href="#" class="soc-btn">&#9649;</a><a href="#" class="soc-btn">&#9650;</a><a href="#" class="soc-btn">&#9670;</a></div></div>
-    <div><div class="footer-col-title">Shop</div><ul class="footer-links"><li><a href="shop.html">New Arrivals</a></li><li><a href="shop.html?cat=clothing">Clothing</a></li><li><a href="shop.html?cat=jewellery">Jewellery</a></li><li><a href="shop.html?cat=accessories">Accessories</a></li><li><a href="shop.html?cat=sale">Sale</a></li></ul></div>
-    <div><div class="footer-col-title">Help</div><ul class="footer-links"><li><a href="contact.html">FAQ</a></li><li><a href="contact.html">Delivery &amp; Returns</a></li><li><a href="contact.html">Size Guide</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-    <div><div class="footer-col-title">About</div><ul class="footer-links"><li><a href="about.html">Our Story</a></li><li><a href="brands.html">All Brands</a></li><li><a href="contact.html">List Your Brand</a></li><li><a href="contact.html">Privacy</a></li></ul></div>
+<!-- VALUES -->
+<section class="values-section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-label">What We Stand For</div>
+        <h2 class="sec-title">Our <em>values</em></h2>
+      </div>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-num">01 — MAKERS FIRST</div>
+        <div class="value-rule"></div>
+        <h3 class="value-title">The designer<br>keeps <em>control</em></h3>
+        <p class="value-body">No exclusivity clauses. No mandatory discounting. Designers set their own prices, manage their own production runs, and decide what gets listed. We take a flat commission and stay out of the way.</p>
+      </div>
+      <div class="value-card reveal rd1">
+        <div class="value-num">02 — PROVENANCE</div>
+        <div class="value-rule"></div>
+        <h3 class="value-title">Every piece<br>has a <em>postcode</em></h3>
+        <p class="value-body">Every product listing includes the city and studio where it was made. We verify this. Origin isn't a marketing claim on Indiemode — it's a data point.</p>
+      </div>
+      <div class="value-card reveal rd2">
+        <div class="value-num">03 — REAL RUNS</div>
+        <div class="value-rule"></div>
+        <h3 class="value-title">Limited means<br><em>actually</em> limited</h3>
+        <p class="value-body">When a designer says 22 pieces, we mean 22 pieces. We don't allow restocks masquerading as new drops. The scarcity on Indiemode is real — that's what makes it worth paying attention to.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-num">04 — NO FAST FASHION</div>
+        <div class="value-rule"></div>
+        <h3 class="value-title">Slow is<br><em>the point</em></h3>
+        <p class="value-body">We don't accept brands with weekly drops or offshore manufacturing. Indiemode is for designers who make things carefully — not quickly. The pace reflects the work.</p>
+      </div>
+      <div class="value-card reveal rd1">
+        <div class="value-num">05 — COMMUNITY</div>
+        <div class="value-rule"></div>
+        <h3 class="value-title">SA fashion is<br><em>ecosystem</em></h3>
+        <p class="value-body">We run open studio visits, collaborative pop-ups, and a shared photo studio in Cape Town available to all listed designers. When the whole scene does better, every designer on the platform benefits.</p>
+      </div>
+      <div class="value-card reveal rd2">
+        <div class="value-num">06 — SUSTAINABILITY</div>
+        <div class="value-rule"></div>
+        <h3 class="value-title">Local supply<br><em>by default</em></h3>
+        <p class="value-body">We prefer designers who source locally — not because it's fashionable, but because shorter supply chains make better products. We ask about sourcing at onboarding and publish the answers.</p>
+      </div>
+    </div>
   </div>
-  <div class="footer-bottom"><div class="footer-copy">© 2026 Indiemode · SA Fashion Registry · Proudly South African</div></div>
-</div></footer>
-<script src="data.js"></script><script src="app.js"></script>
-</body></html>
+</section>
+
+<!-- COMMITMENTS -->
+<section class="commitment-section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-label">How We Operate</div>
+        <h2 class="sec-title">The <em>commitments</em> we keep</h2>
+      </div>
+    </div>
+    <div class="commitment-grid reveal">
+      <div class="commit-item">
+        <div class="commit-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div class="commit-title">Verified SA Origin</div>
+        <p class="commit-body">Every designer on the platform is manually verified as based in South Africa and producing locally. We re-verify annually.</p>
+      </div>
+      <div class="commit-item">
+        <div class="commit-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div class="commit-title">Fair Commission Only</div>
+        <p class="commit-body">We charge a flat 12% commission on sales. No listing fees, no monthly subscriptions, no hidden charges. Designers keep the rest.</p>
+      </div>
+      <div class="commit-item">
+        <div class="commit-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <div class="commit-title">Professional Photography</div>
+        <p class="commit-body">Our shared Cape Town studio is free for listed designers. Consistent, editorial-quality imagery lifts every brand on the platform.</p>
+      </div>
+      <div class="commit-item">
+        <div class="commit-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <div class="commit-title">Direct Designer Payments</div>
+        <p class="commit-body">Payments go directly to designers within 48 hours of delivery confirmation. No holding periods, no minimum thresholds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="wrap">
+    <div class="cta-label reveal">Join the Platform</div>
+    <h2 class="cta-title reveal"><em>Shop</em> the designers.<br>Or become one.</h2>
+    <p class="cta-sub reveal">Browse the full collection, or apply to list your label on Indiemode.</p>
+    <div class="cta-btns reveal">
+      <a href="shop.html" class="btn-primary">Shop All Designers →</a>
+      <a href="contact.html" class="btn-secondary">Apply as a Designer</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">INDIE<span class="logo-accent">mode</span></div>
+        <p class="footer-tagline" id="footerTagline">Independent SA Designer Fashion</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social">IG</a>
+          <a href="#" class="footer-social">TK</a>
+          <a href="#" class="footer-social">PT</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Shop</div>
+        <ul class="footer-links">
+          <li><a href="shop.html">New In</a></li>
+          <li><a href="shop.html?cat=dresses">Dresses</a></li>
+          <li><a href="shop.html?cat=tops">Tops</a></li>
+          <li><a href="shop.html?cat=jewellery">Jewellery</a></li>
+          <li><a href="shop.html?cat=accessories">Accessories</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Designers</div>
+        <ul class="footer-links">
+          <li><a href="brands.html">All Designers</a></li>
+          <li><a href="brands.html">Cape Town</a></li>
+          <li><a href="brands.html">Johannesburg</a></li>
+          <li><a href="contact.html">Apply to List</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Info</div>
+        <ul class="footer-links">
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2024 Indiemode SA — All Rights Reserved</span>
+      <span class="footer-copy">Made with care in Cape Town</span>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
