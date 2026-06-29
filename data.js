@@ -41,6 +41,12 @@ const IM = {
     brand_02:   'img/brand-02.jpg',
     brand_03:   'img/brand-03.jpg',
     brand_04:   'img/brand-04.jpg',
+    acc_01:     'img/acc-01.jpg',   // marcin-sajur-1  — portrait, bag editorial
+    acc_02:     'img/acc-02.jpg',   // volodymyr       — portrait, bag detail
+    acc_03:     'img/acc-03.jpg',   // fauzan-1        — portrait, hat/cap
+    acc_04:     'img/acc-04.jpg',   // shabnam-raeisi  — portrait, scarf/wrap hero
+    acc_05:     'img/acc-05.jpg',   // fauzan-2        — portrait, product detail
+    acc_06:     'img/acc-06.jpg',   // marcin-sajur-2  — landscape, editorial strip
     jewel_01:   'img/jewel-01.jpg',  // lara-buljubasic  — portrait, model-worn necklace
     jewel_02:   'img/jewel-02.jpg',  // chaitanya-salunke — landscape, rings flat lay
     jewel_03:   'img/jewel-03.jpg',  // or-hakim          — landscape, editorial wide
@@ -84,7 +90,7 @@ const IM = {
     { id: 'jewellery',   label: 'Jewellery',   count: 8,   img: 'jewel_01' },
     { id: 'swimwear',    label: 'Swimwear',    count: 8,   img: 'swim_01' },
     { id: 'bottoms',     label: 'Bottoms',     count: 41,  img: 'prod_09' },
-    { id: 'accessories', label: 'Accessories', count: 28,  img: 'prod_10' },
+    { id: 'accessories', label: 'Accessories', count: 6,   img: 'acc_01' },
   ],
 
   // ── PRODUCTS ───────────────────────────────────────────────
@@ -166,7 +172,14 @@ const IM = {
     { id: 'silver-chain-cuff',      name: 'Silver Chain Cuff',      brand: 'joy-jewellery',      category: 'jewellery',   price: 560,  originalPrice: null, badge: 'ltd',  img: 'jewel_05', sizes: ['One Size'], soldOut: [],     material: 'Sterling Silver',   origin: 'Cape Town',      run: 'Limited — 15 pcs',  care: 'Keep dry',              description: 'A woven sterling silver cuff. Delicate but substantial.',                                               featured: false },
     { id: 'cape-town-silk-slip',    name: 'Cape Town Silk Slip',    brand: 'blackcherry',        category: 'dresses',     price: 1890, originalPrice: null, badge: 'new',  img: 'prod_08', sizes: ['XS','S','M'], soldOut: ['XS'], material: 'Silk',              origin: 'Durban',         run: 'Limited — 10 pcs',  care: 'Dry clean only',        description: 'A pure silk slip dress. Bias cut, minimal seams, extraordinary drape.',                                featured: false },
     { id: 'fynbos-print-shorts',    name: 'Fynbos Print Shorts',    brand: 'genevieve-motley',   category: 'bottoms',     price: 640,  originalPrice: null, badge: '',     img: 'prod_09', sizes: ['XS','S','M','L'], soldOut: [],     material: 'Cotton Poplin',     origin: 'Woodstock',      run: 'Open run',          care: 'Machine wash cold',     description: 'Bold botanical print shorts. Western Cape fynbos rendered in vibrant repeat.',                          featured: false },
-    { id: 'woven-raffia-bag',       name: 'Woven Raffia Tote',      brand: 'hot-igloo',          category: 'accessories', price: 750,  originalPrice: null, badge: 'new',  img: 'prod_10', sizes: ['One Size'], soldOut: [],     material: 'Natural Raffia',    origin: 'Port Elizabeth', run: 'Open run',          care: 'Spot clean only',       description: 'Hand-woven raffia tote from the Eastern Cape. Beach or market — equally at home.',                     featured: false },
+    { id: 'woven-raffia-bag',       name: 'Woven Raffia Tote',      brand: 'hot-igloo',          category: 'accessories', price: 750,  originalPrice: null, badge: 'new',  img: 'acc_02', sizes: ['One Size'], soldOut: [],     material: 'Natural Raffia',    origin: 'Port Elizabeth', run: 'Open run',          care: 'Spot clean only',       description: 'Hand-woven raffia tote from the Eastern Cape. Beach or market — equally at home.', featured: true  },
+
+    // ── ACCESSORIES (additional) ───────────────────────────────
+    { id: 'leather-bucket-bag',     name: 'Leather Bucket Bag',     brand: 'genevieve-motley',   category: 'accessories', price: 1850, originalPrice: null, badge: 'new',  img: 'acc_01', sizes: ['One Size'], soldOut: [],      material: 'Full-Grain Leather', origin: 'Woodstock',     run: 'Limited — 12 pcs',  care: 'Leather conditioner',   description: 'A structured bucket bag in full-grain leather. Drawstring closure, single strap, natural tan lining. Woodstock studio.', featured: true  },
+    { id: 'hand-dyed-silk-scarf',   name: 'Hand-Dyed Silk Scarf',   brand: 'white-rabbit-days',  category: 'accessories', price: 680,  originalPrice: null, badge: '',     img: 'acc_04', sizes: ['One Size'], soldOut: [],      material: 'Pure Silk',         origin: 'Johannesburg',   run: 'Open run',          care: 'Hand wash cold',        description: 'A large-format silk scarf, hand-dyed in botanical pigments. Wear as a wrap, headscarf, or belt. Each dye batch is unique.', featured: false },
+    { id: 'structured-wool-beret',  name: 'Structured Wool Beret',  brand: 'bird-named-frank',   category: 'accessories', price: 420,  originalPrice: 580,  badge: 'sale', img: 'acc_03', sizes: ['One Size'], soldOut: [],      material: '100% Merino Wool',  origin: 'Cape Town',      run: 'Open run',          care: 'Dry clean only',        description: 'A structured beret in dense merino wool. Holds its form. Sits flat or angled — two silhouettes, one hat.', featured: false },
+    { id: 'canvas-market-tote',     name: 'Canvas Market Tote',     brand: 'hot-igloo',          category: 'accessories', price: 320,  originalPrice: null, badge: '',     img: 'acc_05', sizes: ['One Size'], soldOut: [],      material: 'Organic Canvas',    origin: 'Port Elizabeth', run: 'Open run',          care: 'Machine wash cold',     description: 'Heavy-duty organic canvas tote. Screen-printed in Port Elizabeth. Holds a full market shop without flinching.', featured: false },
+    { id: 'leather-card-sleeve',    name: 'Leather Card Sleeve',    brand: 'genevieve-motley',   category: 'accessories', price: 280,  originalPrice: null, badge: 'ltd',  img: 'acc_06', sizes: ['One Size'], soldOut: [],      material: 'Vegetable-Tanned Leather', origin: 'Woodstock', run: 'Limited — 25 pcs',  care: 'Leather balm',          description: 'A slim card sleeve in vegetable-tanned leather. Holds 4–6 cards. Ages to a deep patina.', featured: false },
     { id: 'midnight-velvet-blazer', name: 'Midnight Velvet Blazer', brand: 'white-rabbit-days',  category: 'tops',        price: 2100, originalPrice: null, badge: 'ltd',  img: 'prod_11', sizes: ['XS','S','M','L'], soldOut: [],     material: 'Cotton Velvet',     origin: 'Johannesburg',   run: 'Limited — 8 pcs',   care: 'Dry clean recommended', description: 'A deep midnight velvet blazer. Oversized, structured shoulders, unlined.',                              featured: false },
     { id: 'beaded-anklet-set',      name: 'Beaded Anklet Set',      brand: 'indhi-design',       category: 'jewellery',   price: 280,  originalPrice: null, badge: '',     img: 'jewel_02', sizes: ['One Size'], soldOut: [],     material: 'Glass Beads + Brass', origin: 'Pretoria',    run: 'Open run',          care: 'Avoid water',           description: 'A set of three handbeaded anklets in complementary tones. Traditional technique, contemporary palette.', featured: false },
 
@@ -195,7 +208,7 @@ const IM = {
     { label: 'Clothing',     href: 'shop.html',       filter: 'clothing' },
     { label: 'Swimwear',     href: 'swimwear.html',   filter: '' },
     { label: 'Jewellery',    href: 'jewellery.html',  filter: '' },
-    { label: 'Accessories',  href: 'shop.html',       filter: 'accessories' },
+    { label: 'Accessories',  href: 'accessories.html',    filter: '' },
     { label: 'Sale',         href: 'shop.html',       filter: 'sale',  highlight: true },
   ],
 
