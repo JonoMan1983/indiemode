@@ -45,13 +45,7 @@ function renderNav() {
   window.closeSearch = () => $('sOverlay').classList.remove('open');
   document.addEventListener('keydown', e => { if(e.key==='Escape') closeSearch(); });
 
-  // Cart
-  let cartN = 0;
-  window.addToCart = () => {
-    cartN++;
-    const c = $('cartCount');
-    if (c) { c.textContent = cartN; c.style.transform='scale(1.5)'; setTimeout(()=>c.style.transform='',200); }
-  };
+  // Cart & Wishlist — handled by Cart module (cart.js)
 }
 
 // ── PRODUCT CARD ────────────────────────────────────────────
@@ -264,6 +258,29 @@ function initProduct() {
     $$('.size-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
   };
+
+  // Wire Add to Bag
+  const atbBtn = document.getElementById('pdAtbBtn');
+  if (atbBtn) {
+    atbBtn.onclick = () => {
+      const active = document.querySelector('.size-btn.active');
+      const size = active ? active.textContent.trim() : (p.sizes ? p.sizes[0] : 'One Size');
+      if (typeof Cart !== 'undefined') Cart.add(p.id, size);
+    };
+  }
+
+  // Wire wishlist heart button
+  const wishBtn = document.getElementById('pdWishBtn');
+  if (wishBtn && typeof Cart !== 'undefined') {
+    wishBtn.dataset.wishId = p.id;
+    wishBtn.classList.toggle('wished', Cart.isWished(p.id));
+    wishBtn.textContent = Cart.isWished(p.id) ? '♥' : '♡';
+    wishBtn.onclick = () => {
+      const isNow = Cart.toggleWish(p.id);
+      wishBtn.textContent = isNow ? '♥' : '♡';
+      wishBtn.classList.toggle('wished', isNow);
+    };
+  }
 }
 
 // ── PAGE: BRANDS ────────────────────────────────────────────
@@ -391,6 +408,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (pageMap[page]) pageMap[page]();
   initReveal();
+
+  // ── CART + WISHLIST INIT ──────────────────────────
+  if (typeof Cart !== 'undefined') Cart.init();
 
   // ── LIVE SEARCH ────────────────────────────────────────
   const sInput = document.getElementById('sInput');

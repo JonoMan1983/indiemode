@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Bag — Indiemode SA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=DM+Serif+Display:ital@0;1&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0F172A;--surface:#1E293B;--primary:#FF006E;--secondary:#00F5D4;--text:#F8FAFC;--surface-hi:#253248;--border:rgba(248,250,252,0.08);--border-hi:rgba(248,250,252,0.16);--muted:rgba(248,250,252,0.45);--dim:rgba(248,250,252,0.2);--primary-glow:rgba(255,0,110,0.25);--teal-glow:rgba(0,245,212,0.18);--condensed:'Barlow Condensed',sans-serif;--serif:'DM Serif Display',Georgia,serif;--body:'Barlow',sans-serif;--rule:1px solid rgba(248,250,252,0.1);--nav-h:64px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;background-image:linear-gradient(rgba(248,250,252,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(248,250,252,.018) 1px,transparent 1px);background-size:60px 60px}
+a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;background:none;font-family:var(--body)}img{display:block;max-width:100%}
+/* NAV — copy from shared */
+.s-overlay{position:fixed;inset:0;background:rgba(15,23,42,.96);z-index:300;display:flex;align-items:flex-start;padding-top:120px;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;backdrop-filter:blur(8px)}
+.s-overlay.open{opacity:1;pointer-events:all}
+.s-wrap{width:100%;max-width:680px;padding:0 40px}
+.s-label{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--secondary);margin-bottom:20px}
+.s-input{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(248,250,252,.2);font-family:var(--serif);font-size:40px;font-style:italic;color:var(--text);padding:12px 0;outline:none}
+.s-input::placeholder{color:var(--dim)}
+.s-close{position:absolute;top:32px;right:40px;font-family:var(--condensed);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);cursor:pointer}
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;background:rgba(15,23,42,.96);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 40px;height:100%;display:flex;align-items:center}
+.nav-logo{font-family:var(--condensed);font-size:20px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--text);margin-right:48px;flex-shrink:0;position:relative}
+.nav-logo .logo-accent{color:var(--primary);font-style:italic;font-family:var(--serif);font-size:22px;letter-spacing:0;font-weight:400}
+.nav-logo::after{content:'EST. ZA — 2012';position:absolute;bottom:-9px;left:0;font-size:7px;letter-spacing:.22em;color:var(--dim);white-space:nowrap;font-family:var(--condensed);font-weight:700;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;flex:1}
+.nav-links a{font-family:var(--condensed);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);transition:color .2s;position:relative}
+.nav-links a:hover{color:var(--text)}.nav-links a.nav-sale{color:var(--primary)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--secondary);transform:scaleX(0);transform-origin:left;transition:transform .2s}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-right{display:flex;align-items:center;gap:16px;margin-left:auto}
+.nav-search-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:4px;color:var(--muted);border:1px solid transparent;transition:color .2s,border-color .2s}
+.nav-search-btn:hover{color:var(--text);border-color:var(--border-hi)}
+.nav-cart{display:flex;align-items:center;gap:8px;padding:8px 18px;border:1px solid var(--primary);color:var(--primary);font-family:var(--condensed);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;border-radius:2px;transition:background .2s,color .2s,box-shadow .2s;cursor:pointer}
+.nav-cart:hover{background:var(--primary);color:var(--bg);box-shadow:0 0 20px var(--primary-glow)}
+.cart-count{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:var(--primary);color:var(--bg);font-size:9px;font-weight:900;border-radius:50%;transition:transform .2s}
+</style>
+</head>
+<body>
+
+<!-- SEARCH OVERLAY -->
+<div class="s-overlay" id="sOverlay">
+  <div class="s-wrap">
+    <div class="s-label">Search the collection</div>
+    <input class="s-input" id="sInput" type="text" placeholder="Dress, brand, material…" autocomplete="off">
+    <div id="sResults"></div>
+  </div>
+  <span class="s-close" onclick="closeSearch()">Close ✕</span>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Indie<span class="logo-accent">mode</span></a>
+    <ul class="nav-links"></ul>
+    <div class="nav-right">
+      <button class="nav-search-btn" onclick="openSearch()" aria-label="Search">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </button>
+      <button class="nav-wish-btn" aria-label="Wishlist">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 13.5S1.5 9.5 1.5 5.5A3.5 3.5 0 0 1 8 3.757 3.5 3.5 0 0 1 14.5 5.5C14.5 9.5 8 13.5 8 13.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        <span class="wish-count" id="wishCount">0</span>
+      </button>
+      <button class="nav-cart" aria-label="Open bag">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 1H3L4.5 9.5H12.5L14 4H4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="12.5" r="1" fill="currentColor"/><circle cx="11" cy="12.5" r="1" fill="currentColor"/></svg>
+        Bag <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- CART PAGE CONTENT -->
+<div id="cartPageContent"></div>
+
+<!-- FOOTER -->
+<footer style="border-top:1px solid rgba(248,250,252,.08);padding:32px 40px;text-align:center">
+  <div style="font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)">© 2024 Indiemode SA — Independent Designer Fashion</div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script src="cart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  renderNav();
+  Cart.init();
+  renderCartPage();
+});
+
+function renderCartPage() {
+  const content = document.getElementById('cartPageContent');
+  const items = Cart.getItems();
+
+  if (!items.length) {
+    content.innerHTML = `
+      <div style="max-width:1100px;margin:0 auto;padding:calc(var(--nav-h)+60px) 40px 80px">
+        <div class="cart-empty-state">
+          <div class="cart-empty-icon">🛍</div>
+          <div class="cart-empty-title">Your bag is empty</div>
+          <div class="cart-empty-sub">Discover independent SA designers</div>
+          <a href="shop.html" class="cart-empty-cta">Shop the Collection →</a>
+        </div>
+      </div>`;
+    return;
+  }
+
+  content.innerHTML = `
+    <div class="cart-page-wrap">
+      <!-- LEFT: ITEMS -->
+      <div>
+        <div class="cart-items-head">
+          <div class="cart-items-title">Your Bag</div>
+          <button class="cart-clear" onclick="Cart.clear();renderCartPage()">Clear all</button>
+        </div>
+        <div id="cartLineItems">${renderCartLines(items)}</div>
+      </div>
+
+      <!-- RIGHT: SUMMARY + CHECKOUT -->
+      <div class="cart-summary">
+        <div class="cart-summary-title">Order Summary</div>
+        <div class="cart-summary-line"><span>Subtotal (${Cart.count()} items)</span><span>R ${Cart.total().toLocaleString('en-ZA')}</span></div>
+        <div class="cart-summary-line"><span>Shipping</span><span>Calculated at checkout</span></div>
+        <div class="cart-summary-line"><span>Made in SA</span><span>✓ 100%</span></div>
+        <div class="cart-summary-total">
+          <span>Total</span>
+          <span>R ${Cart.total().toLocaleString('en-ZA')}</span>
+        </div>
+
+        <!-- CHECKOUT STEPS -->
+        <div class="checkout-steps" style="margin-bottom:24px">
+          <div class="checkout-step active"><span class="checkout-step-num">1</span>Bag</div>
+          <div class="checkout-step-sep"></div>
+          <div class="checkout-step"><span class="checkout-step-num">2</span>Details</div>
+          <div class="checkout-step-sep"></div>
+          <div class="checkout-step"><span class="checkout-step-num">3</span>Confirm</div>
+        </div>
+
+        <button class="cart-checkout-btn" onclick="showCheckoutForm()">Proceed to Checkout →</button>
+
+        <div class="cart-trust-row">
+          <div class="cart-trust-item">Free returns within 14 days</div>
+          <div class="cart-trust-item">Secure checkout</div>
+          <div class="cart-trust-item">All pieces made in South Africa</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderCartLines(items) {
+  return items.map(item => `
+    <div class="cart-line" id="line-${item.key.replace(/\W/g,'_')}">
+      <a href="product.html?id=${item.productId}">
+        <img src="${item.img}" alt="${item.name}">
+      </a>
+      <div>
+        <div class="cart-line-brand">${item.brand}</div>
+        <div class="cart-line-name">${item.name}</div>
+        <div class="cart-line-size">Size: ${item.size}</div>
+        <div class="cart-line-controls">
+          <div class="drawer-qty">
+            <button onclick="cartPageUpdateQty('${item.key}',-1)">−</button>
+            <span id="qty-${item.key.replace(/\W/g,'_')}">${item.qty}</span>
+            <button onclick="cartPageUpdateQty('${item.key}',1)">+</button>
+          </div>
+          <button class="cart-line-remove" onclick="cartPageRemove('${item.key}')">Remove</button>
+        </div>
+      </div>
+      <div class="cart-line-price" id="price-${item.key.replace(/\W/g,'_')}">R ${(item.price * item.qty).toLocaleString('en-ZA')}</div>
+    </div>`).join('');
+}
+
+function cartPageUpdateQty(key, delta) {
+  Cart.updateQty(key, delta);
+  renderCartPage();
+}
+function cartPageRemove(key) {
+  Cart.remove(key);
+  renderCartPage();
+}
+
+function showCheckoutForm() {
+  const wrap = document.querySelector('.cart-page-wrap');
+  if (!wrap) return;
+  wrap.innerHTML = `
+    <!-- CHECKOUT FORM -->
+    <div>
+      <!-- STEPS -->
+      <div class="checkout-steps" style="margin-bottom:28px">
+        <div class="checkout-step done"><span class="checkout-step-num">✓</span>Bag</div>
+        <div class="checkout-step-sep"></div>
+        <div class="checkout-step active"><span class="checkout-step-num">2</span>Details</div>
+        <div class="checkout-step-sep"></div>
+        <div class="checkout-step"><span class="checkout-step-num">3</span>Confirm</div>
+      </div>
+
+      <div class="checkout-section">
+        <div class="checkout-section-title">Contact</div>
+        <div class="form-row full"><div class="form-group">
+          <label class="form-label">Email address</label>
+          <input class="form-input" type="email" placeholder="you@example.com">
+        </div></div>
+      </div>
+
+      <div class="checkout-section">
+        <div class="checkout-section-title">Shipping Address</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">First name</label><input class="form-input" type="text" placeholder="Nomsa"></div>
+          <div class="form-group"><label class="form-label">Last name</label><input class="form-input" type="text" placeholder="Dlamini"></div>
+        </div>
+        <div class="form-row full"><div class="form-group">
+          <label class="form-label">Street address</label>
+          <input class="form-input" type="text" placeholder="123 Long Street">
+        </div></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">City</label><input class="form-input" type="text" placeholder="Cape Town"></div>
+          <div class="form-group"><label class="form-label">Postal code</label><input class="form-input" type="text" placeholder="8001"></div>
+        </div>
+        <div class="form-row full"><div class="form-group">
+          <label class="form-label">Province</label>
+          <select class="form-input form-select">
+            <option>Western Cape</option><option>Gauteng</option><option>KwaZulu-Natal</option>
+            <option>Eastern Cape</option><option>Free State</option><option>Limpopo</option>
+            <option>Mpumalanga</option><option>North West</option><option>Northern Cape</option>
+          </select>
+        </div></div>
+      </div>
+
+      <div class="checkout-section">
+        <div class="checkout-section-title">Payment</div>
+        <div style="padding:16px;background:rgba(248,250,252,.03);border:1px solid rgba(248,250,252,.08);border-radius:2px;font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">
+          🔒 Secure payment — Powered by Stripe (Demo Mode)
+        </div>
+        <div class="form-row full" style="margin-top:12px"><div class="form-group">
+          <label class="form-label">Card number</label>
+          <input class="form-input" type="text" placeholder="4242 4242 4242 4242">
+        </div></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Expiry</label><input class="form-input" type="text" placeholder="MM / YY"></div>
+          <div class="form-group"><label class="form-label">CVC</label><input class="form-input" type="text" placeholder="123"></div>
+        </div>
+      </div>
+
+      <button class="cart-checkout-btn" onclick="showOrderConfirmation()" style="max-width:100%">Place Order →</button>
+    </div>
+
+    <!-- ORDER SUMMARY SIDEBAR -->
+    <div class="cart-summary">
+      <div class="cart-summary-title">Your Order</div>
+      ${Cart.getItems().map(i => `
+        <div style="display:flex;gap:10px;margin-bottom:12px;align-items:center">
+          <img src="${i.img}" style="width:48px;height:64px;object-fit:cover;border-radius:1px;flex-shrink:0">
+          <div style="flex:1;min-width:0">
+            <div style="font-family:var(--serif);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${i.name}</div>
+            <div style="font-family:var(--condensed);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Size: ${i.size} · Qty: ${i.qty}</div>
+          </div>
+          <div style="font-family:var(--condensed);font-size:12px;font-weight:900;flex-shrink:0">R ${(i.price*i.qty).toLocaleString('en-ZA')}</div>
+        </div>`).join('')}
+      <div class="cart-summary-total" style="margin-top:16px">
+        <span>Total</span>
+        <span>R ${Cart.total().toLocaleString('en-ZA')}</span>
+      </div>
+      <div class="cart-trust-row">
+        <div class="cart-trust-item">Free returns within 14 days</div>
+        <div class="cart-trust-item">All pieces made in South Africa</div>
+      </div>
+    </div>`;
+}
+
+function showOrderConfirmation() {
+  const ref = 'IM-' + Math.random().toString(36).substr(2,8).toUpperCase();
+  document.getElementById('cartPageContent').innerHTML = `
+    <div style="max-width:700px;margin:0 auto;padding:calc(var(--nav-h)+60px) 40px 80px">
+      <div class="confirm-wrap">
+        <div class="confirm-icon">✓</div>
+        <div class="confirm-title">Order Confirmed</div>
+        <div class="confirm-sub">Thank you for supporting SA design</div>
+        <div class="confirm-ref">Reference: ${ref}</div>
+        <p style="font-family:var(--body);font-size:14px;font-weight:300;color:var(--muted);max-width:400px;line-height:1.8;margin-top:8px">
+          A confirmation will be sent to your email. Your pieces are being prepared by our designers and will ship within 3–5 business days.
+        </p>
+        <div class="confirm-actions">
+          <a href="shop.html" class="confirm-btn-primary">Continue Shopping</a>
+          <a href="index.html" class="confirm-btn-secondary">Back to Home</a>
+        </div>
+      </div>
+    </div>`;
+  Cart.clear();
+}
+</script>
+</body>
+</html>

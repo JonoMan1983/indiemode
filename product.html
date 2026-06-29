@@ -153,16 +153,19 @@ a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;backgroun
 .footer-copy{font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
 @media(max-width:900px){.pd-wrap{grid-template-columns:1fr;gap:32px}.pd-gallery{position:static}.related-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){:root{--nav-h:58px}.breadcrumb{padding-left:24px;padding-right:24px}.pd-wrap{padding:20px 24px 60px}.pd-attrs{grid-template-columns:1fr}.related-inner{padding:0 24px}.footer-top{grid-template-columns:1fr 1fr;gap:32px}.nav-links{display:none}}
-</style>
-</head><body>
-
-<nav class="nav" id="mainNav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">INDIE<span class="logo-accent">mode</span></a>
-    <ul class="nav-links"></ul>
-    <div class="nav-right">
+.nav-wish-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:4px;color:var(--muted);border:1px solid transparent;transition:color .2s,border-color .2s;position:r<div class="nav-right">
       <button class="nav-search-btn" onclick="openSearch()" aria-label="Search">
         <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M13 13L16 16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </button>
+      <button class="nav-wish-btn" onclick="Cart.openWishDrawer()" aria-label="Wishlist">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 13.5S1.5 9.5 1.5 5.5A3.5 3.5 0 0 1 8 3.757 3.5 3.5 0 0 1 14.5 5.5C14.5 9.5 8 13.5 8 13.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        <span class="wish-count" id="wishCount">0</span>
+      </button>
+      <button class="nav-cart" onclick="Cart.openDrawer()" aria-label="Open bag">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 1H3L4.5 9.5H12.5L14 4H4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="12.5" r="1" fill="currentColor"/><circle cx="11" cy="12.5" r="1" fill="currentColor"/></svg>
+        Bag <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>ke-width="1.4"/><path d="M13 13L16 16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
       </button>
       <a href="shop.html" class="nav-cart"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 1H3L4.5 9.5H12.5L14 4H4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="12.5" r="1" fill="currentColor"/><circle cx="11" cy="12.5" r="1" fill="currentColor"/></svg>Bag <span class="cart-count" id="cartCount">0</span></a>
     </div>
@@ -221,7 +224,7 @@ a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;backgroun
 
     <div class="pd-ctas">
       <button class="btn-atb" id="pdAtbBtn" onclick="addToCart()">Add to Bag →</button>
-      <button class="btn-wish" id="pdWishBtn" onclick="this.classList.toggle('wished');this.textContent=this.classList.contains('wished')?'♥':'♡'">♡</button>
+      <button class="btn-wish wish-btn" id="pdWishBtn" aria-label="Add to wishlist">♡</button>
     </div>
 
     <div class="pd-trust">
@@ -267,6 +270,7 @@ a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;backgroun
 </div></footer>
 
 <script src="data.js"></script><script src="app.js"></script>
+<script src="cart.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const id = new URLSearchParams(location.search).get('id') || IM.products[0].id;
