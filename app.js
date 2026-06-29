@@ -20,21 +20,17 @@ function formatPrice(p) {
 }
 
 // ── TOAST NOTIFICATION ──────────────────────────────
-function showToast(msg, type='info') {
+function showToast(msg, type) {
   const existing = document.getElementById('imToast');
   if (existing) existing.remove();
   const t = document.createElement('div');
   t.id = 'imToast';
   t.textContent = msg;
-  t.style.cssText = `position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);
-    background:${type==='error'?'var(--primary)':'#1E293B'};color:var(--text);
-    font-family:var(--condensed);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-    padding:12px 24px;border-radius:2px;border:1px solid rgba(248,250,252,.12);
-    z-index:9999;opacity:0;transition:all .25s;white-space:nowrap;
-    box-shadow:0 8px 32px rgba(0,0,0,.4)`;
+  const bg = (type === 'error') ? 'var(--primary)' : '#1E293B';
+  t.style.cssText = 'position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:' + bg + ';color:var(--text);font-family:var(--condensed);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:12px 24px;border-radius:2px;border:1px solid rgba(248,250,252,.12);z-index:9999;opacity:0;transition:all .25s;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.4)';
   document.body.appendChild(t);
-  requestAnimationFrame(() => { t.style.opacity='1'; t.style.transform='translateX(-50%) translateY(0)'; });
-  setTimeout(() => { t.style.opacity='0'; t.style.transform='translateX(-50%) translateY(10px)'; setTimeout(()=>t.remove(),300); }, 2200);
+  requestAnimationFrame(function() { t.style.opacity = '1'; t.style.transform = 'translateX(-50%) translateY(0)'; });
+  setTimeout(function() { t.style.opacity = '0'; t.style.transform = 'translateX(-50%) translateY(10px)'; setTimeout(function(){t.remove();}, 300); }, 2200);
 }
 
 function badgeHTML(badge) {
@@ -106,11 +102,7 @@ function productCard(p, delay='') {
       <img src="${img(p.img)}" alt="${p.name}" loading="lazy">
       ${badgeHTML(p.badge)}
       <div class="prod-quick">View Product →</div>
-      <button class="wish-btn prod-wish-overlay" data-wish-id="${p.id}"
-        onclick="event.preventDefault();event.stopPropagation();
-          if(typeof Cart!=='undefined'){const isNow=Cart.toggleWish('${p.id}');
-          this.innerHTML=isNow?'♥':'♡';this.classList.toggle('wished',isNow)}"
-        aria-label="Add to wishlist">♡</button>
+      <button class="wish-btn prod-wish-overlay" data-wish-id="${p.id}" aria-label="Add to wishlist">♡</button>
     </div>
     <div class="prod-info">
       <div class="prod-brand">${brand.name || ''}</div>
@@ -469,8 +461,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── CART + WISHLIST INIT ──────────────────────────
   if (typeof Cart !== 'undefined') {
     Cart.init();
+    // Delegated wish button handler — works for dynamically rendered cards
+    document.addEventListener('click', function(e) {
+      const btn = e.target.closest('[data-wish-id]');
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const id = btn.dataset.wishId;
+      const isNow = Cart.toggleWish(id);
+      btn.innerHTML = isNow ? '♥' : '♡';
+      btn.classList.toggle('wished', isNow);
+    });
     // Sync wish hearts after dynamic content renders
-    setTimeout(() => Cart.syncAllWishBtnsAll(), 100);
+    setTimeout(function() { Cart.syncAllWishBtnsAll(); }, 150);
   }
 
   // ── LIVE SEARCH ────────────────────────────────────────
