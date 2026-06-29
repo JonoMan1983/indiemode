@@ -124,6 +124,8 @@ const Cart = {
       const id = btn.dataset.wishId;
       const wished = this.isWished(id);
       btn.classList.toggle('wished', wished);
+      btn.innerHTML = wished ? '♥' : '♡';
+      btn.setAttribute('aria-label', wished ? 'Remove from wishlist' : 'Add to wishlist');
     });
   },
 
@@ -161,6 +163,9 @@ const Cart = {
     const body = document.getElementById('cartDrawerBody');
     const foot = document.getElementById('cartDrawerFoot');
     if (!body) return;
+    // Update drawer header count
+    const dcEl = document.getElementById('cartDrawerCount');
+    if (dcEl) dcEl.textContent = this.count();
     const items = this.getItems();
 
     if (!items.length) {
@@ -255,7 +260,7 @@ const Cart = {
     <!-- CART DRAWER -->
     <div id="cartDrawer" class="side-drawer cart-drawer">
       <div class="drawer-header">
-        <div class="drawer-title">Your Bag <span class="drawer-count">${this.count()}</span></div>
+        <div class="drawer-title">Your Bag <span class="drawer-count" id="cartDrawerCount">${this.count()}</span></div>
         <button class="drawer-close" onclick="Cart.closeDrawer()" aria-label="Close">✕</button>
       </div>
       <div class="drawer-body" id="cartDrawerBody"></div>

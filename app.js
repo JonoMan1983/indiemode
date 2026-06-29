@@ -19,6 +19,24 @@ function formatPrice(p) {
   return 'R ' + p.toLocaleString('en-ZA');
 }
 
+// ── TOAST NOTIFICATION ──────────────────────────────
+function showToast(msg, type='info') {
+  const existing = document.getElementById('imToast');
+  if (existing) existing.remove();
+  const t = document.createElement('div');
+  t.id = 'imToast';
+  t.textContent = msg;
+  t.style.cssText = `position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:${type==='error'?'var(--primary)':'#1E293B'};color:var(--text);
+    font-family:var(--condensed);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    padding:12px 24px;border-radius:2px;border:1px solid rgba(248,250,252,.12);
+    z-index:9999;opacity:0;transition:all .25s;white-space:nowrap;
+    box-shadow:0 8px 32px rgba(0,0,0,.4)`;
+  document.body.appendChild(t);
+  requestAnimationFrame(() => { t.style.opacity='1'; t.style.transform='translateX(-50%) translateY(0)'; });
+  setTimeout(() => { t.style.opacity='0'; t.style.transform='translateX(-50%) translateY(10px)'; setTimeout(()=>t.remove(),300); }, 2200);
+}
+
 function badgeHTML(badge) {
   if (!badge) return '';
   const map = { new: ['bdg-new','New'], sale: ['bdg-sale','Sale'], ltd: ['bdg-ltd','Ltd'] };
@@ -28,21 +46,49 @@ function badgeHTML(badge) {
 
 // ── NAV ─────────────────────────────────────────────────────
 function renderNav() {
-  const isHome = location.pathname.endsWith('index.html') || location.pathname.endsWith('/');
   const links = IM.nav.map(n =>
     `<li><a href="${n.href}${n.filter ? '?cat='+n.filter : ''}"${n.highlight ? ' class="nav-sale"' : ''}>${n.label}</a></li>`
   ).join('');
 
+  // For pages that render nav via app.js (about, contact — have <nav id="siteNav">)
+  const siteNav = document.getElementById('siteNav');
+  if (siteNav) {
+    siteNav.className = 'nav';
+    siteNav.innerHTML = `
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Indie<span class="logo-accent">mode</span></a>
+        <ul class="nav-links">${links}</ul>
+        <div class="nav-right">
+          <button class="nav-search-btn" onclick="openSearch()" aria-label="Search">
+            <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M13 13L16 16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </button>
+          <button class="nav-wish-btn" onclick="Cart.openWishDrawer()" aria-label="Wishlist">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 13.5S1.5 9.5 1.5 5.5A3.5 3.5 0 0 1 8 3.757 3.5 3.5 0 0 1 14.5 5.5C14.5 9.5 8 13.5 8 13.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            <span class="wish-count" id="wishCount">0</span>
+          </button>
+          <button class="nav-cart" onclick="Cart.openDrawer()" aria-label="Open bag">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 1H3L4.5 9.5H12.5L14 4H4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="12.5" r="1" fill="currentColor"/><circle cx="11" cy="12.5" r="1" fill="currentColor"/></svg>
+            Bag <span class="cart-count" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>`;
+    window.addEventListener('scroll', () =>
+      siteNav.classList.toggle('scrolled', scrollY > 80), {passive:true});
+  }
+
+  // For pages with static nav HTML — just populate the links
   document.querySelectorAll('.nav-links').forEach(el => el.innerHTML = links);
 
-  // Scroll behaviour
+  // Scroll behaviour for static nav
   const nav = document.getElementById('mainNav');
   if (nav) window.addEventListener('scroll', () =>
     nav.classList.toggle('scrolled', scrollY > 80), {passive:true});
 
   // Search
-  window.openSearch  = () => { $('sOverlay').classList.add('open'); setTimeout(() => $('sInput').focus(), 60); };
-  window.closeSearch = () => $('sOverlay').classList.remove('open');
+  window.openSearch  = () => {
+    const o = $('sOverlay'); if(o) { o.classList.add('open'); setTimeout(()=>{ const i=$('sInput'); if(i)i.focus(); },60); }
+  };
+  window.closeSearch = () => { const o=$('sOverlay'); if(o) o.classList.remove('open'); };
   document.addEventListener('keydown', e => { if(e.key==='Escape') closeSearch(); });
 
   // Cart & Wishlist — handled by Cart module (cart.js)
@@ -60,6 +106,11 @@ function productCard(p, delay='') {
       <img src="${img(p.img)}" alt="${p.name}" loading="lazy">
       ${badgeHTML(p.badge)}
       <div class="prod-quick">View Product →</div>
+      <button class="wish-btn prod-wish-overlay" data-wish-id="${p.id}"
+        onclick="event.preventDefault();event.stopPropagation();
+          if(typeof Cart!=='undefined'){const isNow=Cart.toggleWish('${p.id}');
+          this.innerHTML=isNow?'♥':'♡';this.classList.toggle('wished',isNow)}"
+        aria-label="Add to wishlist">♡</button>
     </div>
     <div class="prod-info">
       <div class="prod-brand">${brand.name || ''}</div>
@@ -264,7 +315,13 @@ function initProduct() {
   if (atbBtn) {
     atbBtn.onclick = () => {
       const active = document.querySelector('.size-btn.active');
-      const size = active ? active.textContent.trim() : (p.sizes ? p.sizes[0] : 'One Size');
+      if (!active) {
+        showToast('Please select a size first');
+        document.querySelector('.pd-sizes')?.classList.add('size-shake');
+        setTimeout(() => document.querySelector('.pd-sizes')?.classList.remove('size-shake'), 500);
+        return;
+      }
+      const size = active.textContent.trim();
       if (typeof Cart !== 'undefined') Cart.add(p.id, size);
     };
   }
@@ -410,7 +467,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveal();
 
   // ── CART + WISHLIST INIT ──────────────────────────
-  if (typeof Cart !== 'undefined') Cart.init();
+  if (typeof Cart !== 'undefined') {
+    Cart.init();
+    // Sync wish hearts after dynamic content renders
+    setTimeout(() => Cart.syncAllWishBtnsAll(), 100);
+  }
 
   // ── LIVE SEARCH ────────────────────────────────────────
   const sInput = document.getElementById('sInput');
