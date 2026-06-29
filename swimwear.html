@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swimwear — Indiemode SA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=DM+Serif+Display:ital@0;1&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0F172A;--surface:#1E293B;--primary:#FF006E;--secondary:#00F5D4;--text:#F8FAFC;--surface-hi:#253248;--border:rgba(248,250,252,0.08);--border-hi:rgba(248,250,252,0.16);--muted:rgba(248,250,252,0.45);--dim:rgba(248,250,252,0.2);--primary-glow:rgba(255,0,110,0.25);--teal-glow:rgba(0,245,212,0.18);--condensed:'Barlow Condensed',sans-serif;--serif:'DM Serif Display',Georgia,serif;--body:'Barlow',sans-serif;--rule:1px solid rgba(248,250,252,0.1);--nav-h:64px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;background-image:linear-gradient(rgba(248,250,252,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(248,250,252,.018) 1px,transparent 1px);background-size:60px 60px}
+a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;background:none;font-family:var(--body)}img{display:block;max-width:100%}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+
+/* ── NAV ─────────────────────────────────────────────── */
+.s-overlay{position:fixed;inset:0;background:rgba(15,23,42,.96);z-index:300;display:flex;align-items:flex-start;padding-top:120px;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;backdrop-filter:blur(8px)}
+.s-overlay.open{opacity:1;pointer-events:all}
+.s-wrap{width:100%;max-width:680px;padding:0 40px}
+.s-label{font-family:var(--condensed);font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--secondary);margin-bottom:20px}
+.s-input{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(248,250,252,.2);font-family:var(--serif);font-size:40px;font-style:italic;color:var(--text);padding:12px 0;outline:none;transition:border-color .2s}
+.s-input::placeholder{color:var(--dim)}.s-input:focus{border-bottom-color:var(--secondary)}
+.s-close{position:absolute;top:32px;right:40px;font-family:var(--condensed);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:color .2s}.s-close:hover{color:var(--text)}
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(15,23,42,.96);border-bottom-color:var(--border);backdrop-filter:blur(12px)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 40px;height:100%;display:flex;align-items:center}
+.nav-logo{font-family:var(--condensed);font-size:20px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--text);margin-right:48px;flex-shrink:0;position:relative}
+.nav-logo .logo-accent{color:var(--primary);font-style:italic;font-family:var(--serif);font-size:22px;letter-spacing:0;font-weight:400}
+.nav-logo::after{content:'EST. ZA — 2012';position:absolute;bottom:-9px;left:0;font-size:7px;letter-spacing:.22em;color:var(--dim);white-space:nowrap;font-family:var(--condensed);font-weight:700;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;flex:1}
+.nav-links a{font-family:var(--condensed);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);transition:color .2s;position:relative}
+.nav-links a:hover{color:var(--text)}.nav-links a.nav-sale{color:var(--primary)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--secondary);transform:scaleX(0);transform-origin:left;transition:transform .2s}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-right{display:flex;align-items:center;gap:16px;margin-left:auto}
+.nav-search-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:4px;color:var(--muted);border:1px solid transparent;transition:color .2s,border-color .2s}
+.nav-search-btn:hover{color:var(--text);border-color:var(--border-hi)}
+.nav-cart{display:flex;align-items:center;gap:8px;padding:8px 18px;border:1px solid var(--primary);color:var(--primary);font-family:var(--condensed);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;border-radius:2px;transition:background .2s,color .2s,box-shadow .2s}
+.nav-cart:hover{background:var(--primary);color:var(--bg);box-shadow:0 0 20px var(--primary-glow)}
+.cart-count{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:var(--primary);color:var(--bg);font-size:9px;font-weight:900;border-radius:50%;transition:transform .2s}
+.nav-cart:hover .cart-count{background:var(--bg);color:var(--primary)}
+
+/* ── HERO — full bleed split ─────────────────────────── */
+.sw-hero{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;border-bottom:var(--rule);overflow:hidden}
+.sw-hero-l{position:relative;overflow:hidden}
+.sw-hero-l img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.sw-hero-l::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--bg) 100%),linear-gradient(to top,rgba(15,23,42,.55) 0%,transparent 45%)}
+.sw-hero-specimen{position:absolute;top:calc(var(--nav-h) + 24px);left:24px;z-index:2;display:flex;flex-direction:column;gap:4px}
+.sw-hero-run{font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:var(--secondary);border:1px solid rgba(0,245,212,.35);padding:4px 10px;border-radius:1px;width:fit-content}
+.sw-hero-r{display:flex;flex-direction:column;justify-content:center;padding:120px 64px 80px 48px;position:relative;z-index:1}
+.sw-hero-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.sw-hero-label::before{content:'';width:20px;height:1px;background:var(--secondary)}
+.sw-hero-h{font-family:var(--serif);font-size:clamp(52px,6.5vw,84px);font-weight:400;line-height:.92;color:var(--text);margin-bottom:28px}
+.sw-hero-h em{display:block;font-style:italic;color:var(--primary);margin-left:12px}
+.sw-hero-rule{width:100%;height:1px;background:linear-gradient(to right,var(--border-hi),transparent);margin-bottom:28px;position:relative}
+.sw-hero-rule::after{content:'ORIGIN: SOUTH AFRICA';position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:var(--condensed);font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--dim)}
+.sw-hero-body{font-size:15px;font-weight:300;line-height:1.8;color:var(--muted);max-width:380px;margin-bottom:40px}
+.sw-hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.sw-hero-stats{display:flex;border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-top:48px;max-width:360px}
+.sw-stat{flex:1;padding:16px 18px;border-right:1px solid var(--border)}
+.sw-stat:last-child{border-right:none}
+.sw-stat-n{font-family:var(--condensed);font-size:26px;font-weight:900;color:var(--text);line-height:1;margin-bottom:3px}
+.sw-stat-n em{font-style:normal;color:var(--secondary)}
+.sw-stat-l{font-family:var(--condensed);font-size:8px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+
+/* ── EDITORIAL STRIP ─────────────────────────────────── */
+.sw-ed{position:relative;overflow:hidden;height:420px;border-bottom:var(--rule)}
+.sw-ed img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.sw-ed::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(15,23,42,.85) 0%,rgba(15,23,42,.4) 50%,transparent 100%);z-index:1}
+.sw-ed-inner{position:absolute;inset:0;z-index:2;display:flex;align-items:center;padding:0 80px}
+.sw-ed-content{max-width:520px}
+.sw-ed-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sw-ed-label::before{content:'';width:20px;height:1px;background:var(--secondary)}
+.sw-ed-h{font-family:var(--serif);font-size:clamp(34px,4vw,54px);font-weight:400;line-height:1.05;color:var(--text);margin-bottom:16px}
+.sw-ed-h em{font-style:italic;color:var(--secondary)}
+.sw-ed-body{font-size:14px;font-weight:300;line-height:1.8;color:var(--muted)}
+
+/* ── PRODUCT GRID ────────────────────────────────────── */
+.sw-shop{padding:72px 0 96px}
+.sw-shop-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px;padding-bottom:20px;border-bottom:var(--rule)}
+.sw-shop-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.sw-shop-label::before{content:'';width:20px;height:1px;background:var(--secondary)}
+.sw-shop-title{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:400;color:var(--text)}
+.sw-shop-title em{font-style:italic;color:var(--primary)}
+.sw-count{font-family:var(--condensed);font-size:10px;letter-spacing:.16em;color:var(--dim)}
+.sw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden}
+
+/* ── PRODUCT CARD ────────────────────────────────────── */
+.prod-card{background:var(--bg);position:relative;transition:background .2s;display:block}
+.prod-card:hover{background:var(--surface)}
+.prod-card:hover .prod-img img{transform:scale(1.04)}
+.prod-img{aspect-ratio:3/4;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.prod-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .5s ease}
+.prod-quick{position:absolute;bottom:0;left:0;right:0;padding:12px;background:var(--primary);font-family:var(--condensed);font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);text-align:center;transform:translateY(100%);transition:transform .2s;z-index:2}
+.prod-card:hover .prod-quick{transform:translateY(0)}
+.prod-badge{position:absolute;top:12px;left:12px;font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;padding:3px 8px;border-radius:1px;z-index:2}
+.bdg-new{background:var(--surface);color:var(--secondary);border:1px solid var(--secondary)}
+.bdg-sale{background:var(--primary);color:var(--bg)}
+.bdg-ltd{background:transparent;color:var(--primary);border:1px solid var(--primary)}
+.prod-info{padding:14px 16px;border-bottom:1px solid var(--border)}
+.prod-brand{font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:var(--secondary);margin-bottom:5px}
+.prod-name{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--text);line-height:1.2;margin-bottom:10px}
+.prod-foot{display:flex;align-items:center;justify-content:space-between}
+.prod-price{font-family:var(--condensed);font-size:16px;font-weight:900;color:var(--text)}
+.prod-orig{font-size:12px;color:var(--dim);text-decoration:line-through;margin-right:6px;font-weight:400}
+.prod-stars{font-family:var(--condensed);font-size:11px;color:var(--secondary);display:flex;align-items:center;gap:4px}
+.prod-rev{font-size:9px;color:var(--dim);letter-spacing:.08em}
+
+/* ── FEATURE DUO ─────────────────────────────────────── */
+.sw-duo{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-top:var(--rule);border-bottom:var(--rule);margin-bottom:0}
+.duo-cell{position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--bg)}
+.duo-cell img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .6s ease}
+.duo-cell:hover img{transform:scale(1.04)}
+.duo-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.75) 0%,transparent 50%)}
+.duo-info{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;z-index:2}
+.duo-brand{font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:var(--secondary);margin-bottom:5px}
+.duo-name{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--text);margin-bottom:8px}
+.duo-price{font-family:var(--condensed);font-size:15px;font-weight:900;color:var(--text)}
+.duo-badge{position:absolute;top:16px;left:16px;font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;padding:3px 8px;border-radius:1px;z-index:2}
+
+/* ── BUTTONS ─────────────────────────────────────────── */
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--primary);color:var(--bg);font-family:var(--condensed);font-size:12px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--primary);border-radius:2px;transition:background .2s,box-shadow .2s,transform .15s;cursor:pointer}
+.btn-primary:hover{box-shadow:0 0 32px var(--primary-glow);transform:translateY(-1px)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:transparent;color:var(--secondary);font-family:var(--condensed);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(0,245,212,.35);border-radius:2px;transition:border-color .2s,background .2s,box-shadow .2s;cursor:pointer}
+.btn-secondary:hover{border-color:var(--secondary);background:rgba(0,245,212,.06);box-shadow:0 0 20px var(--teal-glow)}
+
+/* ── CARE STRIP ──────────────────────────────────────── */
+.sw-care{background:var(--surface);border-top:var(--rule);border-bottom:var(--rule);padding:40px 0}
+.sw-care-inner{max-width:1280px;margin:0 auto;padding:0 40px;display:flex;gap:0}
+.care-item{flex:1;display:flex;align-items:center;gap:14px;padding:0 28px;border-right:var(--rule)}
+.care-item:first-child{padding-left:0}.care-item:last-child{border-right:none}
+.care-icon{font-family:var(--condensed);font-size:20px;font-weight:900;color:var(--secondary);width:32px;flex-shrink:0}
+.care-main{font-family:var(--condensed);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text);margin-bottom:2px}
+.care-sub{font-family:var(--condensed);font-size:9px;font-weight:500;letter-spacing:.1em;color:var(--dim)}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
+.footer{background:var(--surface);border-top:2px solid var(--border);padding:60px 0 36px}
+.footer-inner{max-width:1280px;margin:0 auto;padding:0 40px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;padding-bottom:48px;border-bottom:var(--rule)}
+.footer-logo{font-family:var(--condensed);font-size:22px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--text);margin-bottom:6px}
+.footer-logo .lo-accent{font-family:var(--serif);font-style:italic;font-weight:400;font-size:24px;letter-spacing:0;color:var(--primary)}
+.footer-spec{font-family:var(--condensed);font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);margin-bottom:20px}
+.footer-tagline{font-size:14px;font-weight:300;line-height:1.7;color:var(--muted);max-width:260px;margin-bottom:28px}
+.footer-socials{display:flex;gap:8px}
+.soc-btn{width:32px;height:32px;border-radius:1px;border:1px solid var(--border-hi);display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:13px;transition:border-color .2s,color .2s,background .2s}
+.soc-btn:hover{border-color:var(--primary);color:var(--primary);background:rgba(255,0,110,.08)}
+.footer-col-title{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:var(--secondary);margin-bottom:18px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-family:var(--condensed);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:28px;flex-wrap:wrap}
+.footer-copy{font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+
+@media(max-width:1024px){.sw-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){
+  :root{--nav-h:58px}
+  .wrap{padding:0 24px}
+  .sw-hero{grid-template-columns:1fr}
+  .sw-hero-l{height:60vh}
+  .sw-hero-r{padding:48px 24px 56px}
+  .sw-ed-inner{padding:0 24px}
+  .sw-duo{grid-template-columns:1fr}
+  .sw-grid{grid-template-columns:repeat(2,1fr)}
+  .sw-care-inner{flex-wrap:wrap}
+  .care-item{flex:0 0 50%;border-right:none;border-bottom:var(--rule);padding:16px 0}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+  .nav-links{display:none}
+}
+</style>
+</head><body>
+
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">INDIE<span class="logo-accent">mode</span></a>
+    <ul class="nav-links"></ul>
+    <div class="nav-right">
+      <button class="nav-search-btn" onclick="openSearch()" aria-label="Search">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M13 13L16 16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </button>
+      <a href="shop.html" class="nav-cart"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 1H3L4.5 9.5H12.5L14 4H4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="12.5" r="1" fill="currentColor"/><circle cx="11" cy="12.5" r="1" fill="currentColor"/></svg>Bag <span class="cart-count" id="cartCount">0</span></a>
+    </div>
+  </div>
+</nav>
+
+<div class="s-overlay" id="sOverlay">
+  <button class="s-close" onclick="closeSearch()">ESC — CLOSE</button>
+  <div class="s-wrap"><div class="s-label">Search specimen catalogue</div><input class="s-input" type="text" placeholder="designer, garment, collection…" id="sInput" autocomplete="off"></div>
+</div>
+
+<!-- ── HERO — swim-01 (chris-yang portrait) ────────────────── -->
+<section class="sw-hero">
+  <div class="sw-hero-l">
+    <img src="img/swim-01.jpg" alt="Indiemode Swimwear Editorial" loading="eager">
+    <div class="sw-hero-specimen">
+      <div class="sw-hero-run">SS26 · SWIMWEAR</div>
+    </div>
+  </div>
+  <div class="sw-hero-r reveal">
+    <div class="sw-hero-label">Category — Swimwear</div>
+    <h1 class="sw-hero-h">SA <em>swimwear.</em><br>Independently<br>made.</h1>
+    <div class="sw-hero-rule"></div>
+    <p class="sw-hero-body">Eight pieces. Eight South African designers. Every suit cut locally, from recycled and locally sourced fabrics. No fast fashion. No compromise.</p>
+    <div class="sw-hero-ctas">
+      <a href="#grid" class="btn-primary">Shop Collection →</a>
+      <a href="shop.html" class="btn-secondary">All Categories</a>
+    </div>
+    <div class="sw-hero-stats">
+      <div class="sw-stat"><div class="sw-stat-n">8<em>+</em></div><div class="sw-stat-l">Pieces</div></div>
+      <div class="sw-stat"><div class="sw-stat-n">6<em>+</em></div><div class="sw-stat-l">Designers</div></div>
+      <div class="sw-stat"><div class="sw-stat-n">100<em>%</em></div><div class="sw-stat-l">Made in SA</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EDITORIAL STRIP — swim-03 (marcin-sajur landscape) ──── -->
+<div class="sw-ed reveal">
+  <img src="img/swim-03.jpg" alt="Swimwear Editorial">
+  <div class="sw-ed-inner">
+    <div class="sw-ed-content">
+      <div class="sw-ed-label">The Specimen</div>
+      <h2 class="sw-ed-h">Cut for the <em>South African</em> summer.</h2>
+      <p class="sw-ed-body">From the Atlantic seaboard to the KZN coast — every piece in this collection was designed for real South African sun, salt, and skin.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── FEATURED DUO — swim-04 + swim-05 (lhon-karwan pair) ─── -->
+<div class="sw-duo reveal">
+  <a href="shop.html?cat=swimwear" class="duo-cell">
+    <img src="img/swim-04.jpg" alt="Carbon Cut-Out Brief">
+    <div class="duo-badge bdg-new">New</div>
+    <div class="duo-info">
+      <div class="duo-brand">Blackcherry · Durban</div>
+      <div class="duo-name">Carbon Cut-Out Brief</div>
+      <div class="duo-price">R 520</div>
+    </div>
+  </a>
+  <a href="shop.html?cat=swimwear" class="duo-cell">
+    <img src="img/swim-05.jpg" alt="Midnight Plunge Suit">
+    <div class="duo-badge bdg-sale">Sale</div>
+    <div class="duo-info">
+      <div class="duo-brand">Coco Lifestyle · Stellenbosch</div>
+      <div class="duo-name">Midnight Plunge Suit</div>
+      <div class="duo-price"><span class="prod-orig">R 1 650</span>R 1 250</div>
+    </div>
+  </a>
+</div>
+
+<!-- ── CARE STRIP ─────────────────────────────────────────────── -->
+<div class="sw-care">
+  <div class="sw-care-inner">
+    <div class="care-item">
+      <div class="care-icon">↺</div>
+      <div><div class="care-main">Recycled Fabrics</div><div class="care-sub">Ocean-recovered nylon</div></div>
+    </div>
+    <div class="care-item">
+      <div class="care-icon">◎</div>
+      <div><div class="care-main">UPF 50+ Options</div><div class="care-sub">Sun protection built in</div></div>
+    </div>
+    <div class="care-item">
+      <div class="care-icon">♦</div>
+      <div><div class="care-main">Limited Runs</div><div class="care-sub">Never mass produced</div></div>
+    </div>
+    <div class="care-item">
+      <div class="care-icon">✦</div>
+      <div><div class="care-main">100% SA Made</div><div class="care-sub">Studio-to-shore</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PRODUCT GRID ─────────────────────────────────────────── -->
+<section class="sw-shop" id="grid">
+  <div class="wrap">
+    <div class="sw-shop-head reveal">
+      <div>
+        <div class="sw-shop-label">Specimen Catalogue</div>
+        <h2 class="sw-shop-title">The full <em>collection.</em></h2>
+      </div>
+      <div class="sw-count" id="swCount"></div>
+    </div>
+    <div class="sw-grid" id="swGrid"></div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer class="footer"><div class="footer-inner">
+  <div class="footer-top">
+    <div><div class="footer-logo">INDIE<span class="lo-accent">mode</span></div><div class="footer-spec">SA Fashion Registry · Est. 2012 · ZA</div><p class="footer-tagline">South Africa's home for independent fashion designers.</p><div class="footer-socials"><a href="#" class="soc-btn">&#9649;</a><a href="#" class="soc-btn">&#9650;</a><a href="#" class="soc-btn">&#9670;</a></div></div>
+    <div><div class="footer-col-title">Shop</div><ul class="footer-links"><li><a href="shop.html">New Arrivals</a></li><li><a href="swimwear.html">Swimwear</a></li><li><a href="shop.html?cat=jewellery">Jewellery</a></li><li><a href="shop.html?cat=accessories">Accessories</a></li><li><a href="shop.html?cat=sale">Sale</a></li></ul></div>
+    <div><div class="footer-col-title">Help</div><ul class="footer-links"><li><a href="contact.html">FAQ</a></li><li><a href="contact.html">Delivery & Returns</a></li><li><a href="contact.html">Size Guide</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><div class="footer-col-title">About</div><ul class="footer-links"><li><a href="about.html">Our Story</a></li><li><a href="brands.html">All Brands</a></li><li><a href="contact.html">List Your Brand</a></li><li><a href="contact.html">Privacy</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Indiemode · SA Fashion Registry · Proudly South African</div></div>
+</div></footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+// ── Build swimwear grid ────────────────────────────────────────
+function initSwimwear() {
+  const swimwear = IM.products.filter(p => p.category === 'swimwear');
+  const grid = document.getElementById('swGrid');
+  const count = document.getElementById('swCount');
+  if (count) count.textContent = `${swimwear.length} pieces`;
+
+  const badgeClass = { new: 'bdg-new', sale: 'bdg-sale', ltd: 'bdg-ltd' };
+  const brandMap = {};
+  IM.brands.forEach(b => { brandMap[b.id] = b; });
+
+  grid.innerHTML = swimwear.map(p => {
+    const imgSrc = IM.images[p.img] || 'img/prod-01.jpg';
+    const badge = p.badge ? `<div class="prod-badge ${badgeClass[p.badge] || ''}">${p.badge.toUpperCase()}</div>` : '';
+    const orig = p.originalPrice ? `<span class="prod-orig">R ${p.originalPrice.toLocaleString()}</span>` : '';
+    const brand = brandMap[p.brand];
+    const brandName = brand ? brand.name : p.brand;
+    return `
+      <a class="prod-card reveal" href="product.html?id=${p.id}">
+        <div class="prod-img">
+          <img src="${imgSrc}" alt="${p.name}" loading="lazy">
+          <div class="prod-quick">Quick View →</div>
+          ${badge}
+        </div>
+        <div class="prod-info">
+          <div class="prod-brand">${brandName}</div>
+          <div class="prod-name">${p.name}</div>
+          <div class="prod-foot">
+            <div class="prod-price">${orig}R ${p.price.toLocaleString()}</div>
+            <div class="prod-stars">★★★★★ <span class="prod-rev">(${Math.floor(Math.random()*40)+8})</span></div>
+          </div>
+        </div>
+      </a>`;
+  }).join('');
+
+  // Trigger reveals
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), i * 60);
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Nav links
+  const navLinks = document.querySelector('.nav-links');
+  if (navLinks && IM.nav) {
+    navLinks.innerHTML = IM.nav.map(n =>
+      `<li><a href="${n.href}"${n.highlight ? ' class="nav-sale"' : ''}>${n.label}</a></li>`
+    ).join('');
+  }
+
+  // Sticky nav
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Search
+  window.openSearch = () => { document.getElementById('sOverlay').classList.add('open'); document.getElementById('sInput').focus(); };
+  window.closeSearch = () => document.getElementById('sOverlay').classList.remove('open');
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSearch(); });
+
+  initSwimwear();
+});
+</script>
+</body></html>

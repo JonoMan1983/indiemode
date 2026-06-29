@@ -41,6 +41,14 @@ const IM = {
     brand_02:   'img/brand-02.jpg',
     brand_03:   'img/brand-03.jpg',
     brand_04:   'img/brand-04.jpg',
+    swim_01:    'img/swim-01.jpg',  // chris-yang     — portrait hero
+    swim_02:    'img/swim-02.jpg',  // lidia-ugrik    — portrait product
+    swim_03:    'img/swim-03.jpg',  // marcin-sajur   — landscape editorial
+    swim_04:    'img/swim-04.jpg',  // lhon-karwan-1  — portrait product
+    swim_05:    'img/swim-05.jpg',  // lhon-karwan-2  — portrait product
+    swim_06:    'img/swim-06.jpg',  // anton-chubarov — portrait product
+    swim_07:    'img/swim-07.jpg',  // jpphotomiami   — portrait product
+    swim_08:    'img/swim-08.jpg',  // marlon-alves   — portrait product
   },
 
   // ── BRANDS / DESIGNERS ─────────────────────────────────────
@@ -66,7 +74,7 @@ const IM = {
     { id: 'dresses',     label: 'Dresses',     count: 86,  img: 'prod_05' },
     { id: 'tops',        label: 'Tops',        count: 54,  img: 'prod_06' },
     { id: 'jewellery',   label: 'Jewellery',   count: 120, img: 'prod_07' },
-    { id: 'swimwear',    label: 'Swimwear',    count: 32,  img: 'prod_08' },
+    { id: 'swimwear',    label: 'Swimwear',    count: 8,   img: 'swim_01' },
     { id: 'bottoms',     label: 'Bottoms',     count: 41,  img: 'prod_09' },
     { id: 'accessories', label: 'Accessories', count: 28,  img: 'prod_10' },
   ],
@@ -153,16 +161,27 @@ const IM = {
     { id: 'woven-raffia-bag',       name: 'Woven Raffia Tote',      brand: 'hot-igloo',          category: 'accessories', price: 750,  originalPrice: null, badge: 'new',  img: 'prod_10', sizes: ['One Size'], soldOut: [],     material: 'Natural Raffia',    origin: 'Port Elizabeth', run: 'Open run',          care: 'Spot clean only',       description: 'Hand-woven raffia tote from the Eastern Cape. Beach or market — equally at home.',                     featured: false },
     { id: 'midnight-velvet-blazer', name: 'Midnight Velvet Blazer', brand: 'white-rabbit-days',  category: 'tops',        price: 2100, originalPrice: null, badge: 'ltd',  img: 'prod_11', sizes: ['XS','S','M','L'], soldOut: [],     material: 'Cotton Velvet',     origin: 'Johannesburg',   run: 'Limited — 8 pcs',   care: 'Dry clean recommended', description: 'A deep midnight velvet blazer. Oversized, structured shoulders, unlined.',                              featured: false },
     { id: 'beaded-anklet-set',      name: 'Beaded Anklet Set',      brand: 'indhi-design',       category: 'jewellery',   price: 280,  originalPrice: null, badge: '',     img: 'prod_12', sizes: ['One Size'], soldOut: [],     material: 'Glass Beads + Brass', origin: 'Pretoria',    run: 'Open run',          care: 'Avoid water',           description: 'A set of three handbeaded anklets in complementary tones. Traditional technique, contemporary palette.', featured: false },
+
+    // ── SWIMWEAR ───────────────────────────────────────────────
+    { id: 'obsidian-one-piece',     name: 'Obsidian One-Piece',     brand: 'empty-apparel',      category: 'swimwear',    price: 1480, originalPrice: null, badge: 'new',  img: 'swim_01', sizes: ['XS','S','M','L'],       soldOut: [],      material: 'Recycled Nylon',    origin: 'Cape Town',      run: 'Limited — 18 pcs',  care: 'Rinse after use',       description: 'A sculptural one-piece cut from recycled nylon. High neck, open back, minimal panelling. Made in Cape Town from locally sourced fabric.', featured: true  },
+    { id: 'bone-bandeau-set',       name: 'Bone Bandeau Set',       brand: 'bird-named-frank',   category: 'swimwear',    price: 890,  originalPrice: null, badge: 'ltd',  img: 'swim_02', sizes: ['XS','S','M','L','XL'],  soldOut: ['XS'],  material: 'Lycra Blend',       origin: 'Cape Town',      run: 'Limited Run',       care: 'Hand wash cold',        description: 'A two-piece set in off-white lycra. Triangle top with adjustable ties, high-cut brief. Timeless coastal silhouette.', featured: true  },
+    { id: 'carbon-cut-out-brief',   name: 'Carbon Cut-Out Brief',   brand: 'blackcherry',        category: 'swimwear',    price: 520,  originalPrice: null, badge: 'new',  img: 'swim_04', sizes: ['XS','S','M','L'],       soldOut: [],      material: 'Recycled Nylon',    origin: 'Durban',         run: 'Open run',          care: 'Rinse after use',       description: 'High-cut brief with architectural side cut-outs. Wear solo or layer. Durban-made from recycled ocean nylon.', featured: false },
+    { id: 'midnight-plunge-suit',   name: 'Midnight Plunge Suit',   category: 'swimwear',        brand: 'coco-lifestyle', price: 1250, originalPrice: 1650, badge: 'sale', img: 'swim_05', sizes: ['XS','S','M'],           soldOut: ['M'],   material: 'Nylon/Elastane',    origin: 'Stellenbosch',   run: 'Open run',          care: 'Hand wash cold',        description: 'Deep plunge one-piece in midnight navy. V-neck to navel, thin adjustable straps, minimal back. Season-end sale.', featured: false },
+    { id: 'terracotta-halter',      name: 'Terracotta Halter Top',  brand: 'genevieve-motley',   category: 'swimwear',    price: 640,  originalPrice: null, badge: '',     img: 'swim_06', sizes: ['XS','S','M','L'],       soldOut: [],      material: 'Recycled Lycra',    origin: 'Woodstock',      run: 'Open run',          care: 'Rinse, reshape, dry flat', description: 'A halter-neck bikini top in earthy terracotta. Adjustable back tie, soft cups, zero-waste pattern. Woodstock studio.', featured: false },
+    { id: 'slate-high-neck-two',    name: 'Slate High-Neck Two-Piece', brand: 'bibi-rouge',      category: 'swimwear',    price: 1150, originalPrice: null, badge: 'new',  img: 'swim_07', sizes: ['XS','S','M','L'],       soldOut: [],      material: 'Nylon/Elastane',    origin: 'Johannesburg',   run: 'Limited — 12 pcs',  care: 'Hand wash cold',        description: 'A matching set: high-neck long-sleeve crop and high-waist brief. Slate grey with tonal stitching. Joburg-made.', featured: false },
+    { id: 'ivory-string-brief',     name: 'Ivory String Brief',     brand: 'silver-fig',         category: 'swimwear',    price: 480,  originalPrice: null, badge: 'ltd',  img: 'swim_08', sizes: ['XS','S','M'],           soldOut: ['XS'],  material: 'Lycra',             origin: 'Franschhoek',    run: 'Limited — 8 pcs',   care: 'Hand wash cold',        description: 'Minimal string brief in ivory. Side ties, cheeky cut, barely-there silhouette. Franschhoek atelier, max 8 pieces.', featured: false },
+    { id: 'deep-sea-rash-vest',     name: 'Deep Sea Rash Vest',     brand: 'blackcherry',        category: 'swimwear',    price: 720,  originalPrice: null, badge: '',     img: 'swim_03', sizes: ['XS','S','M','L','XL'],  soldOut: [],      material: 'UPF 50 Nylon',      origin: 'Durban',         run: 'Open run',          care: 'Machine wash cold',     description: 'Long-sleeve rash vest in deep ocean black. UPF 50+ protection, flatlock seams, slim performance fit. Durban surf heritage.', featured: false },
   ],
 
   // ── NAV ────────────────────────────────────────────────────
   nav: [
-    { label: 'New In',       href: 'shop.html',     filter: '' },
-    { label: 'Brands',       href: 'brands.html',   filter: '' },
-    { label: 'Clothing',     href: 'shop.html',     filter: 'clothing' },
-    { label: 'Jewellery',    href: 'shop.html',     filter: 'jewellery' },
-    { label: 'Accessories',  href: 'shop.html',     filter: 'accessories' },
-    { label: 'Sale',         href: 'shop.html',     filter: 'sale',  highlight: true },
+    { label: 'New In',       href: 'shop.html',      filter: '' },
+    { label: 'Brands',       href: 'brands.html',    filter: '' },
+    { label: 'Clothing',     href: 'shop.html',      filter: 'clothing' },
+    { label: 'Swimwear',     href: 'swimwear.html',  filter: '' },
+    { label: 'Jewellery',    href: 'shop.html',      filter: 'jewellery' },
+    { label: 'Accessories',  href: 'shop.html',      filter: 'accessories' },
+    { label: 'Sale',         href: 'shop.html',      filter: 'sale',  highlight: true },
   ],
 
   // ── STATS ──────────────────────────────────────────────────
