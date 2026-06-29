@@ -41,6 +41,14 @@ const IM = {
     brand_02:   'img/brand-02.jpg',
     brand_03:   'img/brand-03.jpg',
     brand_04:   'img/brand-04.jpg',
+    jewel_01:   'img/jewel-01.jpg',  // lara-buljubasic  — portrait, model-worn necklace
+    jewel_02:   'img/jewel-02.jpg',  // chaitanya-salunke — landscape, rings flat lay
+    jewel_03:   'img/jewel-03.jpg',  // or-hakim          — landscape, editorial wide
+    jewel_04:   'img/jewel-04.jpg',  // kelvin-lutan      — landscape, detail close-up
+    jewel_05:   'img/jewel-05.jpg',  // coppertist-wu-1   — landscape, minimal pieces
+    jewel_06:   'img/jewel-06.jpg',  // prahant-studio    — portrait, product shot
+    jewel_07:   'img/jewel-07.jpg',  // dhanya-purohit    — landscape, editorial
+    jewel_08:   'img/jewel-08.jpg',  // coppertist-wu-2   — portrait, close-up ring
     swim_01:    'img/swim-01.jpg',  // chris-yang     — portrait hero
     swim_02:    'img/swim-02.jpg',  // lidia-ugrik    — portrait product
     swim_03:    'img/swim-03.jpg',  // marcin-sajur   — landscape editorial
@@ -73,7 +81,7 @@ const IM = {
   categories: [
     { id: 'dresses',     label: 'Dresses',     count: 86,  img: 'prod_05' },
     { id: 'tops',        label: 'Tops',        count: 54,  img: 'prod_06' },
-    { id: 'jewellery',   label: 'Jewellery',   count: 120, img: 'prod_07' },
+    { id: 'jewellery',   label: 'Jewellery',   count: 8,   img: 'jewel_01' },
     { id: 'swimwear',    label: 'Swimwear',    count: 8,   img: 'swim_01' },
     { id: 'bottoms',     label: 'Bottoms',     count: 41,  img: 'prod_09' },
     { id: 'accessories', label: 'Accessories', count: 28,  img: 'prod_10' },
@@ -143,7 +151,7 @@ const IM = {
       price: 420,
       originalPrice: null,
       badge: 'new',
-      img: 'prod_04',
+      img: 'jewel_08',
       sizes: ['S','M','L'],
       soldOut: [],
       material: 'Recycled Brass',
@@ -155,12 +163,19 @@ const IM = {
     },
     { id: 'woodstock-wrap-dress',   name: 'Woodstock Wrap Dress',   brand: 'bibi-rouge',         category: 'dresses',     price: 1450, originalPrice: null, badge: 'new',  img: 'prod_05', sizes: ['XS','S','M','L'], soldOut: [],     material: 'Viscose',           origin: 'Johannesburg',   run: 'Open run',          care: 'Hand wash',             description: 'A fluid wrap dress in rich jewel tones. Joburg-made, globally wearable.',                               featured: false },
     { id: 'karoo-cotton-tee',       name: 'Karoo Cotton Tee',       brand: 'coco-lifestyle',     category: 'tops',        price: 380,  originalPrice: null, badge: '',     img: 'prod_06', sizes: ['XS','S','M','L','XL'], soldOut: [], material: '100% Cotton',        origin: 'Stellenbosch',   run: 'Open run',          care: 'Machine wash cold',     description: 'The perfect everyday tee. Heavy cotton, minimal branding, built to last.',                              featured: false },
-    { id: 'silver-chain-cuff',      name: 'Silver Chain Cuff',      brand: 'joy-jewellery',      category: 'jewellery',   price: 560,  originalPrice: null, badge: 'ltd',  img: 'prod_07', sizes: ['One Size'], soldOut: [],     material: 'Sterling Silver',   origin: 'Cape Town',      run: 'Limited — 15 pcs',  care: 'Keep dry',              description: 'A woven sterling silver cuff. Delicate but substantial.',                                               featured: false },
+    { id: 'silver-chain-cuff',      name: 'Silver Chain Cuff',      brand: 'joy-jewellery',      category: 'jewellery',   price: 560,  originalPrice: null, badge: 'ltd',  img: 'jewel_05', sizes: ['One Size'], soldOut: [],     material: 'Sterling Silver',   origin: 'Cape Town',      run: 'Limited — 15 pcs',  care: 'Keep dry',              description: 'A woven sterling silver cuff. Delicate but substantial.',                                               featured: false },
     { id: 'cape-town-silk-slip',    name: 'Cape Town Silk Slip',    brand: 'blackcherry',        category: 'dresses',     price: 1890, originalPrice: null, badge: 'new',  img: 'prod_08', sizes: ['XS','S','M'], soldOut: ['XS'], material: 'Silk',              origin: 'Durban',         run: 'Limited — 10 pcs',  care: 'Dry clean only',        description: 'A pure silk slip dress. Bias cut, minimal seams, extraordinary drape.',                                featured: false },
     { id: 'fynbos-print-shorts',    name: 'Fynbos Print Shorts',    brand: 'genevieve-motley',   category: 'bottoms',     price: 640,  originalPrice: null, badge: '',     img: 'prod_09', sizes: ['XS','S','M','L'], soldOut: [],     material: 'Cotton Poplin',     origin: 'Woodstock',      run: 'Open run',          care: 'Machine wash cold',     description: 'Bold botanical print shorts. Western Cape fynbos rendered in vibrant repeat.',                          featured: false },
     { id: 'woven-raffia-bag',       name: 'Woven Raffia Tote',      brand: 'hot-igloo',          category: 'accessories', price: 750,  originalPrice: null, badge: 'new',  img: 'prod_10', sizes: ['One Size'], soldOut: [],     material: 'Natural Raffia',    origin: 'Port Elizabeth', run: 'Open run',          care: 'Spot clean only',       description: 'Hand-woven raffia tote from the Eastern Cape. Beach or market — equally at home.',                     featured: false },
     { id: 'midnight-velvet-blazer', name: 'Midnight Velvet Blazer', brand: 'white-rabbit-days',  category: 'tops',        price: 2100, originalPrice: null, badge: 'ltd',  img: 'prod_11', sizes: ['XS','S','M','L'], soldOut: [],     material: 'Cotton Velvet',     origin: 'Johannesburg',   run: 'Limited — 8 pcs',   care: 'Dry clean recommended', description: 'A deep midnight velvet blazer. Oversized, structured shoulders, unlined.',                              featured: false },
-    { id: 'beaded-anklet-set',      name: 'Beaded Anklet Set',      brand: 'indhi-design',       category: 'jewellery',   price: 280,  originalPrice: null, badge: '',     img: 'prod_12', sizes: ['One Size'], soldOut: [],     material: 'Glass Beads + Brass', origin: 'Pretoria',    run: 'Open run',          care: 'Avoid water',           description: 'A set of three handbeaded anklets in complementary tones. Traditional technique, contemporary palette.', featured: false },
+    { id: 'beaded-anklet-set',      name: 'Beaded Anklet Set',      brand: 'indhi-design',       category: 'jewellery',   price: 280,  originalPrice: null, badge: '',     img: 'jewel_02', sizes: ['One Size'], soldOut: [],     material: 'Glass Beads + Brass', origin: 'Pretoria',    run: 'Open run',          care: 'Avoid water',           description: 'A set of three handbeaded anklets in complementary tones. Traditional technique, contemporary palette.', featured: false },
+
+    // ── JEWELLERY (additional) ─────────────────────────────────
+    { id: 'layered-gold-necklace',  name: 'Layered Gold Necklace',  brand: 'joy-jewellery',      category: 'jewellery',   price: 980,  originalPrice: null, badge: 'new',  img: 'jewel_01', sizes: ['One Size'], soldOut: [],      material: '18ct Gold Plated',  origin: 'Cape Town',      run: 'Limited — 20 pcs',  care: 'Keep dry, avoid perfume', description: 'Three-strand layered necklace in 18ct gold plate. Hand-assembled in Cape Town, delicate yet architectural.', featured: true  },
+    { id: 'hammered-silver-ring',   name: 'Hammered Silver Ring',   brand: 'famke-jewellery',    category: 'jewellery',   price: 380,  originalPrice: null, badge: '',     img: 'jewel_04', sizes: ['S','M','L'], soldOut: ['S'],  material: 'Sterling Silver',   origin: 'Cape Town',      run: 'Open run',          care: 'Polish with silver cloth', description: 'A wide hammered silver band. Textured surface catches light differently every angle. Hand-formed, one at a time.', featured: false },
+    { id: 'copper-drop-earrings',   name: 'Copper Drop Earrings',   brand: 'hot-igloo',          category: 'jewellery',   price: 320,  originalPrice: 420,  badge: 'sale', img: 'jewel_03', sizes: ['One Size'], soldOut: [],      material: 'Raw Copper',        origin: 'Port Elizabeth', run: 'Open run',          care: 'Keep dry',         description: 'Raw copper drop earrings. Oxidised finish, asymmetric length. Eastern Cape handcraft.', featured: false },
+    { id: 'beaded-collar-necklace', name: 'Beaded Collar Necklace', brand: 'indhi-design',       category: 'jewellery',   price: 640,  originalPrice: null, badge: 'ltd',  img: 'jewel_06', sizes: ['One Size'], soldOut: [],      material: 'Glass Beads + Wire', origin: 'Pretoria',   run: 'Limited — 10 pcs',  care: 'Avoid water',      description: 'A structured beaded collar in cream and bone tones. Traditional Ndebele beadwork technique, contemporary silhouette.', featured: false },
+    { id: 'minimal-gold-studs',     name: 'Minimal Gold Studs',     brand: 'joy-jewellery',      category: 'jewellery',   price: 280,  originalPrice: null, badge: '',     img: 'jewel_07', sizes: ['One Size'], soldOut: [],      material: '18ct Gold Plated',  origin: 'Cape Town',      run: 'Open run',          care: 'Keep dry, avoid perfume', description: 'Tiny geometric gold stud earrings. Everyday wear, elevated. Pair solo or stack three per ear.', featured: false },
 
     // ── SWIMWEAR ───────────────────────────────────────────────
     { id: 'obsidian-one-piece',     name: 'Obsidian One-Piece',     brand: 'empty-apparel',      category: 'swimwear',    price: 1480, originalPrice: null, badge: 'new',  img: 'swim_01', sizes: ['XS','S','M','L'],       soldOut: [],      material: 'Recycled Nylon',    origin: 'Cape Town',      run: 'Limited — 18 pcs',  care: 'Rinse after use',       description: 'A sculptural one-piece cut from recycled nylon. High neck, open back, minimal panelling. Made in Cape Town from locally sourced fabric.', featured: true  },
@@ -175,13 +190,13 @@ const IM = {
 
   // ── NAV ────────────────────────────────────────────────────
   nav: [
-    { label: 'New In',       href: 'shop.html',      filter: '' },
-    { label: 'Brands',       href: 'brands.html',    filter: '' },
-    { label: 'Clothing',     href: 'shop.html',      filter: 'clothing' },
-    { label: 'Swimwear',     href: 'swimwear.html',  filter: '' },
-    { label: 'Jewellery',    href: 'shop.html',      filter: 'jewellery' },
-    { label: 'Accessories',  href: 'shop.html',      filter: 'accessories' },
-    { label: 'Sale',         href: 'shop.html',      filter: 'sale',  highlight: true },
+    { label: 'New In',       href: 'shop.html',       filter: '' },
+    { label: 'Brands',       href: 'brands.html',     filter: '' },
+    { label: 'Clothing',     href: 'shop.html',       filter: 'clothing' },
+    { label: 'Swimwear',     href: 'swimwear.html',   filter: '' },
+    { label: 'Jewellery',    href: 'jewellery.html',  filter: '' },
+    { label: 'Accessories',  href: 'shop.html',       filter: 'accessories' },
+    { label: 'Sale',         href: 'shop.html',       filter: 'sale',  highlight: true },
   ],
 
   // ── STATS ──────────────────────────────────────────────────
