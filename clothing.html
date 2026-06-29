@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Designer — Indiemode SA</title>
+<title>Clothing — Indiemode SA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=DM+Serif+Display:ital@0;1&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -35,45 +35,42 @@ a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;backgroun
 .nav-cart:hover{background:var(--primary);color:var(--bg);box-shadow:0 0 20px var(--primary-glow)}
 .cart-count{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:var(--primary);color:var(--bg);font-size:9px;font-weight:900;border-radius:50%}
 /* HERO */
-.des-hero{min-height:80vh;display:grid;grid-template-columns:1fr 1fr;border-bottom:var(--rule);overflow:hidden}
-.des-hero-img-wrap{position:relative;overflow:hidden}
-.des-hero-img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.des-hero-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 55%,var(--bg) 100%),linear-gradient(to top,rgba(15,23,42,.5) 0%,transparent 45%)}
-.des-hero-tag{position:absolute;top:calc(var(--nav-h) + 24px);left:24px;z-index:2;font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:var(--secondary);border:1px solid rgba(0,245,212,.35);padding:4px 10px;border-radius:1px}
-.des-hero-r{display:flex;flex-direction:column;justify-content:center;padding:calc(var(--nav-h) + 48px) 64px 64px 48px}
-.des-eyebrow{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);margin-bottom:16px;display:flex;align-items:center;gap:10px}
-.des-eyebrow::before{content:'';width:20px;height:1px;background:var(--secondary)}
-.des-name{font-family:var(--serif);font-size:clamp(48px,6vw,80px);font-weight:400;line-height:.92;color:var(--text);margin-bottom:8px;letter-spacing:-.02em}
-.des-name em{font-style:italic;color:var(--primary);display:block}
-.des-category{font-family:var(--condensed);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
-.des-rule{width:100%;height:1px;background:linear-gradient(to right,var(--border-hi),transparent);margin-bottom:24px}
-.des-bio{font-size:15px;font-weight:300;line-height:1.85;color:var(--muted);max-width:400px;margin-bottom:36px}
-.des-meta{display:flex;gap:28px;flex-wrap:wrap;margin-bottom:36px}
-.des-meta-item{display:flex;flex-direction:column;gap:4px}
-.des-meta-label{font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:var(--dim)}
-.des-meta-val{font-family:var(--condensed);font-size:14px;font-weight:700;letter-spacing:.06em;color:var(--text)}
-.des-stats{display:flex;border:1px solid var(--border);border-radius:2px;overflow:hidden;max-width:280px;margin-bottom:36px}
-.des-stat{flex:1;padding:14px 16px;border-right:1px solid var(--border)}
-.des-stat:last-child{border-right:none}
-.des-stat-n{font-family:var(--condensed);font-size:24px;font-weight:900;color:var(--text);line-height:1;margin-bottom:2px}
-.des-stat-n em{font-style:normal;color:var(--secondary)}
-.des-stat-l{font-family:var(--condensed);font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
-.des-ctas{display:flex;gap:10px;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;background:var(--primary);color:var(--bg);font-family:var(--condensed);font-size:12px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--primary);border-radius:2px;transition:box-shadow .2s,transform .15s;cursor:pointer}
-.btn-primary:hover{box-shadow:0 0 28px var(--primary-glow);transform:translateY(-1px)}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;background:transparent;color:var(--secondary);font-family:var(--condensed);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(0,245,212,.35);border-radius:2px;transition:border-color .2s,background .2s;cursor:pointer}
-.btn-secondary:hover{border-color:var(--secondary);background:rgba(0,245,212,.06)}
-/* PRODUCTS */
-.des-products{padding:72px 0 96px}
-.des-products-inner{max-width:1280px;margin:0 auto;padding:0 40px}
-.des-prod-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px;padding-bottom:20px;border-bottom:var(--rule)}
-.des-prod-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);margin-bottom:8px;display:flex;align-items:center;gap:10px}
-.des-prod-label::before{content:'';width:20px;height:1px;background:var(--secondary)}
-.des-prod-title{font-family:var(--serif);font-size:clamp(26px,3vw,40px);font-weight:400;color:var(--text)}
-.des-prod-title em{font-style:italic;color:var(--primary)}
-.see-all{font-family:var(--condensed);font-size:10px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:var(--secondary);display:flex;align-items:center;gap:6px;border-bottom:1px solid transparent;padding-bottom:1px;transition:border-color .2s}
-.see-all:hover{border-bottom-color:var(--secondary)}
-.des-prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden}
+.cl-hero{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;border-bottom:var(--rule);overflow:hidden}
+.cl-hero-l{position:relative;overflow:hidden}
+.cl-hero-l img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.cl-hero-l::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 55%,var(--bg) 100%),linear-gradient(to top,rgba(15,23,42,.5) 0%,transparent 40%)}
+.cl-hero-tag{position:absolute;top:calc(var(--nav-h) + 24px);left:24px;z-index:2;font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:var(--secondary);border:1px solid rgba(0,245,212,.35);padding:4px 10px;border-radius:1px}
+.cl-hero-r{display:flex;flex-direction:column;justify-content:center;padding:120px 64px 80px 48px}
+.cl-hero-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.cl-hero-label::before{content:'';width:20px;height:1px;background:var(--secondary)}
+.cl-hero-h{font-family:var(--serif);font-size:clamp(52px,6.5vw,84px);font-weight:400;line-height:.92;color:var(--text);margin-bottom:28px}
+.cl-hero-h em{display:block;font-style:italic;color:var(--primary);margin-left:12px}
+.cl-hero-rule{width:100%;height:1px;background:linear-gradient(to right,var(--border-hi),transparent);margin-bottom:28px;position:relative}
+.cl-hero-rule::after{content:'ORIGIN: SOUTH AFRICA';position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:var(--condensed);font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--dim)}
+.cl-hero-body{font-size:15px;font-weight:300;line-height:1.8;color:var(--muted);max-width:380px;margin-bottom:40px}
+.cl-hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.cl-hero-stats{display:flex;border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-top:48px;max-width:360px}
+.cl-stat{flex:1;padding:16px 18px;border-right:1px solid var(--border)}
+.cl-stat:last-child{border-right:none}
+.cl-stat-n{font-family:var(--condensed);font-size:26px;font-weight:900;color:var(--text);line-height:1;margin-bottom:3px}
+.cl-stat-n em{font-style:normal;color:var(--secondary)}
+.cl-stat-l{font-family:var(--condensed);font-size:8px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+/* SUBCATEGORY TABS */
+.cl-tabs{background:var(--surface);border-top:var(--rule);border-bottom:var(--rule);position:sticky;top:var(--nav-h);z-index:50}
+.cl-tabs-inner{max-width:1280px;margin:0 auto;padding:0 40px;display:flex;overflow-x:auto;scrollbar-width:none}
+.cl-tabs-inner::-webkit-scrollbar{display:none}
+.cl-tab{font-family:var(--condensed);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:14px 22px;border-right:var(--rule);white-space:nowrap;transition:color .2s,background .2s;cursor:pointer;background:none;border-top:none;border-left:none;border-bottom:none}
+.cl-tab:hover,.cl-tab.active{color:var(--secondary);background:rgba(0,245,212,.04)}
+/* SHOP */
+.cl-shop{padding:56px 0 96px}
+.cl-shop-inner{max-width:1280px;margin:0 auto;padding:0 40px}
+.cl-shop-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px;padding-bottom:20px;border-bottom:var(--rule)}
+.cl-shop-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.cl-shop-label::before{content:'';width:20px;height:1px;background:var(--secondary)}
+.cl-shop-title{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:400;color:var(--text)}
+.cl-shop-title em{font-style:italic;color:var(--primary)}
+.cl-count{font-family:var(--condensed);font-size:10px;letter-spacing:.16em;color:var(--dim)}
+.cl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden}
 /* PRODUCT CARD */
 .prod-card{background:var(--bg);position:relative;transition:background .2s;display:block}
 .prod-card:hover{background:var(--surface)}
@@ -93,8 +90,17 @@ a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;backgroun
 .prod-price{font-family:var(--condensed);font-size:16px;font-weight:900;color:var(--text)}
 .prod-orig{font-size:12px;color:var(--dim);text-decoration:line-through;margin-right:6px;font-weight:400}
 .prod-stars{font-family:var(--condensed);font-size:11px;color:var(--secondary)}
-/* EMPTY STATE */
-.des-empty{padding:80px 40px;text-align:center;border:1px dashed var(--border);border-radius:2px;color:var(--dim);font-family:var(--condensed);font-size:12px;letter-spacing:.1em}
+/* COMING SOON BANNER */
+.cl-coming{background:var(--surface);border:1px dashed rgba(0,245,212,.2);border-radius:2px;padding:56px 40px;text-align:center;margin-top:0}
+.cl-coming-icon{font-size:32px;margin-bottom:16px;color:var(--secondary)}
+.cl-coming-h{font-family:var(--serif);font-size:28px;font-weight:400;color:var(--text);margin-bottom:10px}
+.cl-coming-h em{font-style:italic;color:var(--secondary)}
+.cl-coming-body{font-size:14px;font-weight:300;color:var(--muted);line-height:1.7;max-width:400px;margin:0 auto 24px}
+/* BUTTONS */
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--primary);color:var(--bg);font-family:var(--condensed);font-size:12px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--primary);border-radius:2px;transition:background .2s,box-shadow .2s,transform .15s;cursor:pointer}
+.btn-primary:hover{box-shadow:0 0 32px var(--primary-glow);transform:translateY(-1px)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:transparent;color:var(--secondary);font-family:var(--condensed);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(0,245,212,.35);border-radius:2px;transition:border-color .2s,background .2s,box-shadow .2s;cursor:pointer}
+.btn-secondary:hover{border-color:var(--secondary);background:rgba(0,245,212,.06);box-shadow:0 0 20px var(--teal-glow)}
 /* FOOTER */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
@@ -114,7 +120,8 @@ a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;backgroun
 .footer-links a:hover{color:var(--text)}
 .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:28px;flex-wrap:wrap}
 .footer-copy{font-family:var(--condensed);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
-@media(max-width:768px){:root{--nav-h:58px}.des-hero{grid-template-columns:1fr}.des-hero-img-wrap{height:55vh}.des-hero-r{padding:40px 24px 56px}.des-prod-grid{grid-template-columns:repeat(2,1fr)}.des-products-inner{padding:0 24px}.footer-top{grid-template-columns:1fr 1fr;gap:32px}.nav-links{display:none}}
+@media(max-width:1024px){.cl-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){:root{--nav-h:58px}.cl-hero{grid-template-columns:1fr}.cl-hero-l{height:60vh}.cl-hero-r{padding:48px 24px 56px}.cl-grid{grid-template-columns:repeat(2,1fr)}.cl-shop-inner{padding:0 24px}.footer-top{grid-template-columns:1fr 1fr;gap:32px}.nav-links{display:none}}
 </style>
 </head><body>
 <nav class="nav" id="mainNav">
@@ -132,43 +139,57 @@ a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;backgroun
   <div class="s-wrap"><div class="s-label">Search specimen catalogue</div><input class="s-input" type="text" placeholder="designer, garment, collection…" id="sInput" autocomplete="off"></div>
 </div>
 
-<section class="des-hero">
-  <div class="des-hero-img-wrap">
-    <img class="des-hero-img" src="img/prod-01.jpg" alt="Designer" id="desHeroImg" loading="eager">
-    <div class="des-hero-tag" id="desHeroTag">SA Designer</div>
+<!-- HERO — using editorial prod images as placeholders -->
+<section class="cl-hero">
+  <div class="cl-hero-l">
+    <img src="img/prod-05.jpg" alt="Indiemode Clothing" loading="eager">
+    <div class="cl-hero-tag">SS26 · CLOTHING</div>
   </div>
-  <div class="des-hero-r">
-    <div class="des-eyebrow">SA Designer Registry</div>
-    <h1 class="des-name" id="desName">Loading<em>…</em></h1>
-    <div class="des-category" id="desCategory"></div>
-    <div class="des-rule"></div>
-    <p class="des-bio" id="desBio"></p>
-    <div class="des-meta">
-      <div class="des-meta-item"><div class="des-meta-label">City</div><div class="des-meta-val" id="desCity">—</div></div>
-      <div class="des-meta-item"><div class="des-meta-label">Province</div><div class="des-meta-val" id="desProvince">—</div></div>
-      <div class="des-meta-item"><div class="des-meta-label">Specialism</div><div class="des-meta-val" id="desSpec">—</div></div>
+  <div class="cl-hero-r reveal">
+    <div class="cl-hero-label">Category — Clothing</div>
+    <h1 class="cl-hero-h">SA <em>clothing.</em><br>Designed.<br>Here.</h1>
+    <div class="cl-hero-rule"></div>
+    <p class="cl-hero-body">Dresses, tops, and bottoms made by South African designers. Every piece cut locally, from considered fabrics. Independent labels only.</p>
+    <div class="cl-hero-ctas">
+      <a href="#grid" class="btn-primary">Shop Collection →</a>
+      <a href="shop.html" class="btn-secondary">All Categories</a>
     </div>
-    <div class="des-stats">
-      <div class="des-stat"><div class="des-stat-n" id="desPieces">—</div><div class="des-stat-l">Pieces</div></div>
-      <div class="des-stat"><div class="des-stat-n">100<em>%</em></div><div class="des-stat-l">SA Made</div></div>
-    </div>
-    <div class="des-ctas">
-      <a href="#collection" class="btn-primary">Shop Collection →</a>
-      <a href="brands.html" class="btn-secondary">All Brands</a>
+    <div class="cl-hero-stats">
+      <div class="cl-stat"><div class="cl-stat-n" id="clCount">—</div><div class="cl-stat-l">Pieces</div></div>
+      <div class="cl-stat"><div class="cl-stat-n">6<em>+</em></div><div class="cl-stat-l">Designers</div></div>
+      <div class="cl-stat"><div class="cl-stat-n">100<em>%</em></div><div class="cl-stat-l">SA Made</div></div>
     </div>
   </div>
 </section>
 
-<section class="des-products" id="collection">
-  <div class="des-products-inner">
-    <div class="des-prod-head reveal">
+<!-- SUBCATEGORY TABS -->
+<nav class="cl-tabs">
+  <div class="cl-tabs-inner">
+    <button class="cl-tab active" data-sub="all">All Clothing</button>
+    <button class="cl-tab" data-sub="dresses">Dresses</button>
+    <button class="cl-tab" data-sub="tops">Tops</button>
+    <button class="cl-tab" data-sub="bottoms">Bottoms</button>
+  </div>
+</nav>
+
+<!-- GRID -->
+<section class="cl-shop" id="grid">
+  <div class="cl-shop-inner">
+    <div class="cl-shop-head reveal">
       <div>
-        <div class="des-prod-label">Designer Collection</div>
-        <h2 class="des-prod-title" id="desProdTitle">All <em>pieces.</em></h2>
+        <div class="cl-shop-label">Specimen Catalogue</div>
+        <h2 class="cl-shop-title" id="clTitle">All <em>clothing.</em></h2>
       </div>
-      <a href="shop.html" class="see-all" id="desViewAll">See all →</a>
+      <div class="cl-count" id="clGridCount"></div>
     </div>
-    <div class="des-prod-grid" id="desProdGrid"></div>
+    <div class="cl-grid" id="clGrid"></div>
+    <!-- Coming soon banner — shown when new imagery lands -->
+    <div class="cl-coming" id="clComing" style="display:none">
+      <div class="cl-coming-icon">◎</div>
+      <h3 class="cl-coming-h">New arrivals <em>incoming.</em></h3>
+      <p class="cl-coming-body">We're adding new clothing from SA designers. Check back soon or browse our other categories in the meantime.</p>
+      <a href="swimwear.html" class="btn-secondary">Browse Swimwear →</a>
+    </div>
   </div>
 </section>
 
@@ -185,58 +206,58 @@ a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;backgroun
 <script src="data.js"></script><script src="app.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const id = new URLSearchParams(location.search).get('id') || IM.brands[0].id;
-  const b  = IM.brands.find(x => x.id === id) || IM.brands[0];
-  const products = IM.products.filter(p => p.brand === b.id);
-
-  document.title = `${b.name} — Indiemode SA`;
-  document.getElementById('desHeroImg').src = IM.images[b.img] || 'img/prod-01.jpg';
-  document.getElementById('desHeroTag').textContent = b.category;
-
-  // Split name for italic treatment
-  const words = b.name.split(' ');
-  const nameEl = document.getElementById('desName');
-  if (words.length > 1) {
-    nameEl.innerHTML = words.slice(0,-1).join(' ') + `<em>${words[words.length-1]}</em>`;
-  } else {
-    nameEl.innerHTML = `<em>${b.name}</em>`;
-  }
-
-  document.getElementById('desCategory').textContent = b.category;
-  document.getElementById('desBio').textContent = b.bio;
-  document.getElementById('desCity').textContent = b.city;
-  document.getElementById('desProvince').textContent = b.province;
-  document.getElementById('desSpec').textContent = b.category.split('+')[0].trim();
-  document.getElementById('desPieces').textContent = b.pieces + '+';
-  document.getElementById('desProdTitle').innerHTML = `${b.name.split(' ')[0]}'s <em>collection.</em>`;
-  document.getElementById('desViewAll').href = `shop.html?brand=${b.id}`;
-
   const badgeClass = {new:'bdg-new',sale:'bdg-sale',ltd:'bdg-ltd'};
-  const grid = document.getElementById('desProdGrid');
+  const clothingCats = ['dresses','tops','bottoms'];
 
-  if (products.length === 0) {
-    // Show sample from all products if brand has none yet
-    const sample = IM.products.slice(0,4);
-    grid.innerHTML = sample.map(p => {
-      const badge = p.badge ? `<span class="prod-badge ${badgeClass[p.badge]}">${{new:'New',sale:'Sale',ltd:'Ltd'}[p.badge]}</span>` : '';
-      return `<a class="prod-card reveal" href="product.html?id=${p.id}">
-        <div class="prod-img"><img src="${IM.images[p.img]||'img/prod-01.jpg'}" alt="${p.name}" loading="lazy">${badge}<div class="prod-quick">View Product →</div></div>
-        <div class="prod-info"><div class="prod-brand">${b.name}</div><div class="prod-name">${p.name}</div>
-        <div class="prod-foot"><div class="prod-price">R ${p.price.toLocaleString()}</div><div class="prod-stars">★★★★★</div></div></div></a>`;
-    }).join('');
-  } else {
-    grid.innerHTML = products.map(p => {
-      const badge = p.badge ? `<span class="prod-badge ${badgeClass[p.badge]}">${{new:'New',sale:'Sale',ltd:'Ltd'}[p.badge]}</span>` : '';
-      const orig = p.originalPrice ? `<span class="prod-orig">R ${p.originalPrice.toLocaleString()}</span>` : '';
-      return `<a class="prod-card reveal" href="product.html?id=${p.id}">
-        <div class="prod-img"><img src="${IM.images[p.img]||'img/prod-01.jpg'}" alt="${p.name}" loading="lazy">${badge}<div class="prod-quick">View Product →</div></div>
-        <div class="prod-info"><div class="prod-brand">${b.name}</div><div class="prod-name">${p.name}</div>
-        <div class="prod-foot"><div class="prod-price">${orig}R ${p.price.toLocaleString()}</div><div class="prod-stars">★★★★★</div></div></div></a>`;
-    }).join('');
+  function renderGrid(sub) {
+    let products = IM.products.filter(p => clothingCats.includes(p.category));
+    if (sub !== 'all') products = products.filter(p => p.category === sub);
+
+    const count = products.length;
+    document.getElementById('clCount').textContent = count + '+';
+    document.getElementById('clGridCount').textContent = count + ' pieces';
+    document.getElementById('clTitle').innerHTML = sub === 'all'
+      ? 'All <em>clothing.</em>'
+      : sub.charAt(0).toUpperCase() + sub.slice(1) + ' <em>collection.</em>';
+
+    const grid = document.getElementById('clGrid');
+    const coming = document.getElementById('clComing');
+
+    if (count === 0) {
+      grid.innerHTML = '';
+      coming.style.display = 'block';
+    } else {
+      coming.style.display = 'none';
+      const brandMap = {};
+      IM.brands.forEach(b => brandMap[b.id] = b);
+      grid.innerHTML = products.map(p => {
+        const brand = brandMap[p.brand] || {};
+        const badge = p.badge ? `<span class="prod-badge ${badgeClass[p.badge]}">${{new:'New',sale:'Sale',ltd:'Ltd'}[p.badge]}</span>` : '';
+        const orig = p.originalPrice ? `<span class="prod-orig">R ${p.originalPrice.toLocaleString()}</span>` : '';
+        return `<a class="prod-card reveal" href="product.html?id=${p.id}">
+          <div class="prod-img"><img src="${IM.images[p.img]||'img/prod-01.jpg'}" alt="${p.name}" loading="lazy">${badge}<div class="prod-quick">View Product →</div></div>
+          <div class="prod-info"><div class="prod-brand">${brand.name||p.brand}</div><div class="prod-name">${p.name}</div>
+          <div class="prod-foot"><div class="prod-price">${orig}R ${p.price.toLocaleString()}</div><div class="prod-stars">★★★★★</div></div></div></a>`;
+      }).join('');
+
+      requestAnimationFrame(() => {
+        grid.querySelectorAll('.reveal').forEach((el,i) => setTimeout(()=>el.classList.add('in'),i*50));
+      });
+    }
   }
+
+  renderGrid('all');
+
+  document.querySelectorAll('.cl-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cl-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderGrid(btn.dataset.sub);
+    });
+  });
 
   requestAnimationFrame(() => {
-    document.querySelectorAll('.reveal').forEach((el,i) => setTimeout(()=>el.classList.add('in'),i*60));
+    document.querySelectorAll('.reveal:not(.prod-card)').forEach((el,i) => setTimeout(()=>el.classList.add('in'),i*80));
   });
 });
 </script>

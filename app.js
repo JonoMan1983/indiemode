@@ -375,16 +375,81 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const page = location.pathname.split('/').pop().replace('.html','') || 'index';
   const pageMap = {
-    'index':    initHome,
-    '':         initHome,
-    'shop':     initShop,
-    'product':  initProduct,
-    'brands':   initBrands,
-    'designer': initDesigner,
-    'about':    initAbout,
-    'contact':  initContact,
+    'index':       initHome,
+    '':            initHome,
+    'shop':        initShop,
+    'product':     initProduct,
+    'brands':      initBrands,
+    'designer':    initDesigner,
+    'about':       initAbout,
+    'contact':     initContact,
+    'clothing':    () => {},
+    'swimwear':    () => {},
+    'jewellery':   () => {},
+    'accessories': () => {},
   };
 
   if (pageMap[page]) pageMap[page]();
   initReveal();
+
+  // ── LIVE SEARCH ────────────────────────────────────────
+  const sInput = document.getElementById('sInput');
+  if (sInput) {
+    sInput.addEventListener('input', () => {
+      const q = sInput.value.trim().toLowerCase();
+      const existing = document.getElementById('sResults');
+      if (existing) existing.remove();
+      if (!q || q.length < 2) return;
+
+      const matched = IM.products.filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        (p.brand || '').toLowerCase().includes(q) ||
+        (p.category || '').toLowerCase().includes(q) ||
+        (p.description || '').toLowerCase().includes(q)
+      ).slice(0, 6);
+
+      const brandMatched = IM.brands.filter(b =>
+        b.name.toLowerCase().includes(q) ||
+        b.category.toLowerCase().includes(q)
+      ).slice(0, 3);
+
+      const wrap = document.querySelector('.s-wrap');
+      const results = document.createElement('div');
+      results.id = 'sResults';
+      results.style.cssText = 'margin-top:28px;display:flex;flex-direction:column;gap:2px;';
+
+      if (matched.length === 0 && brandMatched.length === 0) {
+        results.innerHTML = `<div style="font-family:var(--condensed);font-size:11px;letter-spacing:.14em;color:var(--dim);padding:16px 0">No results for "${q}"</div>`;
+      } else {
+        if (brandMatched.length) {
+          results.innerHTML += `<div style="font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:var(--secondary);padding:0 0 8px">Brands</div>`;
+          results.innerHTML += brandMatched.map(b => `
+            <a href="designer.html?id=${b.id}" onclick="closeSearch()" style="display:flex;align-items:center;gap:14px;padding:10px 14px;background:rgba(248,250,252,.03);border:1px solid var(--border);border-radius:1px;transition:border-color .15s;text-decoration:none;color:inherit">
+              <img src="${IM.images[b.img]||'img/prod-01.jpg'}" style="width:36px;height:36px;object-fit:cover;border-radius:1px;flex-shrink:0">
+              <div>
+                <div style="font-family:var(--serif);font-size:15px;color:var(--text)">${b.name}</div>
+                <div style="font-family:var(--condensed);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--secondary)">${b.category}</div>
+              </div>
+            </a>`).join('');
+          results.innerHTML += `<div style="height:8px"></div>`;
+        }
+        if (matched.length) {
+          results.innerHTML += `<div style="font-family:var(--condensed);font-size:8px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:var(--secondary);padding:0 0 8px">Products</div>`;
+          results.innerHTML += matched.map(p => {
+            const brand = IM.brands.find(b => b.id === p.brand) || {};
+            return `<a href="product.html?id=${p.id}" onclick="closeSearch()" style="display:flex;align-items:center;gap:14px;padding:10px 14px;background:rgba(248,250,252,.03);border:1px solid var(--border);border-radius:1px;transition:border-color .15s;text-decoration:none;color:inherit">
+              <img src="${IM.images[p.img]||'img/prod-01.jpg'}" style="width:36px;height:48px;object-fit:cover;object-position:center top;border-radius:1px;flex-shrink:0">
+              <div style="flex:1;min-width:0">
+                <div style="font-family:var(--serif);font-size:15px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.name}</div>
+                <div style="font-family:var(--condensed);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--secondary)">${brand.name||p.brand}</div>
+              </div>
+              <div style="font-family:var(--condensed);font-size:13px;font-weight:900;color:var(--text);flex-shrink:0">R ${p.price.toLocaleString()}</div>
+            </a>`;
+          }).join('');
+        }
+        results.innerHTML += `<a href="shop.html" onclick="closeSearch()" style="display:block;text-align:center;padding:12px;font-family:var(--condensed);font-size:10px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--secondary);margin-top:8px;border:1px solid rgba(0,245,212,.2);border-radius:1px">See all results →</a>`;
+      }
+      wrap.appendChild(results);
+    });
+  }
 });

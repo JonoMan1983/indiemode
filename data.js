@@ -215,7 +215,7 @@ const IM = {
   nav: [
     { label: 'New In',       href: 'shop.html',       filter: '' },
     { label: 'Brands',       href: 'brands.html',     filter: '' },
-    { label: 'Clothing',     href: 'shop.html',       filter: 'clothing' },
+    { label: 'Clothing',     href: 'clothing.html',   filter: '' },
     { label: 'Swimwear',     href: 'swimwear.html',   filter: '' },
     { label: 'Jewellery',    href: 'jewellery.html',  filter: '' },
     { label: 'Accessories',  href: 'accessories.html',    filter: '' },
