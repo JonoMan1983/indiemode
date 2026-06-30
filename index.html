@@ -40,6 +40,15 @@ a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;backgroun
 .nav-cart:hover{background:var(--primary);color:var(--bg);box-shadow:0 0 20px var(--primary-glow)}
 .cart-count{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:var(--primary);color:var(--bg);font-size:9px;font-weight:900;border-radius:50%;transition:transform .2s}
 .nav-cart:hover .cart-count{background:var(--bg);color:var(--primary)}
+.nav-wish-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:4px;color:var(--muted);border:1px solid transparent;transition:color .2s,border-color .2s;position:relative;cursor:pointer;background:none}
+.nav-wish-btn:hover{color:var(--text);border-color:var(--border-hi)}
+.wish-count{display:none;position:absolute;top:-4px;right:-4px;width:14px;height:14px;background:var(--primary);color:var(--bg);font-size:7px;font-weight:900;border-radius:50%;align-items:center;justify-content:center}
+.prod-card-wrap{position:relative}
+.prod-wish-overlay{position:absolute;top:10px;right:10px;z-index:4;width:34px;height:34px;font-size:15px}
+.wish-btn{background:none;border:1px solid rgba(248,250,252,.18);border-radius:2px;color:rgba(248,250,252,.5);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s,background .2s;line-height:1}
+.wish-btn:hover,.wish-btn.wished{border-color:var(--primary);color:var(--primary);background:rgba(255,0,110,.1)}
+@keyframes sizeShake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+.size-shake{animation:sizeShake .4s ease}
 .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:36px;padding-bottom:20px;border-bottom:var(--rule)}
 .sec-label{font-family:var(--condensed);font-size:9px;font-weight:900;letter-spacing:.32em;text-transform:uppercase;color:var(--secondary);margin-bottom:8px;display:flex;align-items:center;gap:10px}
 .sec-label::before{content:'';width:20px;height:1px;background:var(--secondary)}
@@ -215,7 +224,14 @@ a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;backgroun
 .email-btn:hover{background:var(--text)}
 .email-note{font-family:var(--condensed);font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:10px}
 @media(max-width:768px){.hero{grid-template-columns:1fr}.hero-l{padding:90px 24px 56px}.hero-r{height:55vh;border-left:none;border-top:var(--rule)}.trust-inner{flex-wrap:wrap}.trust-item{flex:0 0 50%;border-right:none;border-bottom:var(--rule)}.trust-item:nth-child(odd){border-right:var(--rule)}.brands-track{padding:0 24px}.ed-inner{grid-template-columns:1fr;gap:48px}.bento{grid-template-columns:repeat(4,1fr);grid-template-rows:200px 200px}.bento-cell:nth-child(1){grid-column:span 2;grid-row:span 2}.bento-cell:nth-child(2){grid-column:span 2}.bento-cell:nth-child(6){display:none}.email-inner{flex-direction:column;gap:40px}.email-form-wrap{width:100%}}
-.nav-wish-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:4px;color:var(--muted);border:1px solid transparent;transition:color .2s,border-color .2s;position:r<div class="nav-right">
+</style>
+</head>
+<body>
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">INDIE<span class="logo-accent">mode</span></a>
+    <ul class="nav-links"></ul>
+    <div class="nav-right">
       <button class="nav-search-btn" onclick="openSearch()" aria-label="Search">
         <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M13 13L16 16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
       </button>
@@ -227,11 +243,6 @@ a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;backgroun
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 1H3L4.5 9.5H12.5L14 4H4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="12.5" r="1" fill="currentColor"/><circle cx="11" cy="12.5" r="1" fill="currentColor"/></svg>
         Bag <span class="cart-count" id="cartCount">0</span>
       </button>
-    </div>M13 13L16 16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-      </button>
-      <button class="nav-cart" onclick="Cart.openDrawer()">
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 1H3L4.5 9.5H12.5L14 4H4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="12.5" r="1" fill="currentColor"/><circle cx="11" cy="12.5" r="1" fill="currentColor"/></svg>
-        Bag <span class="cart-count" id="cartCount">0</span></button>
     </div>
   </div>
 </nav>
@@ -374,7 +385,8 @@ a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;backgroun
     <div class="footer-bottom"><div class="footer-copy">© 2026 Indiemode · SA Fashion Registry · Proudly South African</div></div>
   </div>
 </footer>
-<script src="data.js"></script><script src="app.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
 <script src="cart.js"></script>
 </body>
 </html>
