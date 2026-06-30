@@ -324,60 +324,20 @@ function initAccessories() {
   const pieces = IM.products.filter(p => p.category === 'accessories');
   const grid = document.getElementById('acGrid');
   const count = document.getElementById('acCount');
-  if (count) count.textContent = `${pieces.length} pieces`;
+  if (count) count.textContent = pieces.length + ' pieces';
 
-  const badgeClass = { new: 'bdg-new', sale: 'bdg-sale', ltd: 'bdg-ltd' };
-  const brandMap = {};
-  IM.brands.forEach(b => { brandMap[b.id] = b; });
+  grid.innerHTML = pieces.map(function(p, i) { return productCard(p, i > 3 ? 'rd1' : ''); }).join('');
 
-  grid.innerHTML = pieces.map(p => {
-    const imgSrc = IM.images[p.img] || 'img/prod-01.jpg';
-    const badge = p.badge ? `<div class="prod-badge ${badgeClass[p.badge] || ''}">${p.badge.toUpperCase()}</div>` : '';
-    const orig = p.originalPrice ? `<span class="prod-orig">R ${p.originalPrice.toLocaleString()}</span>` : '';
-    const brand = brandMap[p.brand];
-    const brandName = brand ? brand.name : p.brand;
-    return `
-      <a class="prod-card reveal" href="product.html?id=${p.id}">
-        <div class="prod-img">
-          <img src="${imgSrc}" alt="${p.name}" loading="lazy">
-          <div class="prod-quick">Quick View →</div>
-          ${badge}
-        </div>
-        <div class="prod-info">
-          <div class="prod-brand">${brandName}</div>
-          <div class="prod-name">${p.name}</div>
-          <div class="prod-foot">
-            <div class="prod-price">${orig}R ${p.price.toLocaleString()}</div>
-            <div class="prod-stars">★★★★★ <span class="prod-rev">(${Math.floor(Math.random()*40)+8})</span></div>
-          </div>
-        </div>
-      </a>`;
-  }).join('');
-
-  requestAnimationFrame(() => {
-    document.querySelectorAll('.reveal').forEach((el, i) => {
-      setTimeout(() => el.classList.add('in'), i * 60);
+  requestAnimationFrame(function() {
+    document.querySelectorAll('.reveal').forEach(function(el, i) {
+      setTimeout(function() { el.classList.add('in'); }, i * 60);
     });
   });
+  if (typeof Cart !== 'undefined') setTimeout(function() { Cart.syncAllWishBtnsAll(); }, 50);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = document.querySelector('.nav-links');
-  if (navLinks && IM.nav) {
-    navLinks.innerHTML = IM.nav.map(n =>
-      `<li><a href="${n.href}"${n.highlight ? ' class="nav-sale"' : ''}>${n.label}</a></li>`
-    ).join('');
-  }
-
-  const nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  });
-
-  window.openSearch = () => { document.getElementById('sOverlay').classList.add('open'); document.getElementById('sInput').focus(); };
-  window.closeSearch = () => document.getElementById('sOverlay').classList.remove('open');
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSearch(); });
-
+document.addEventListener('DOMContentLoaded', function() {
+  // Nav/search/scroll/Cart are wired by app.js's own DOMContentLoaded listener.
   initAccessories();
 });
 </script>
