@@ -225,7 +225,7 @@ function initShop() {
   });
 }
 
-// ── PRODUCT ───────────────────────────────────────────────────
+// ── PRODUCT ───────────────────────────────────────────
 function initProduct() {
   var params = new URLSearchParams(location.search);
   var id = params.get('id');
@@ -233,37 +233,79 @@ function initProduct() {
   if (!p) return;
 
   var brand = brandById(p.brand);
+  var brandLoc = [brand.city, brand.province].filter(Boolean).join(', ') || 'South Africa';
 
-  // Main image
-  var mainImg = document.getElementById('pdMainImg');
-  if (mainImg) mainImg.src = img(p.img);
+  // Breadcrumb
+  var bcCat = document.getElementById('breadcrumb-cat');
+  if (bcCat) bcCat.textContent = p.category ? (p.category.charAt(0).toUpperCase() + p.category.slice(1)) : 'Shop';
+  var bcName = document.getElementById('breadcrumb-name');
+  if (bcName) bcName.textContent = p.name;
 
-  // Thumbnails
+  // Main image (note: HTML uses pdMainImgEl for the <img>, pdMainImg is the wrapper div)
+  var mainImgEl = document.getElementById('pdMainImgEl');
+  if (mainImgEl) mainImgEl.src = img(p.img);
+
+  // Thumbnails — product data has a single img, so build thumb strip from
+  // the same image (repeated) unless an imgs[] array is present
   var thumbs = document.getElementById('pdThumbs');
-  if (thumbs && p.imgs) {
-    thumbs.innerHTML = p.imgs.map(function(k, i) {
-      return '<img src="' + img(k) + '" class="pd-thumb' + (i === 0 ? ' active' : '') + '" onclick="swapImg(this)" loading="lazy">';
+  if (thumbs) {
+    var thumbKeys = (p.imgs && p.imgs.length) ? p.imgs : [p.img];
+    thumbs.innerHTML = thumbKeys.map(function(k, i) {
+      return '<div class="pd-thumb' + (i === 0 ? ' active' : '') + '" onclick="swapImg(this)">' +
+        '<img src="' + img(k) + '" alt="' + p.name + ' view ' + (i + 1) + '" loading="lazy"></div>';
     }).join('');
   }
 
-  // Meta
-  var fields = {
-    'pdBrand':    brand.name || '',
-    'pdName':     p.name,
-    'pdPrice':    formatPrice(p.price),
-    'pdDesc':     p.desc || '',
-    'pdMaterial': p.material || '',
-    'pdOrigin':   p.origin || 'South Africa',
-  };
-  Object.keys(fields).forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) el.textContent = fields[id];
-  });
+  // Badge (wrapper exists in HTML as pdBadgeWrap)
+  var bdgWrap = document.getElementById('pdBadgeWrap');
+  if (bdgWrap) {
+    if (p.badge) {
+      var label = { 'new': 'New Specimen', 'sale': 'On Sale', 'ltd': 'Limited Run' }[p.badge] || p.badge;
+      bdgWrap.innerHTML = '<span class="pd-badge">' + label + '</span>';
+    } else {
+      bdgWrap.innerHTML = '';
+    }
+  }
 
-  // Badge
-  if (p.badge) {
-    var bdg = document.getElementById('pdBadge');
-    if (bdg) { bdg.textContent = { new: 'New Specimen', sale: 'On Sale', ltd: 'Limited Run' }[p.badge] || p.badge; bdg.style.display = ''; }
+  // Spec line (top of info column)
+  var specEl = document.getElementById('pdSpec');
+  if (specEl) specEl.textContent = (brand.category || 'Specimen') + ' — SS 2026';
+
+  // Brand link
+  var brandLink = document.getElementById('pdBrandLink');
+  if (brandLink) {
+    brandLink.textContent = brand.name || '';
+    brandLink.href = 'designer.html?id=' + p.brand;
+  }
+
+  // Name / price / desc
+  var nameEl = document.getElementById('pdName');
+  if (nameEl) nameEl.textContent = p.name;
+  var priceEl = document.getElementById('pdPrice');
+  if (priceEl) {
+    priceEl.innerHTML = p.originalPrice
+      ? '<span class="prod-orig">' + formatPrice(p.originalPrice) + '</span>' + formatPrice(p.price)
+      : formatPrice(p.price);
+  }
+  var descEl = document.getElementById('pdDesc');
+  if (descEl) descEl.textContent = p.description || '';
+
+  // Reviews count (static placeholder kept consistent with card stars)
+  var revEl = document.getElementById('pdRevCount');
+  if (revEl) revEl.textContent = '(24 reviews)';
+
+  // Attributes — material / origin / run / care
+  var attrsEl = document.getElementById('pdAttrs');
+  if (attrsEl) {
+    var attrRows = [
+      ['Material', p.material],
+      ['Origin',   p.origin],
+      ['Run',      p.run],
+      ['Care',     p.care],
+    ].filter(function(row) { return row[1]; });
+    attrsEl.innerHTML = attrRows.map(function(row) {
+      return '<div class="pd-attr-item"><div class="pd-attr-key">' + row[0] + '</div><div class="pd-attr-val">' + row[1] + '</div></div>';
+    }).join('');
   }
 
   // Sizes
@@ -307,11 +349,39 @@ function initProduct() {
     wishBtn.classList.toggle('wished', wished);
   }
 
+  // Designer block
+  var dsImg = document.getElementById('pdDesignerImg');
+  if (dsImg) {
+    var dsImgTag = dsImg.querySelector('img');
+    if (dsImgTag) dsImgTag.src = img(brand.img);
+  }
+  var dsName = document.getElementById('pdDesignerName');
+  if (dsName) dsName.textContent = brand.name || '';
+  var dsLoc = document.getElementById('pdDesignerLoc');
+  if (dsLoc) dsLoc.textContent = brandLoc;
+  var dsLink = document.getElementById('pdDesignerLink');
+  if (dsLink) dsLink.href = 'designer.html?id=' + p.brand;
+
+  // Related products — same category, excluding current item
+  var relatedGrid = document.getElementById('relatedGrid');
+  if (relatedGrid) {
+    var related = IM.products.filter(function(x) {
+      return x.category === p.category && x.id !== p.id;
+    }).slice(0, 4);
+    if (!related.length) {
+      related = IM.products.filter(function(x) { return x.id !== p.id; }).slice(0, 4);
+    }
+    relatedGrid.innerHTML = related.map(function(rp, i) { return productCard(rp, i > 1 ? 'rd1' : ''); }).join('');
+  }
+  var seeAll = document.getElementById('relatedSeeAll');
+  if (seeAll) seeAll.href = 'shop.html?cat=' + p.category;
+
   // Image swap
-  window.swapImg = function(thumb) {
-    if (mainImg) mainImg.src = thumb.src;
+  window.swapImg = function(thumbWrap) {
+    var src = thumbWrap.querySelector('img').src;
+    if (mainImgEl) mainImgEl.src = src;
     $$('.pd-thumb').forEach(function(t) { t.classList.remove('active'); });
-    thumb.classList.add('active');
+    thumbWrap.classList.add('active');
   };
 }
 
